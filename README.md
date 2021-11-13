@@ -40,7 +40,7 @@ The relationships found between the entities are as follows:
 
 
 ### Entity Diagram
-[![Entity Diagram](https://github.com/wtrianav/SmartVehicleApp/blob/main/SmartVehicleEntities.png "Entity Diagram")](https://github.com/wtrianav/SmartVehicleApp/blob/main/SmartVehicleEntities.pnghttp:// "Entity Diagram")
+[![Entity Diagram](https://github.com/wtrianav/SmartVehicleApp/blob/main/SmartVehicleEntidades.png "Entity Diagram")](https://github.com/wtrianav/SmartVehicleApp/blob/main/SmartVehicleEntidades.png "Entity Diagram")
 
 ------------
 
