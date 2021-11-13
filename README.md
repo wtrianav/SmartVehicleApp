@@ -37,6 +37,7 @@ The relationships found between the entities are as follows:
 |   Applications (many)| Vehicle (one) - have   |
 |Applications (many)| Costumer (one) - request   |
 |Applications (many)| Advisor (one) - recieve   |
+|Applications (many)| Co-signer (one) - have   |
 
 
 ### Entity Diagram
