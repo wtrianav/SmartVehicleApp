@@ -1,4 +1,4 @@
-# **SmatVehicle Project**
+# **SmartVehicle Project**
 
 ### Contributors
 
