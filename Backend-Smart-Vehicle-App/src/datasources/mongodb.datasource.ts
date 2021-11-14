@@ -1,10 +1,11 @@
 import {inject, lifeCycleObserver, LifeCycleObserver} from '@loopback/core';
 import {juggler} from '@loopback/repository';
+import { dataBase } from '../config/claveDB';
 
 const config = {
   name: 'mongodb',
   connector: 'mongodb',
-  url: 'mongodb+srv://leonardoapd:admin@clusterwebdev.hgis9.mongodb.net/SmartVehicleAppBD?retryWrites=true&w=majority',
+  url: dataBase.urlDataBase,
   host: '',
   port: 0,
   user: '',
