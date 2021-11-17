@@ -6,20 +6,20 @@ import parseBearerToken from 'parse-bearer-token';
 import {service} from '@loopback/core';
 import {AutenticacionService} from '../services';
 
-export class EstrategiaAdministrador implements AuthenticationStrategy {
+export class EstrategiaAsesor implements AuthenticationStrategy {
   constructor(
     @service(AutenticacionService)
     public servicioAutenticacion: AutenticacionService,
   ) {}
 
   //Nombre de la estrategia para usarla en la autenticacion
-  name: string = 'admin';
+  name: string = 'advisor';
   async authenticate(request: Request): Promise<UserProfile | undefined> {
     let token = parseBearerToken(request);
     if (token) {
       let datos = this.servicioAutenticacion.ValidarToken(token);
       if (datos) {
-        if (datos.data.role === 'administrador') {
+        if (datos.data.role === 'asesor') {
           let perfil: UserProfile = Object.assign({
             nombre_completo: datos.data.nombre_completo,
           });

@@ -20,17 +20,27 @@ export class Vehiculo extends Entity {
     type: 'string',
     required: true,
   })
-  placa: string;
+  marca: string;
+  
+  @property({
+    type: 'string',
+    required: true,
+  })
+  anio_modelo: string;
 
   @property({
     type: 'string',
     required: true,
   })
+  placa: string;
+
+  @property({
+    type: 'string',
+  })
   imagen: string;
 
   @property({
     type: 'string',
-    required: true,
   })
   link_video: string;
 

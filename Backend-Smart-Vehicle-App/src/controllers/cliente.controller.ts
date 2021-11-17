@@ -1,3 +1,5 @@
+import { authenticate } from '@loopback/authentication';
+import { service } from '@loopback/core';
 import {
   Count,
   CountSchema,
@@ -16,19 +18,54 @@ import {
   del,
   requestBody,
   response,
+  HttpErrors,
 } from '@loopback/rest';
-import {Cliente} from '../models';
+import { Llaves } from '../config/llaves';
+import {Cliente, Credenciales} from '../models';
 import {ClienteRepository} from '../repositories';
+import { AutenticacionService } from '../services';
+//Hay que importar el fetch para hacer uso de el al mandar notificaciones por correo
+const fetch = require('node-fetch'); 
 
 export class ClienteController {
   constructor(
     @repository(ClienteRepository)
     public clienteRepository : ClienteRepository,
+    @service(AutenticacionService)
+    public servicioAutenticacion : AutenticacionService,
   ) {}
 
-  @post('/clientes')
+  //Metodo del BackEnd para ejecutar el Login Cliente
+  //No se requiere autenticacion en esta etapa
+  @post('/login-cliente')
   @response(200, {
-    description: 'Cliente model instance',
+    description: 'Login de clientes a la plataforma',
+    content: {'application/json': {schema: getModelSchemaRef(Cliente)}},
+  })
+  async identificarCliente(
+    @requestBody() credenciales: Credenciales
+  ) {
+    let person = await this.servicioAutenticacion.IdentificarPersona(credenciales.usuario, credenciales.clave, 'cliente');
+    if (person) {
+      let token = this.servicioAutenticacion.GenerarTokenJWT(person);
+      return {
+        datos: {
+          nombre: person.nombre_completo,
+          email: person.email,
+          role: "cliente"
+        },
+        token: token
+      }
+    } else {
+      throw new HttpErrors[401]('Datos ingresados no son validos, intente nuevamente.')
+    }
+  }
+
+  //Metodo post para registrar cliente a la plataforma Smart Vehicle
+  //No se requiere autenticacion en esta etapa
+  @post('/register-clientes')
+  @response(200, {
+    description: 'Registro de clientes a la plataforma Smart Vehicle',
     content: {'application/json': {schema: getModelSchemaRef(Cliente)}},
   })
   async create(
@@ -44,7 +81,26 @@ export class ClienteController {
     })
     cliente: Omit<Cliente, 'id'>,
   ): Promise<Cliente> {
-    return this.clienteRepository.create(cliente);
+    //Se hace uso del servicio de autenticacion 
+    let clave = this.servicioAutenticacion.GenerarClaveAleatoria();
+    let clave_encriptada = this.servicioAutenticacion.EncriptarClave(clave);
+    //Guardar la clave encriptada para meterla en la base de datos
+    cliente.clave = clave_encriptada;
+    cliente.tipo_persona = "cliente";
+    let client = await this.clienteRepository.create(cliente);
+
+    //Notificacion por correo al usuario
+    let destino = cliente.email;
+    let asunto = 'Bienvenido a la plataforma Smart Vehicle';
+    let contenido = `Hola ${cliente.nombre_completo}, su usuario para ingresar a la plataforma Smart Vehicle es 
+    ${cliente.email} y su clave de acceso es: ${clave}`;
+
+    //Hacemos fetch para consumir recursos de servicios externos.
+    fetch(`${Llaves.urlNotificaciones}/enviar-correo?correo-destino=${destino}&asunto=${asunto}&contenido=${contenido}`)
+    .then((data:any) => {
+      console.log(data);
+    });
+    return client;
   }
 
   @get('/clientes/count')

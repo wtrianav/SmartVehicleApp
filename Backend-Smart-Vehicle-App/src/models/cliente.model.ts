@@ -20,7 +20,7 @@ export class Cliente extends Entity {
     type: 'string',
     required: true,
   })
-  documento_identificacion: string;
+  nro_documento: string;
 
   @property({
     type: 'string',
@@ -60,9 +60,13 @@ export class Cliente extends Entity {
 
   @property({
     type: 'string',
-    required: true,
   })
   clave: string;
+
+  @property({
+    type: 'string',
+  })
+  tipo_persona: string;
 
   @hasMany(() => Solicitud)
   solicitudes: Solicitud[];

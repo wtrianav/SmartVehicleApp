@@ -33,30 +33,28 @@ export class AdministradorController {
     public servicioAutenticacion: AutenticacionService,
   ) {}
 
-  //Metodo del BackEnd para ejecutar el Login
-  @post('/identificar-administrador', {
-    responses: {
-      '200': {
-        description: 'Identificacion de Administradores',
-      },
-    },
+  //Metodo del BackEnd para ejecutar el Login Admin
+  @post('/login-admin')
+  @response(200, {
+    description: 'Login de clientes a la plataforma',
+    content: {'application/json': {schema: getModelSchemaRef(Administrador)}},
   })
   async identificarAdministrador(
-    @requestBody() credenciales : Credenciales
+    @requestBody() credenciales: Credenciales
   ) {
-    let admin = await this.servicioAutenticacion.IdentificarAdministrador(credenciales.usuario, credenciales.clave);
-    if (admin) {
-      let token = this.servicioAutenticacion.GenerarTokenJWT(admin);
+    let person = await this.servicioAutenticacion.IdentificarPersona(credenciales.usuario, credenciales.clave, 'administrador');
+    if (person) {
+      let token = this.servicioAutenticacion.GenerarTokenJWT(person);
       return {
         datos: {
-          nombre: admin.nombre_completo,
-          email: admin.email,
-          id: admin.id
+          nombre: person.nombre_completo,
+          email: person.email,
+          role: "administrador"
         },
-        tk: token
+        token: token
       }
     } else {
-      throw new HttpErrors[401]('Datos no validos');
+      throw new HttpErrors[401]('Datos ingresados no son validos, intente nuevamente.')
     }
   }
 

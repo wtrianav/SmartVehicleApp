@@ -10,7 +10,11 @@ import {ServiceMixin} from '@loopback/service-proxy';
 import path from 'path';
 import {MySequence} from './sequence';
 import { AuthenticationComponent, registerAuthenticationStrategy } from '@loopback/authentication';
+import { EstrategiaCliente } from './strategies/client.strategies';
 import { EstrategiaAdministrador } from './strategies/admin.strategies';
+import { EstrategiaAsesor } from './strategies/advisor.strategies';
+import { EstrategiaCombinada } from './strategies/admin_advisor.strategies';
+
 
 export {ApplicationConfig};
 
@@ -42,7 +46,10 @@ export class SmartVehicleApplication extends BootMixin(
         nested: true,
       },
     };
+    registerAuthenticationStrategy(this, EstrategiaCliente);
     registerAuthenticationStrategy(this, EstrategiaAdministrador);
+    registerAuthenticationStrategy(this, EstrategiaAsesor);
+    registerAuthenticationStrategy(this, EstrategiaCombinada);
     this.component(AuthenticationComponent);
   }
 }

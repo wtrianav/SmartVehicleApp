@@ -13,7 +13,7 @@ export class Administrador extends Entity {
     type: 'string',
     required: true,
   })
-  cedula: string;
+  nro_documento: string;
 
   @property({
     type: 'string',
@@ -37,6 +37,11 @@ export class Administrador extends Entity {
     type: 'string',
   })
   clave: string;
+
+  @property({
+    type: 'string',
+  })
+  tipo_persona: string;
 
 
   constructor(data?: Partial<Administrador>) {

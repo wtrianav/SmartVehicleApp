@@ -26,6 +26,7 @@ export class SolicitudController {
     public solicitudRepository : SolicitudRepository,
   ) {}
 
+  
   @post('/solicitudes')
   @response(200, {
     description: 'Solicitud model instance',

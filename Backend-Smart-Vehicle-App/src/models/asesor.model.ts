@@ -14,7 +14,7 @@ export class Asesor extends Entity {
     type: 'string',
     required: true,
   })
-  cedula: string;
+  nro_documento: string;
 
   @property({
     type: 'string',
@@ -38,6 +38,11 @@ export class Asesor extends Entity {
     type: 'string',
   })
   clave: string;
+
+  @property({
+    type: 'string',
+  })
+  tipo_persona: string;
 
   @hasMany(() => Solicitud)
   solicitudes: Solicitud[];

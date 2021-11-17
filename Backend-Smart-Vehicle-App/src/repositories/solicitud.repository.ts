@@ -7,6 +7,7 @@ import {AsesorRepository} from './asesor.repository';
 import {VehiculoRepository} from './vehiculo.repository';
 import {CodeudorRepository} from './codeudor.repository';
 
+
 export class SolicitudRepository extends DefaultCrudRepository<
   Solicitud,
   typeof Solicitud.prototype.id,
@@ -20,6 +21,8 @@ export class SolicitudRepository extends DefaultCrudRepository<
   public readonly vehiculo: BelongsToAccessor<Vehiculo, typeof Solicitud.prototype.id>;
 
   public readonly codeudor: BelongsToAccessor<Codeudor, typeof Solicitud.prototype.id>;
+
+  
 
   constructor(
     @inject('datasources.mongodb') dataSource: MongodbDataSource, @repository.getter('ClienteRepository') protected clienteRepositoryGetter: Getter<ClienteRepository>, @repository.getter('AsesorRepository') protected asesorRepositoryGetter: Getter<AsesorRepository>, @repository.getter('VehiculoRepository') protected vehiculoRepositoryGetter: Getter<VehiculoRepository>, @repository.getter('CodeudorRepository') protected codeudorRepositoryGetter: Getter<CodeudorRepository>,
