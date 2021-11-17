@@ -2,7 +2,6 @@ import {injectable, /* inject, */ BindingScope} from '@loopback/core';
 import {repository} from '@loopback/repository';
 import {Administrador} from '../models';
 import {AdministradorRepository, AsesorRepository, ClienteRepository} from '../repositories';
-import {PersonaRepository} from '../repositories';
 import {Llaves} from '../config/llaves';
 const generator = require('password-generator');
 const encrypt = require('crypto-js');
@@ -17,8 +16,6 @@ export class AutenticacionService {
     public clienteRepository: ClienteRepository,
     @repository(AsesorRepository)
     public asesorRepository: AsesorRepository,
-    @repository(PersonaRepository)
-    public personaRepository: PersonaRepository,
   ) {}
 
   /*
