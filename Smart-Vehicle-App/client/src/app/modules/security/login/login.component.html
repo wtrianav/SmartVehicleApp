@@ -1,0 +1,60 @@
+<div class="section center"></div>
+
+
+<div class="container">
+  <div class="z-depth-1 grey contenedor lighten-4 row"
+    style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
+
+    <form class="col s12" [formGroup]="form">
+      <div class='row center'>
+        <div class='col s12'>
+          <h5 class="teal-text">Bienvenido a Smart Vehicle</h5>
+        </div>
+      </div>
+
+      <div class='row'>
+        <div class='input-field col s12'>
+          <i class="material-icons prefix">mail_outline</i>
+          <input formControlName="username" class='validate' type='text' name='username' id='username' />
+          <label for='email'>Email</label>
+          <div *ngIf="GetForm['username'].errors && (GetForm['username'].dirty || GetForm['username'].touched)"
+            class="error-message">
+            <p>Por favor ingrese un correo electronico válido</p>
+          </div>
+        </div>
+      </div>
+
+      <div class='row'>
+        <div class='input-field col s12'>
+          <i class="material-icons prefix">lock_open</i>
+          <input formControlName="password" class='validate' type='password' name='password' id='password' />
+          <label for='password'>Contraseña</label>
+          <div *ngIf="GetForm['password'].errors && (GetForm['password'].dirty || GetForm['password'].touched)"
+            class="error-message">
+            <p>Por favor ingrese una contraseña válida</p>
+          </div>
+        </div>
+        <label style='float: right;'>
+          <a class='teal-text' href='#!'><b>¿Olvidó su contraseña?</b></a>
+        </label>
+      </div>
+
+      <br />
+
+      <div class='row center'>
+        <button [disabled]="GetForm['username'].errors || GetForm['password'].errors" (click)="Login()" type='button'
+          name='btn_login' class='col s12 btn btn-small waves-effect '>
+          Iniciar Sesión
+          <i class="material-icons right">send</i>
+        </button>
+      </div>
+
+    </form>
+  </div>
+  <div class="row s12" >
+    <a class="teal-text" style='float: right;' href="#!">Crea una cuenta nueva</a>
+  </div>
+</div>
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
