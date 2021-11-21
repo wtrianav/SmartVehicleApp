@@ -25,7 +25,7 @@ import {Cliente, Credenciales} from '../models';
 import {ClienteRepository} from '../repositories';
 import { AutenticacionService } from '../services';
 //Hay que importar el fetch para hacer uso de el al mandar notificaciones por correo
-const fetch = require('node-fetch'); 
+const fetch = require('node-fetch');
 
 export class ClienteController {
   constructor(
@@ -81,7 +81,7 @@ export class ClienteController {
     })
     cliente: Omit<Cliente, 'id'>,
   ): Promise<Cliente> {
-    //Se hace uso del servicio de autenticacion 
+    //Se hace uso del servicio de autenticacion
     let clave = this.servicioAutenticacion.GenerarClaveAleatoria();
     let clave_encriptada = this.servicioAutenticacion.EncriptarClave(clave);
     //Guardar la clave encriptada para meterla en la base de datos
@@ -92,7 +92,7 @@ export class ClienteController {
     //Notificacion por correo al usuario
     let destino = cliente.email;
     let asunto = 'Bienvenido a la plataforma Smart Vehicle';
-    let contenido = `Hola ${cliente.nombre_completo}, su usuario para ingresar a la plataforma Smart Vehicle es 
+    let contenido = `Hola ${cliente.nombre_completo}, su usuario para ingresar a la plataforma Smart Vehicle es
     ${cliente.email} y su clave de acceso es: ${clave}`;
 
     //Hacemos fetch para consumir recursos de servicios externos.
