@@ -16,7 +16,7 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
-    path: 'create-client',
+    path: 'client/create-client',
     component: CreateClientComponent
   },
   {

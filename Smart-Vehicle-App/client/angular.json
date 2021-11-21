@@ -28,11 +28,12 @@
             ],
             "styles": [
               "src/styles.css",
-              "node_modules/materialize-css/dist/css/materialize.min.css",
+              "src/assets/css/global-styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/font-awesome/css/font-awesome.min.css"
             ],
             "scripts": [
-              "node_modules/materialize-css/dist/js/materialize.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
               "src/assets/js/init-materialize.js"
             ]
           },

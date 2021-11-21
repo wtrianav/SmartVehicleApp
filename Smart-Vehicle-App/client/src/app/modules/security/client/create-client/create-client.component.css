@@ -1,0 +1,66 @@
+main {
+  /* font-family: 'Montserrat',Helvetica,Arial,Lucida,sans-serif; */
+  font-family: 'Nunito', sans-serif;
+  /* font-family: 'Mulish', sans-serif; */
+  
+  --tam-fuente--button: 0.75rem;
+}
+
+h2 {
+    color: #181B21;
+    font-size: var(--tam-fuente--titulo);
+    font-weight: 700;
+}
+
+.box-form {
+    max-width: 40rem;
+}
+
+.margin-form{
+    margin-top: 5rem;
+    margin-bottom: 2rem;
+}
+
+
+.form-control, .form-select {
+    background-color: #F5F5F5;
+    border-color: #F5F5F5; 
+    border-radius: 2rem;
+}
+
+.form-label {
+    font-size: var(--tam-fuente--campos);
+    font-weight: 600;
+    color: #5C5D61;
+}
+
+.form-check-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.btn {
+    font-size: var(--tam-fuente--button);
+    font-weight: 800;
+    text-transform: uppercase;
+    border-radius: 2rem;
+    height: 38px;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    margin-top: 0.5rem;
+    margin-bottom: 0.4rem;
+}
+
+.row button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.row button i {
+    font-size: 20px;
+    margin-left: 16px;
+}

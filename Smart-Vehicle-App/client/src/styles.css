@@ -1,1 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;700;800;900&family=Sacramento&display=swap');
+
+*{
+    --tam-fuente--titulo: 2.1rem;
+    --tam-fuente--campos: 1rem;
+    --tam-fuente--button: 0.75rem;
+    --tipo-fuente--logo: 'Sacramento', cursive;
+}
+
+
