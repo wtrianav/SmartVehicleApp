@@ -38,6 +38,16 @@ header{
     align-items: center;
 }
 
+.mx-5 {
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+}
+
+@media (max-width: 321px) {
+    .navbar-brand {
+        font-size: 1rem;
+    }
+}
 
 
 .material-icons.md-18 { font-size: 18px; }

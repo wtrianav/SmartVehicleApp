@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { GeneralData } from 'src/app/config/general-data';
 import { ClientCredentialsRegisterModel } from 'src/app/models/user-credentials';
 import { SecurityService } from 'src/app/services/security.service';
 
@@ -10,10 +11,11 @@ import { SecurityService } from 'src/app/services/security.service';
 })
 export class CreateClientComponent implements OnInit {
   form: FormGroup = new FormGroup({});
+  siteKey: string = GeneralData.CODE_CAPTCHA;
 
   constructor(
     private formBuilder: FormBuilder,
-    private scurityService: SecurityService,
+    private securityService: SecurityService,
   ) { }
 
   ngOnInit(): void {
@@ -30,7 +32,7 @@ export class CreateClientComponent implements OnInit {
       ciudad: ["", ],
       direccion: ["", ],
       telefono: ["", [Validators.required,Validators.minLength(7)]],
-
+      recaptcha: ["", Validators.required],
     })
   }
 
@@ -50,7 +52,7 @@ export class CreateClientComponent implements OnInit {
       modelo.ciudad = this.GetForm.ciudad.value;
       modelo.direccion = this.GetForm.direccion.value;
       modelo.telefono = this.GetForm.telefono.value;
-      this.scurityService.RegisterCliente(modelo).subscribe({
+      this.securityService.RegisterCliente(modelo).subscribe({
         next: (data:any) => {
           console.log(data);
         },

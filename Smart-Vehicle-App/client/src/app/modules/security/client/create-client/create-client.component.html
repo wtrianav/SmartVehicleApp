@@ -8,7 +8,6 @@
                     <select class="form-select" formControlName="tipo_documento" id="tipo_documento">
                         <option value="Cédula">Cédula de ciudadania</option>
                         <option value="Cédula">Pasaporte</option>
-                        <option value="Cédula">NIT</option>
                     </select>
                     <div class="invalid-feedback">
                         El campo Número de Documento es obligatorio.
@@ -16,7 +15,8 @@
                 </div>
                 <div class="col-md-6">
                     <label for="validacionDocumento" class="form-label">Número de documento</label>
-                    <input type="text" class="form-control" formControlName="numero_documento" id="validacionDocumento" required />
+                    <input type="text" class="form-control" formControlName="numero_documento" id="validacionDocumento"
+                        required />
                     <div class="invalid-feedback">
                         El campo Número de Documento es obligatorio.
                     </div>
@@ -25,7 +25,8 @@
             <div class="row">
                 <div class="col-md-12">
                     <label for="validacionNombreCompleto" class="form-label">Nombre completo</label>
-                    <input type="text" class="form-control" formControlName="nombre_completo" id="validacionNombreCompleto" required />
+                    <input type="text" class="form-control" formControlName="nombre_completo"
+                        id="validacionNombreCompleto" required />
                     <div class="invalid-feedback">
                         El campo Nombre completo es obligatorio.
                     </div>
@@ -34,7 +35,10 @@
             <div class="row">
                 <div class="col-md-12">
                     <label for="validacionEmail" class="form-label">Email</label>
-                    <a class="navbar-brand" href="#"><span class="material-icons"> info </span></a>
+                    <a tabindex="0" class="navbar-brand" role="button" data-bs-toggle="popover" data-bs-trigger="focus"
+                        title="Dismissible popover"
+                        data-bs-content="And here's some amazing content. It's very engaging. Right?"><span
+                            class="material-icons"> info </span></a>
                     <div class="input-group has-validation">
                         <input type="text" class="form-control" id="validacionEmail" formControlName="email"
                             aria-describedby="inputGroupPrepend" required />
@@ -45,7 +49,8 @@
             <div class="row">
                 <div class="col-md-6">
                     <label for="validacionDepartamento" class="form-label">Departamento</label>
-                    <input type="text" class="form-control" formControlName="departamento" id="validacionDepartamento" required />
+                    <input type="text" class="form-control" formControlName="departamento" id="validacionDepartamento"
+                        required />
                 </div>
                 <div class="col-md-6">
                     <label for="validacionCiudad" class="form-label">Ciudad</label>
@@ -55,24 +60,49 @@
             <div class="row">
                 <div class="col-md-6">
                     <label for="validacionDireccion" class="form-label">Direccion</label>
-                    <input type="text" class="form-control" formControlName="direccion" id="validacionDireccion" required />
+                    <input type="text" class="form-control" formControlName="direccion" id="validacionDireccion"
+                        required />
                 </div>
                 <div class="col-md-6">
                     <div class="col-md-0">
                         <label for="validacionTelefono" class="form-label">Teléfono</label>
-                        <input type="text" class="form-control" formControlName="telefono" id="validacionTelefono" required />
+                        <input type="text" class="form-control" formControlName="telefono" id="validacionTelefono"
+                            required />
                         <div class="invalid-feedback">
                             El campo Teléfono es obligatorio.
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="d-flex justify-content-center">
+                    <ngx-invisible-recaptcha #captchaElem [siteKey]="siteKey">
+                    </ngx-invisible-recaptcha>
+                </div>
+            </div>
 
             <div class="row">
                 <div class="d-grid gap-2">
-                    <button class="btn btn-primary" (click)="Register()" type="button">Registrarse <i class="material-icons right">send</i></button>
+                    <button routerLink="/client/solicitar-vehiculo" class="btn btn-primary" (click)="Register()"
+                        type="button">Crear Cuenta <i class="material-icons right">send</i></button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="d-flex justify-content-center">
+                    <hr style="margin-right: 10px;">O
+                    <hr style="margin-left: 10px;">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="d-grid gap-2">
+                    <button routerLink="/security/login" class="btn btn-light" type="button">Iniciar Sesión <i
+                            class="material-icons right">login</i></button>
                 </div>
             </div>
         </form>
+
+
     </div>
 </main>

@@ -4,6 +4,8 @@ import { UserCredentialsModel } from 'src/app/models/user-credentials';
 import {MD5} from 'crypto-js';
 import { SecurityService } from 'src/app/services/security.service';
 
+export let Token: any;
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -14,6 +16,7 @@ export class LoginComponent implements OnInit {
   session: Boolean = false;
   scooterimg: string;
   form: FormGroup = new FormGroup({});
+
 
   constructor(
     private formBuilder: FormBuilder,
@@ -46,9 +49,11 @@ export class LoginComponent implements OnInit {
       this.securityService.Login(modelo).subscribe({
         next: (data:any) => {
           console.log(data);
+          Token = data.token;
+          // console.log(data.token);
         },
         error: (error:any) => {
-          console.log(error);
+          // console.log(error);
         }
       })
     }
