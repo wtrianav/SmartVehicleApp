@@ -76,14 +76,14 @@
             </div>
             <div class="row">
                 <div class="d-flex justify-content-center">
-                    <ngx-invisible-recaptcha #captchaElem [siteKey]="siteKey">
-                    </ngx-invisible-recaptcha>
+                    <ngx-recaptcha2 #captchaElem [siteKey]="siteKey" formControlName="recaptcha">
+                    </ngx-recaptcha2>
                 </div>
             </div>
 
             <div class="row">
                 <div class="d-grid gap-2">
-                    <button routerLink="/client/solicitar-vehiculo" class="btn btn-primary" (click)="Register()"
+                    <button [disabled]="!form.valid" routerLink="/client/solicitar-vehiculo" class="btn btn-primary" (click)="Register()"
                         type="button">Crear Cuenta <i class="material-icons right">send</i></button>
                 </div>
             </div>
