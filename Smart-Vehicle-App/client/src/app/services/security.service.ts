@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { GeneralData } from '../config/general-data';
-import { ClientCredentialsRegisterModel, UserCredentialsModel } from '../models/user-credentials';
+import { AdvisorCredentialsRegisterModel, ClientCredentialsRegisterModel, UserCredentialsModel } from '../models/user-credentials';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +30,15 @@ export class SecurityService {
       departamento: modelo.departamento,
       ciudad: modelo.ciudad,
       direccion: modelo.direccion,
+      telefono: modelo.telefono,
+      email: modelo.email
+    })
+  }
+
+  RegisterAsesor(modelo: AdvisorCredentialsRegisterModel) : Observable<any> {
+    return this.http.post(`${this.url}/register-asesores`, {
+      nro_documento: modelo.numero_documento,
+      nombre_completo: modelo.nombre_completo,
       telefono: modelo.telefono,
       email: modelo.email
     })
