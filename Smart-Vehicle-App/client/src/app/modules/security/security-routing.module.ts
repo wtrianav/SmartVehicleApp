@@ -33,7 +33,7 @@ const routes: Routes = [
     component: ListClientComponent
   },
   {
-    path: 'create-advisor',
+    path: 'advisor/create-advisor',
     component: CreateAdvisorComponent
   },
   {
