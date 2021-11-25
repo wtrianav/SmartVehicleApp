@@ -1,0 +1,38 @@
+<div class="d-flex justify-content-md-center">
+    <div class="col-3">
+        <button class="btn btn-light" (click)="Filtrar('Todos')" type="button"><i style="margin-right: 5px;"
+                class="material-icons">playlist_add_check</i>Todos</button>
+    </div>
+    <div class="col-3">
+        <button class="btn btn-light" (click)="Filtrar('Carro')" type="button"><i style="margin-right: 5px;" class="material-icons">
+                directions_car
+            </i>Carros</button>
+    </div>
+    <div class="col-3">
+        <button class="btn btn-light" (click)="Filtrar('Motocicleta')" type="button"><i style="margin-right: 5px;"
+                class="material-icons">two_wheeler</i>Motocicletas</button>
+    </div>
+    <div class="col-3">
+        <button class="btn btn-light" (click)="Filtrar('Scooter')" type="button"><i style="margin-right: 5px;"
+                class="material-icons">electric_scooter</i>Scooters</button>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <!-- Se realiza un for en la lista vehiculo que se encuentra en el archivo ts luego de filtrar la busqueda -->
+        <div class="col" *ngFor="let item of vehiculo">
+            <div class="card h-100 content">
+                <img src="{{item.imagen}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{item.marca}}</h5>
+                    <ul>
+                        <li class="card-text">Modelo: {{item.anio_modelo}}</li>
+                        <li class="card-text">Placa: {{item.placa}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>

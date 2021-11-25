@@ -12,6 +12,7 @@ import { CreateAdvisorComponent } from './advisor/create-advisor/create-advisor.
 import { EditAdvisorComponent } from './advisor/edit-advisor/edit-advisor.component';
 import { DeleteAdvisorComponent } from './advisor/delete-advisor/delete-advisor.component';
 import { ListAdvisorComponent } from './advisor/list-advisor/list-advisor.component';
+import { ListVehicleComponent } from './vehicle/list-vehicle/list-vehicle.component';
 
 
 @NgModule({
@@ -24,6 +25,8 @@ import { ListAdvisorComponent } from './advisor/list-advisor/list-advisor.compon
     EditAdvisorComponent,
     DeleteAdvisorComponent,
     ListAdvisorComponent,
+    ListVehicleComponent,
+    ListVehicleComponent
   ],
   imports: [
     CommonModule,

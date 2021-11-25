@@ -8,6 +8,7 @@ import { CreateClientComponent } from './client/create-client/create-client.comp
 import { DeleteClientComponent } from './client/delete-client/delete-client.component';
 import { EditClientComponent } from './client/edit-client/edit-client.component';
 import { ListClientComponent } from './client/list-client/list-client.component';
+import { ListVehicleComponent } from './vehicle/list-vehicle/list-vehicle.component';
 
 const routes: Routes = [
   {
@@ -42,6 +43,10 @@ const routes: Routes = [
     path: 'advisor/list-advisor',
     component: ListAdvisorComponent
   },
+  {
+    path: 'vehicle/list-vehicle',
+    component: ListVehicleComponent
+  }
 ];
 
 @NgModule({

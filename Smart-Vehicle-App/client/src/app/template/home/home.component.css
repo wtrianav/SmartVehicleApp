@@ -92,6 +92,12 @@ header.masthead:before {
 .section_1.section_2 {
   background-image: linear-gradient(
   90deg,rgba(0,0,0,0) 50%,rgba(0,0,0,0.23) 50%)!important;
+  color: aliceblue;
+}
+
+section .getInTouch{
+
+  padding: 1rem 2.5rem 0 2.5rem;
 }
 
 .section_2.section_1 {
@@ -133,4 +139,8 @@ header.masthead:before {
   width: 100%;
   left: 0;
   right: 0;
+}
+
+#signup{
+  margin-bottom: 8rem !important;
 }

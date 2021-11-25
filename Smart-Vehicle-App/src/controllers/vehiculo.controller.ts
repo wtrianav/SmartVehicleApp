@@ -78,7 +78,7 @@ export class VehiculoController {
     return this.vehiculoRepository.find(filter);
   }
 
-  @authenticate('client')
+  // @authenticate('client')
   @get('/filtrar-carros')
   @response(200, {
     description: 'Array of Vehiculo model instances',
@@ -98,7 +98,7 @@ export class VehiculoController {
     });
   }
 
-  @authenticate('client')
+  // @authenticate('client')
   @get('/filtrar-motocicletas')
   @response(200, {
     description: 'Array of Vehiculo model instances',
@@ -118,7 +118,7 @@ export class VehiculoController {
     });
   }
 
-  @authenticate('client')
+  // @authenticate('client')
   @get('/filtrar-scooters')
   @response(200, {
     description: 'Array of Vehiculo model instances',
