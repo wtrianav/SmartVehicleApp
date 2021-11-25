@@ -30,11 +30,14 @@ form .btn {
     font-weight: 800;
     text-transform: uppercase;
     border-radius: 2rem;
-    color: white;
     background-color: var(--azul-boton);
     border-color: var(--azul-boton);
 }
 
+form .nav-btn {
+    color: white;
+    background-color: var(--azul-boton);
+}
 
 
 .footer-text {
