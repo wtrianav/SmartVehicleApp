@@ -22,24 +22,35 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" routerLink="security/login">Iniciar Sesión</a></li>
-                            <li><a class="dropdown-item" routerLink="security/client/create-client">Registrarse</a></li>
+                            <li><a class="dropdown-item" routerLink="administration/client/create-client">Registrarse</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
                             <li><a class="dropdown-item" href="#">Something else here</a></li>
                         </ul>
                     </li>
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                          data-bs-toggle="dropdown" aria-expanded="false">
+                          Asesores
+                      </a>
+                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <li><a class="dropdown-item" routerLink="">Iniciar Sesión</a></li>
+                          <li><a class="dropdown-item" routerLink="administration/advisor/create-advisor">Registrarse</a></li>
+                          <li>
+                              <hr class="dropdown-divider">
+                          </li>
+                          <li><a class="dropdown-item" href="#">Something else here</a></li>
+                      </ul>
+                  </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Asesores</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Vehiculos</a>
+                        <a class="nav-link" routerLink="administration/vehicle/list-vehicle">Vehiculos</a>
                     </li>
 
                 </ul>
                 <form class="d-flex">
                     <input class="form-control me-2" type="Buscar" placeholder="Buscar" aria-label="Buscar">
-                    <button class="btn btn-outline-success" type="submit">Buscar</button>
+                    <button class="btn btn-outline-success nav-btn" type="submit">Buscar</button>
                 </form>
             </div>
         </div>

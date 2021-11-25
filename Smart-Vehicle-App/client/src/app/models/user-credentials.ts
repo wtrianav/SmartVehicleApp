@@ -13,3 +13,10 @@ export class ClientCredentialsRegisterModel {
   direccion?: string;
   telefono?: string;
 }
+
+export class AdvisorCredentialsRegisterModel {
+  numero_documento?: string;
+  nombre_completo?: string;
+  email?: string;
+  telefono?: string;
+}
