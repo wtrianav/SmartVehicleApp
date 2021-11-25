@@ -1,10 +1,61 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;700;800;900&family=Sacramento&display=swap');
 
 *{
-    --tam-fuente--titulo: 2.1rem;
-    --tam-fuente--campos: 1rem;
-    --tam-fuente--button: 0.75rem;
-    --tipo-fuente--logo: 'Sacramento', cursive;
+    --tam-fuente-titulo: 2rem;
+    --tam-fuente-campos: 1rem;
+    --tam-fuente-button: 0.75rem;
+    --tipo-fuente-logo: 'Sacramento', cursive;
+    --fuente-general: 'Nunito', sans-serif;
+}
+
+header{
+    font-family: var(--fuente-general);
+    --azul-boton: #0D6EFD;
+}
+
+div .nav-link {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #5C5D61;
+}
+
+div .navbar-brand {
+    font-family: var(--tipo-fuente-logo);
+    font-size: var(--tam-fuente-titulo);
+    font-weight: 600;
+}
+
+form .btn {
+    font-size: var(--tam-fuente-button);
+    font-weight: 800;
+    text-transform: uppercase;
+    border-radius: 2rem;
+    color: white;
+    background-color: var(--azul-boton);
+    border-color: var(--azul-boton);
 }
 
 
+
+.footer-text {
+    font-family: var(--fuente-general);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+
+
+
+@media (max-width: 321px) {
+    div .navbar-brand {
+        font-size: 1rem;
+    }
+    
+}
+
+
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }

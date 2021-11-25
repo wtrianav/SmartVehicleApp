@@ -3,12 +3,12 @@ main {
     font-family: 'Nunito', sans-serif;
     /* font-family: 'Mulish', sans-serif; */
   
-    --tam-fuente--button: 0.75rem;
+    --tam-fuente-button: 0.75rem;
   }
   
   h2 {
     color: #181b21;
-    font-size: var(--tam-fuente--titulo);
+    font-size: var(--tam-fuente-titulo);
     font-weight: 700;
   }
   
@@ -29,7 +29,7 @@ main {
   }
   
   .form-label {
-    font-size: var(--tam-fuente--campos);
+    font-size: var(--tam-fuente-campos);
     font-weight: 600;
     color: #5c5d61;
   }
@@ -40,7 +40,7 @@ main {
   }
   
   .btn {
-    font-size: var(--tam-fuente--button);
+    font-size: var(--tam-fuente-button);
     font-weight: 800;
     text-transform: uppercase;
     border-radius: 2rem;
@@ -83,6 +83,8 @@ main {
   } 
   
   .mx-5 {
-      margin-right: 0px !important;
-      margin-left: 0px !important;
+      margin-right: 0rem !important;
+      margin-left: 0rem !important;
   }
+
+  
