@@ -39,6 +39,11 @@ form .nav-btn {
     background-color: var(--azul-boton);
 }
 
+footer.footer {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
 
 .footer-text {
     font-family: var(--fuente-general);
