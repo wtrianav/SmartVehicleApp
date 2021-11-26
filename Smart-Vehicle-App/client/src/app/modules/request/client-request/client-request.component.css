@@ -1,0 +1,15 @@
+div .btn-request{
+  display:flex;
+  flex-direction: column;
+}
+
+.mx-5 {
+  margin-right: 0px !important;
+  margin-left: 0px !important;
+}
+
+@media (max-width: 421px){
+  div .btn-request{
+    margin-bottom: 1rem ;
+  }
+}
