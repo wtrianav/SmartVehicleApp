@@ -103,6 +103,39 @@ export class ClienteController {
     return client;
   }
 
+
+  //Metodo del BackEnd para ejecutar el modificaciones en el Asesor
+  @patch('/recuperar-contraseña-cliente')
+  @response(200, {
+    description: 'Metodo para recuperar contraseña del cliente',
+    content: {'application/json': {schema: CountSchema}},
+  })
+  async modificar_asesor(
+    @requestBody() cliente: Cliente
+    ): Promise<Boolean> {
+    let client = await this.clienteRepository.findOne({
+      where: {email: cliente.email},
+    });
+    await this.asesorRepository
+      .updateById(advisor?.id, asesor)
+      .then(() => {
+        console.log('Se ha actualizado el registro satisfactoriamente');
+      })
+      .catch(() => {
+        console.log('No se ha encontrado el registro a actualizar');
+      });
+  }
+
+  @post('/cambiar-clave-cliente')
+  @response(200, {
+    description: 'Cambio de clave de clientes',
+    content: {'applicatio/json': {schema: getModelSchemaRef(Credenciales)}},
+  })
+  async cambiarClaveCliente(
+    
+  )
+
+
   @get('/clientes/count')
   @response(200, {
     description: 'Cliente model count',

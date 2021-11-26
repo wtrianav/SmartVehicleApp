@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { GeneralData } from 'src/app/config/general-data';
 import { ClientCredentialsRegisterModel } from 'src/app/models/user-credentials';
+import { ClienteService } from 'src/app/services/cliente.service';
 import { SecurityService } from 'src/app/services/security.service';
 
 @Component({
@@ -12,14 +13,19 @@ import { SecurityService } from 'src/app/services/security.service';
 export class CreateClientComponent implements OnInit {
   form: FormGroup = new FormGroup({});
   siteKey: string = GeneralData.CODE_CAPTCHA;
+  urlDepartamento: string = GeneralData.API_DPTO;
+  datos : any;
+  seleccionado : string | undefined;
 
   constructor(
     private formBuilder: FormBuilder,
     private securityService: SecurityService,
+    private clienteService: ClienteService
   ) { }
 
   ngOnInit(): void {
     this.CreateForm();
+    this.ConsultarDepartamentos();
   }
 
   CreateForm() {
@@ -61,6 +67,17 @@ export class CreateClientComponent implements OnInit {
         }
       })
     }
+  }
+
+  ConsultarDepartamentos() {
+    this.clienteService.ObtenerDepartamentos().subscribe({
+      next: (data : any) => {
+        this.datos = Object.values(data);
+        console.log(this.datos);
+      }, error : (error : any) => {
+        console.log(error);
+      }
+    })
   }
 
   get GetForm() {

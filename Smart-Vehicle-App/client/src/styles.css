@@ -81,7 +81,7 @@ form .btn {
 
 div .row {
   display: flex;
-  /* justify-content: center; */
+  justify-content: center;
   margin-top: 0.5rem;
   margin-bottom: 0.4rem;
 }

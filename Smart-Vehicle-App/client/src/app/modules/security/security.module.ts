@@ -7,10 +7,12 @@ import { NgxCaptchaModule } from 'ngx-captcha';
 
 import { SecurityRoutingModule } from './security-routing.module';
 import { LoginComponent } from './login/login.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
     LoginComponent,
+    ForgotPasswordComponent,
   ],
   imports: [
     CommonModule,

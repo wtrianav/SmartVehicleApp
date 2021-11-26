@@ -29,7 +29,7 @@ export class ListVehicleComponent implements OnInit {
             console.log(this.vehiculo);
           },
           error: (error: any) => {
-            console.log(console.error);
+            console.log(error);
           }
         });
         break;
