@@ -13,7 +13,7 @@ import { EditAdvisorComponent } from './advisor/edit-advisor/edit-advisor.compon
 import { DeleteAdvisorComponent } from './advisor/delete-advisor/delete-advisor.component';
 import { ListAdvisorComponent } from './advisor/list-advisor/list-advisor.component';
 import { ListVehicleComponent } from './vehicle/list-vehicle/list-vehicle.component';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -33,7 +33,8 @@ import { ListVehicleComponent } from './vehicle/list-vehicle/list-vehicle.compon
     AdministrationRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxCaptchaModule
+    NgxCaptchaModule,
+    NgbModule
   ]
 })
 export class AdministrationModule { }
