@@ -1,0 +1,49 @@
+.d-flex {
+    margin-top: 6.5rem;
+    margin-left: 45px;
+  }
+  
+  .row {
+    margin-top: 1.5rem;
+    justify-content: flex-start;
+  }
+  
+  .col-3 .btn-light {
+    display: flex;
+    justify-content: center;
+    border-radius: 12px;
+    width: 90%;
+    height: 38px;
+  }
+  
+  .content {
+    cursor: pointer;
+    transition: 0.3s all ease-in-out;
+    box-shadow: 5px 10px 7px -1px #BFBFBF;
+  }
+  
+  .content:hover {
+    margin-top: -5px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+  }
+  
+  @media (max-width: 539px) {
+    .d-flex {
+      flex-wrap: wrap;
+      margin-left: 0px;
+    }
+  
+    .d-flex .col-3 {
+      display: flex;
+      width: 50%;
+      justify-content: space-evenly;
+    }
+  
+    .d-flex .col-3 .btn-light {
+      border-radius: 12px;
+      margin: 0 5px 5px 5px;
+      justify-content: center;
+    }
+  }
+  

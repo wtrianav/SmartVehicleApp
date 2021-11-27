@@ -10,7 +10,6 @@ import { NavBarComponent } from './template/nav-bar/nav-bar.component';
 import { FooterComponent } from './template/footer/footer.component';
 import { HomeComponent } from './template/home/home.component';
 import { ErrorComponent } from './template/error/error.component';
-import { SolicitarVehiculoComponent } from './modules/client/solicitar-vehiculo/solicitar-vehiculo.component';
 import { AuthInterceptorService } from './auth-interceptor.service';
 import { CreateVehicleComponent } from './modules/administration/vehicle/create-vehicle/create-vehicle.component';
 

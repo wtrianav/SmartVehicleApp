@@ -27,14 +27,14 @@
       <div class="row">
         <div class="d-grid gap-2">
           <label>
-            <a style="float: right;" class='teal-text' href='#!'><b>¿Olvidó su contraseña?</b></a>
+            <a style="float: right;" class='teal-text' routerLink="/security/forgot-password"><b>¿Olvidó su contraseña?</b></a>
           </label>
         </div>
       </div>
 
       <div class="row">
         <div class="d-grid gap-2">
-          <button  [disabled]="GetForm['username'].errors || GetForm['password'].errors" (click)="Login()" routerLink="/client/solicitar-vehiculo" class="btn btn-primary" type="button">Iniciar Sesión <i class="material-icons right">login</i></button>
+          <button  [disabled]="GetForm['username'].errors || GetForm['password'].errors" (click)="Login()" routerLink="" class="btn btn-primary" type="button">Iniciar Sesión <i class="material-icons right">login</i></button>
         </div>
       </div>
 
@@ -44,7 +44,7 @@
 
     <div class="row">
       <div class="d-grid gap-2">
-          <button routerLink="/security/client/create-client" class="btn btn-light"  type="button">Crear Cuenta <i
+          <button routerLink="/administration/client/create-client" class="btn btn-light"  type="button">Crear Cuenta <i
                   class="material-icons right">send</i></button>
       </div>
   </div>
