@@ -3,7 +3,7 @@
 header.masthead {
   position: relative;
   background-color: #343a40;
-  background: url('/assets/img/bg-masthead.jpg') no-repeat center center;
+  background: url('/assets/img/bg-masthead1.jpg') no-repeat center center;
   background-size: cover;
   padding-top: 8rem;
   padding-bottom: 8rem;
@@ -78,10 +78,10 @@ header.masthead:before {
 .call-to-action {
   position: relative;
   background-color: #343a40;
-  background: url('/assets/img/bg-masthead.jpg') no-repeat center center;
+  background: url('/assets/img/bg-masthead1.jpg') no-repeat center center;
   background-size: cover;
-  padding-top: 7rem;
-  padding-bottom: 7rem;
+  padding-top: 1rem;
+  padding-bottom: 8rem;
 }
 .call-to-action:before {
   content: '';
@@ -93,7 +93,6 @@ header.masthead:before {
   left: 0;
   opacity: 0.5;
 }
-
 .section_1.section_2 {
   background-image: linear-gradient(
     90deg,

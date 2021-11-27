@@ -123,8 +123,8 @@ footer.footer {
   position: fixed;
   bottom: 0;
   width: 100%;
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 @media (max-width: 321px) {
