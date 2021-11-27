@@ -47,7 +47,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <label for="validacionDepartamento" class="form-label">Departamento</label>
-                    <select class="form-select" [(ngModel)]="seleccionado" formControlName="departamento" id="validacionDepartamento" >
+                    <select class="form-select" formControlName="departamento" id="validacionDepartamento" >
                         <option [value]="dato.departamento" *ngFor="let dato of datos">{{dato.departamento}}</option>
                     </select>
                 </div>
