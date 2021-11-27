@@ -133,6 +133,15 @@ footer.footer {
   }
 }
 
+@media (max-width: 460px) {
+  .popover-edit {
+    width: 12rem;
+  }
+  .g-recaptcha {
+    transform: scale(0.75);
+    /* transform-origin: 0 0; */
+  }
+}
 .material-icons.md-18 {
   font-size: 18px;
 }

@@ -35,7 +35,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <label for="validacionEmail" class="form-label">Email</label>
-                    <a tabindex="0" class="navbar-brand" placement="right" ngbPopover="El correo será su usuario para ingresar a la plataforma."><span
+                    <a tabindex="0" class="navbar-brand" placement="right" popoverClass="popover-edit" ngbPopover="El correo será su usuario para ingresar a la plataforma."><span
                             class="material-icons"> info </span></a>
                     <div class="input-group has-validation">
                         <input type="text" class="form-control" id="validacionEmail" formControlName="email"
@@ -75,7 +75,7 @@
             </div>
             <div class="row">
                 <div class="d-flex justify-content-center">
-                    <ngx-recaptcha2 #captchaElem [siteKey]="siteKey" formControlName="recaptcha">
+                    <ngx-recaptcha2 #captchaElem [siteKey]="siteKey" formControlName="recaptcha" class="g-recaptcha">
                     </ngx-recaptcha2>
                 </div>
             </div>
