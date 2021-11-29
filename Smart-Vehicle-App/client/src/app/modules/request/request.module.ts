@@ -2,13 +2,19 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { RequestRoutingModule } from './request-routing.module';
+import { ClientRequestComponent } from './client-request/client-request.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    ClientRequestComponent
+  ],
   imports: [
     CommonModule,
-    RequestRoutingModule
+    RequestRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class RequestModule { }

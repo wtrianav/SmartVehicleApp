@@ -1,0 +1,134 @@
+<main class="mx-5 margin-form">
+    <div class="container px-5 pt-4 pb-5 my-5 bg-body box-form">
+        <form class="row g-3 needs-validation">
+            <h2>Solicitud Cliente</h2>
+            <div class="row">
+                <div class="col-md-0">
+                    <label for="validacionMarca" class="form-label">Marca</label>
+                    <input type="text" class="form-control" id="validacionMarca"
+                        formControlName="numero_documento" required>
+                    <div class="invalid-feedback">
+                        El campo Departamento es obligatorio.
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-0">
+                    <label for="validacionModelo" class="form-label">Modelo</label>
+                    <input type="text" class="form-control" id="validacionModelo"
+                        formControlName="numero_documento" required>
+                    <div class="invalid-feedback">
+                        El campo Departamento es obligatorio.
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-0">
+                    <label for="validacionValor" class="form-label">Valor</label>
+                    <input type="text" class="form-control" id="validacionValor" formControlName="numero_documento"
+                        required>
+                    <div class="invalid-feedback">
+                        El campo es obligatorio.
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="validacionDepartamento" class="form-label">Departamento</label>
+                    <input type="text" class="form-control" id="validacionDepartamento"
+                        formControlName="numero_documento" required>
+                    <div class="invalid-feedback">
+                        El campo Departamento es obligatorio.
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label label for="validacionCiudad" class="form-label">Ciudad</label>
+                    <input type="text" class="form-control" id="validacionCiuidad" formControlName="numero_documento"
+                        required>
+                    <div class="invalid-feedback">
+                        El campo Ciudad es obligatorio.
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-0">
+                    <label for="validacionDireccion" class="form-label">Dirección</label>
+                    <input type="text" class="form-control" id="validacionDireccion" formControlName="numero_documento"
+                        required>
+                    <div class="invalid-feedback">
+                        El campo Dirección es obligatorio.
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="validacionNombreFechaSalida" class="form-label">Fecha de Salida</label>
+                    <input type="date" class="form-control" id="validacionFechaSalida" formControlName="nombre_completo"
+                        required>
+                    <div class="invalid-feedback">
+                        El campo Fecha de Salida es obligatorio.
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="validacionNombreFechaRetorno" class="form-label">Fecha de Retorno</label>
+                    <input type="date" class="form-control" id="validacionFechaRetorno"
+                        formControlName="nombre_completo" required>
+                    <div class="invalid-feedback">
+                        El campo Fecha de Retorno es obligatorio.
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-0">
+                    <label for="validacionFechaVenta" class="form-label">Fecha de venta</label>
+                    <input type="date" class="form-control" id="validacionFechaVenta" formControlName="numero_documento"
+                        required>
+                    <div class="invalid-feedback">
+                        El campo Fecha de Venta es obligatorio.
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="row">
+                <div class="col-md-0">
+                    <label for="validacionEmail" class="form-label">Email</label>
+                    <a tabindex="0" class="navbar-brand" role="button" data-bs-toggle="popover" data-bs-trigger="focus"
+                        title="Dismissible popover"
+                        data-bs-content="And here's some amazing content. It's very engaging. Right?"><span
+                            class="material-icons"> info </span></a>
+                    <div class="input-group has-validation">
+                        <input type="text" class="form-control" id="validacionEmail"
+                            aria-describedby="inputGroupPrepend" formControlName="email" required>
+                        <div class="invalid-feedback">
+                            El campo Email es obligatorio.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-0">
+                    <label for="validacionTelefono" class="form-label">Teléfono</label>
+                    <input type="text" class="form-control" id="validacionTelefono" formControlName="telefono" required>
+                    <div class="invalid-feedback">
+                        El campo Teléfono es obligatorio.
+                    </div>
+                </div>
+            </div> -->
+            <!-- <div class="row">
+                <div class="d-flex justify-content-center">
+                    <ngx-recaptcha2 #captchaElem [siteKey]="siteKey" formControlName="recaptcha">
+                    </ngx-recaptcha2>
+                </div>
+            </div> -->
+            <div class="row">
+            <div class="col-md-6 btn-request">
+                <button class="btn btn-light" type="button">Cancelar<i
+                    class="material-icons right">cancel_schedule_send</i></button>
+            </div>
+                <div class="col-md-6 btn-request">
+                    <button class="btn btn-primary" type="button">Enviar Solicitud <i
+                        class="material-icons right">send</i></button>
+                </div>
+            </div>
+        </form>
+    </div>
+</main>
