@@ -22,6 +22,12 @@ export class SecurityService {
     });
   }
 
+  RecoverPassword(modelo : UserCredentialsModel) : Observable<any> {
+    return this.http.post(`${this.url}/recuperar-clave-cliente`, {
+      email: modelo.username
+    });
+  }
+
   RegisterCliente(modelo: ClientCredentialsRegisterModel) : Observable<any> {
     return this.http.post(`${this.url}/register-clientes`, {
       tipo_documento: modelo.tipo_documento,

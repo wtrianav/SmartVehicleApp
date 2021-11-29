@@ -149,7 +149,7 @@ export class ClienteController {
           destinatario: usuario.email,
           asunto: Llaves.asuntoRecuperarContraseña,
           contenido: `Hola ${usuario.nombre_completo}, se ha generado una nueva contraseña para su usuario
-            ${usuario.email} y es: ${usuario.clave}`
+            ${usuario.email} y es: ${clave}`
         }
       )
       this.servicioNotificacion.NotificarPorCorreo(datos);
