@@ -2,6 +2,7 @@
   <div class="container px-5 pt-4 pb-5 my-5 bg-body box-form">
     <form class="row g-3 needs-validation" [formGroup]="form">
       <h2>Iniciar Sesión</h2>
+      
       <div class="row">
         <div class="d-grid gap-2">
           <label for='email' class="form-label">Usuario</label>
@@ -13,6 +14,7 @@
           </div>
         </div>
       </div>
+
       <div class="row">
         <div class="d-grid gap-2">
           <label for='password' class="form-label">Contraseña</label>
@@ -24,30 +26,36 @@
           </div>
         </div>
       </div>
+
       <div class="row">
         <div class="d-grid gap-2">
           <label>
-            <a style="float: right;" class='teal-text' href='#!'><b>¿Olvidó su contraseña?</b></a>
+            <a style="float: right;" class='teal-text' routerLink="/security/forgot-password"><b>¿Olvidó su
+                contraseña?</b></a>
           </label>
         </div>
       </div>
 
       <div class="row">
         <div class="d-grid gap-2">
-          <button  [disabled]="GetForm['username'].errors || GetForm['password'].errors" (click)="Login()" routerLink="/client/solicitar-vehiculo" class="btn btn-primary" type="button">Iniciar Sesión <i class="material-icons right">login</i></button>
+          <button [disabled]="GetForm['username'].errors || GetForm['password'].errors" (click)="Login()" routerLink=""
+            class="btn btn-primary" type="button">Iniciar Sesión <i class="material-icons right">login</i></button>
         </div>
       </div>
 
       <div class="row">
-        <div class="d-flex justify-content-center"><hr style="margin-right: 10px;">O<hr style="margin-left: 10px;"></div>
-    </div>
-
-    <div class="row">
-      <div class="d-grid gap-2">
-          <button routerLink="/security/client/create-client" class="btn btn-light"  type="button">Crear Cuenta <i
-                  class="material-icons right">send</i></button>
+        <div class="d-flex justify-content-center">
+          <hr style="margin-right: 10px;">O
+          <hr style="margin-left: 10px;">
+        </div>
       </div>
-  </div>
+
+      <div class="row">
+        <div class="d-grid gap-2">
+          <button routerLink="/administration/client/create-client" class="btn btn-light" type="button">Crear Cuenta <i
+              class="material-icons right">send</i></button>
+        </div>
+      </div>
 
     </form>
   </div>
