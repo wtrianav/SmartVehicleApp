@@ -3,6 +3,12 @@ export class UserCredentialsModel {
   password?: string;
 }
 
+export class UserLoginSesionModel {
+  datos?: UserCredentialsModel;
+  token?: string;
+  identificado: boolean = false;
+}
+
 export class ClientCredentialsRegisterModel {
   tipo_documento?: string;
   numero_documento?: string;

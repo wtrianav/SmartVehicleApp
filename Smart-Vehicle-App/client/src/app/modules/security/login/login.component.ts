@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserCredentialsModel } from 'src/app/models/user-credentials';
 import {MD5} from 'crypto-js';
 import { SecurityService } from 'src/app/services/security.service';
+import { Router } from '@angular/router';
 
 export let Token: any;
 
@@ -21,6 +22,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private securityService: SecurityService,
+    private router: Router,
   ) {
     this.scooterimg = "assets/images/background1.jpg";
   }
@@ -49,7 +51,11 @@ export class LoginComponent implements OnInit {
       this.securityService.Login(modelo).subscribe({
         next: (data:any) => {
           console.log(data);
-          Token = data.token;
+          //Token = data.token;
+          //Se hace uso del servicio para almacenar la informacion de sesion y asi lograr entra a la plataforma.
+          this.securityService.AlmacenarSesion(data);
+          //Se navega hacia el acceso que se requiera segun el usuario.
+          this.router.navigate(['/home']);
           // console.log(data.token);
         },
         error: (error:any) => {

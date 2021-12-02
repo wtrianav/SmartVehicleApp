@@ -19,9 +19,9 @@
 </div>
 
 <div class="container">
-    <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="row row-cols-1 row-cols-md-3 g-4" >
         <!-- Se realiza un for en la lista vehiculo que se encuentra en el archivo ts luego de filtrar la busqueda -->
-        <div class="col" *ngFor="let item of vehiculo">
+        <div class="col" *ngFor="let item of vehiculo" (click)="LanzarSolicitud(item)" type="button" routerLink="/request/client-request">
             <div class="card h-100 content">
                 <img src="{{item.imagen}}" class="card-img-top" alt="...">
                 <div class="card-body">

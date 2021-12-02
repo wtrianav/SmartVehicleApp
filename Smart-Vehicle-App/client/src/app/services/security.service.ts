@@ -1,8 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { GeneralData } from '../config/general-data';
-import { AdvisorCredentialsRegisterModel, ClientCredentialsRegisterModel, UserCredentialsModel } from '../models/user-credentials';
+import { AdvisorCredentialsRegisterModel, ClientCredentialsRegisterModel, UserCredentialsModel, UserLoginSesionModel } from '../models/user-credentials';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +10,8 @@ import { AdvisorCredentialsRegisterModel, ClientCredentialsRegisterModel, UserCr
 export class SecurityService {
 
   url: string = GeneralData.USERS_URL;
+
+  datosUsuarioSesion = new BehaviorSubject<UserLoginSesionModel>(new UserLoginSesionModel());
 
   constructor(
     private http: HttpClient
@@ -19,6 +21,10 @@ export class SecurityService {
     return this.http.post(`${this.url}/login-cliente`, {
       usuario: modelo.username,
       clave: modelo.password
+    }, {
+      headers: new HttpHeaders({
+
+      })
     });
   }
 
@@ -48,5 +54,49 @@ export class SecurityService {
       telefono: modelo.telefono,
       email: modelo.email
     })
+  }
+
+  AlmacenarSesion(datos: UserLoginSesionModel) {
+    datos.identificado = true;
+    let stringDatos = JSON.stringify(datos);
+    localStorage.setItem('DatosSesion:', stringDatos);
+    this.RefrescarDatosSesion(datos);
+  }
+
+  ObtenerInformacionSesion() {
+    let datosString = localStorage.getItem("DatosSesion");
+    if(datosString) {
+      let datos = JSON.parse(datosString);
+      return datos;
+    } else {
+      return null;
+    }
+  }
+
+  EliminarInformacionSesion() {
+    localStorage.removeItem("DatosSesion");
+    //Se borran los datos para cerrar sesion
+    this.RefrescarDatosSesion(new UserLoginSesionModel()); 
+  }
+
+  SesionIniciada() {
+    let datosString = localStorage.getItem("DatosSesion");
+    return datosString;
+  }
+
+  VerificarSesionActual() {
+    let datos = this.ObtenerDatosUsuarioEnSesion();
+    if(datos) {
+      this.RefrescarDatosSesion(datos);
+    }
+  }
+
+  RefrescarDatosSesion(datos: UserLoginSesionModel) {
+    this.datosUsuarioSesion.next(datos);
+
+  }
+
+  ObtenerDatosUsuarioEnSesion(): any {
+    return this.datosUsuarioSesion.asObservable();
   }
 }

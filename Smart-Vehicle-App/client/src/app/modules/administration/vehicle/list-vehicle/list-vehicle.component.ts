@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { VehicleService } from 'src/app/services/vehicle.service';
+
 
 @Component({
   selector: 'app-list-vehicle',
@@ -8,10 +10,11 @@ import { VehicleService } from 'src/app/services/vehicle.service';
 })
 export class ListVehicleComponent implements OnInit {
 
-  vehiculo: any;
+  @Output () vehiculo: any;
 
   constructor(
     private vehicleService: VehicleService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -69,5 +72,17 @@ export class ListVehicleComponent implements OnInit {
           }
         });
     }
+  }
+
+  LanzarSolicitud2(vehicle:any) {
+    console.log(typeof(vehicle));
+    this.vehicleService.CardTrigger.emit(
+      {vehiculo : vehicle}
+    )
+  }
+
+  LanzarSolicitud(vehicle:any) {
+    this.vehicleService.AlmacenarDatosVehiculo(vehicle);
+    this.router.navigate(['/request/client-request']);
   }
 }
