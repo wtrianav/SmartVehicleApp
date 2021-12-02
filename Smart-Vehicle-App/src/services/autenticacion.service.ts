@@ -1,6 +1,6 @@
 import {injectable, /* inject, */ BindingScope} from '@loopback/core';
 import {repository} from '@loopback/repository';
-import {Administrador} from '../models';
+import {Administrador, CambioClave, Cliente} from '../models';
 import {AdministradorRepository, AsesorRepository, ClienteRepository} from '../repositories';
 import {Llaves} from '../config/llaves';
 const generator = require('password-generator');
@@ -16,7 +16,7 @@ export class AutenticacionService {
     public clienteRepository: ClienteRepository,
     @repository(AsesorRepository)
     public asesorRepository: AsesorRepository,
-  ) {}
+  ) { }
 
   /*
    * Add service methods here
@@ -104,6 +104,43 @@ export class AutenticacionService {
     } catch (error) {
       console.log(error);
       return false;
+    }
+  }
+
+  async CambiarClave(credencialesClave: CambioClave) : Promise<Boolean> {
+    let client = await this.clienteRepository.findOne({
+      where: {
+        email: credencialesClave.email,
+        clave: credencialesClave.clave_actual,
+      },
+    });
+    if (client) {
+      client.clave = credencialesClave.clave_nueva;
+      await this.clienteRepository.updateById(client?.id, client);
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  async RecuperarClave(email_cliente: string, clave: string) : Promise<Cliente | null> {
+    let client = await this.clienteRepository.findOne({
+      where: {
+        email: email_cliente
+      },
+    });
+    if (client) {
+      client.clave = this.EncriptarClave(clave)
+      await this.clienteRepository.updateById(client.id, client)
+      .then(() => {
+        console.log('Se ha actualizado la contraseña satisfactoriamente');
+      })
+      .catch(() => {
+        console.log('No se ha encontrado el registro a actualizar');
+      });
+      return client;
+    } else {
+      return null;
     }
   }
 }

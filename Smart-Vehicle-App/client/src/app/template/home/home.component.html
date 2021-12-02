@@ -3,15 +3,15 @@
       <div class="row justify-content-center">
           <div class="col-xl-6">
               <div class="text-center text-white">
-                  <h1 class="mb-5">Compra o alquila el vehículo perfecto para ti!</h1>
+                  <h1 class="mb-5 fw-bold">Compra o alquila el vehículo perfecto para ti!</h1>
                   <form class="form-subscribe" id="contactForm" data-sb-form-api-token="API_TOKEN">
                       <div class="row">
                           <div class="col">
-                              <input class="form-control" id="emailAddress" type="email" placeholder="Email Address" data-sb-validations="required,email" />
+                              <input class="form-control" id="emailAddress" type="email" placeholder="Correo electrónico" data-sb-validations="required,email" />
                               <div class="invalid-feedback text-white" data-sb-feedback="emailAddress:required">Email Address is required.</div>
                               <div class="invalid-feedback text-white" data-sb-feedback="emailAddress:email">Email Address Email is not valid.</div>
                           </div>
-                          <div class="col-auto"><button class="btn btn-primary btn-lg disabled" id="submitButton" type="submit">Enviar</button></div>
+                          <div class="col-auto"><button class="btn btn-primary btn-lg" id="submitButton" type="submit">Enviar</button></div>
                       </div>
                       <div class="d-none" id="submitSuccessMessage">
                           <div class="text-center mb-3">
@@ -31,19 +31,19 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 getInTouch">
-                <h4>Get In touch & We will Contact You Shortly</h4>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, corrupti natus. Natus labore aliquid
+                <h3 class="text-center fw-bold">Get In touch & We will Contact You Shortly</h3>
+                <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, corrupti natus. Natus labore aliquid
                     debitis autem quisquam nostrum corrupti illo voluptate expedita, possimus id, recusandae error aperiam?
                     Sunt, cum quis.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, corrupti natus. Natus labore aliquid
+                <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, corrupti natus. Natus labore aliquid
                     debitis autem quisquam nostrum corrupti illo voluptate expedita, possimus id, recusandae error aperiam?
                     Sunt, cum quis.</p>
             </div>
             <div class="col-md-6">
-                <form>
+                <form class="form-message">
                     <div class="row">
                         <div class="col-md-0">
-                            <label for="validacionNombreCompleto" class="form-label">Nombre completo</label>
+                            <label for="validacionNombreCompleto" class="form-label fs-5">Nombre completo</label>
                             <input type="text" class="form-control" id="validacionNombreCompleto"
                                 formControlName="nombre_completo" required>
                             <div class="invalid-feedback">
@@ -53,9 +53,9 @@
                     </div>
                     <div class="row">
                         <div class="col-md-0">
-                            <label for="validacionEmail" class="form-label">Email</label>
+                            <label for="validacionEmail" class="form-label fs-5">Email</label>
                             <a tabindex="0" class="navbar-brand" role="button" data-bs-toggle="popover"
-                                data-bs-trigger="focus" title="Dismissible popover"
+                                data-bs-trigger="focus" title="Popover title"
                                 data-bs-content="And here's some amazing content. It's very engaging. Right?"><span
                                     class="material-icons"> info </span></a>
                             <div class="input-group has-validation">
@@ -69,7 +69,7 @@
                     </div>
                     <div class="row">
                         <div class="mb-3">
-                            <label for="exampleFormControlTextarea1" class="form-label">Comentarios</label>
+                            <label for="exampleFormControlTextarea1" class="form-label fs-5">Comentarios</label>
                             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                         </div>
                     </div>
@@ -92,21 +92,21 @@
           <div class="col-lg-4">
               <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
                   <div class="features-icons-icon d-flex"><i class="bi bi-calendar2-check m-auto text-primary"></i></div>
-                  <h3>Nuestra Misión</h3>
+                  <h3 class="fw-bold">Nuestra Misión</h3>
                   <p class="lead mb-0">Maximizar el potencial de nuestra empresa a través del trabajo en equipo.</p>
               </div>
           </div>
           <div class="col-lg-4">
               <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
                   <div class="features-icons-icon d-flex"><i class="bi bi-eye-fill m-auto text-primary"></i></div>
-                  <h3>Nuestra Visión</h3>
+                  <h3 class="fw-bold">Nuestra Visión</h3>
                   <p class="lead mb-0">Ser una de las mejores empresas en la renta y venta de vehículos, reconocida por la innovación, simpleza y generación de valor de sus servicios, con una alta productividad y calidad humana de su equipo.</p>
               </div>
           </div>
           <div class="col-lg-4">
               <div class="features-icons-item mx-auto mb-0 mb-lg-3">
                   <div class="features-icons-icon d-flex"><i class="bi bi-person-bounding-box m-auto text-primary"></i></div>
-                  <h3>Nuestros valores</h3>
+                  <h3 class="fw-bold">Nuestros valores</h3>
                   <p class="lead mb-0">Honestidad, Lealtad, Respeto, Pasión por los desafíos, Superación Constante y Creatividad.</p>
               </div>
           </div>
@@ -119,50 +119,151 @@
       <div class="row g-0">
           <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('assets/img/bg-showcase-1.jpg')"></div>
           <div class="col-lg-6 order-lg-1 my-auto showcase-text">
-              <h2>Fully Responsive Design</h2>
+              <h2 class="fw-bold">Alquiler y venta de Marcas de confianza</h2>
               <p class="lead mb-0">When you use a theme created by Start Bootstrap, you know that the theme will look great on any device, whether it's a phone, tablet, or desktop the page will behave responsively!</p>
           </div>
       </div>
       <div class="row g-0">
           <div class="col-lg-6 text-white showcase-img" style="background-image: url('assets/img/bg-showcase-2.jpg')"></div>
           <div class="col-lg-6 my-auto showcase-text">
-              <h2>Updated For Bootstrap 5</h2>
+              <h2 class="fw-bold">Alquiler y venta de motos para pista, enduro y scooter</h2>
               <p class="lead mb-0">Newly improved, and full of great utility classes, Bootstrap 5 is leading the way in mobile responsive web development! All of the themes on Start Bootstrap are now using Bootstrap 5!</p>
           </div>
       </div>
       <div class="row g-0">
           <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('assets/img/bg-showcase-3.jpg')"></div>
           <div class="col-lg-6 order-lg-1 my-auto showcase-text">
-              <h2>Easy to Use & Customize</h2>
+              <h2 class="fw-bold">Alquiler y venta de patinetas eléctricas</h2>
               <p class="lead mb-0">Landing Page is just HTML and CSS with a splash of SCSS for users who demand some deeper customization options. Out of the box, just add your content and images, and your new landing page will be ready to go!</p>
           </div>
       </div>
   </div>
 </section>
+<!-- Vehicles Stock -->
+<section class="section-vehicles">
+    <div class="container">
+        <h2 class="text-center fw-bold">Nuevo inventario</h2>
+        <div class="text-stock">
+            <p class="lead mb-12">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pellentesque viverra quam in aliquam laoreet quis justo.</p>
+        </div>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+                <div class="card-box">
+                    <img src="assets/img/car-dealer-1.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="text-center fw-bold">Divi Lead 2018</h5>
+                        <p class="text-center fw-bold card-text">$ 34,000</p>
+                    </div>
+                </div>
+                <div class="">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="button-title accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                            aria-expanded="false" aria-controls="collapseOne">
+                            Detalles
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="box accordion-collapse collapse" aria-labelledby="headingOne"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <ul class="lead">
+                                <li>Vivamus suscipit tortor</li>
+                                <li>Sed porttitor lectus nibh</li>
+                                <li>Curabitur arcu erat</li>
+                                <li>Curabitur aliquet quam id dui</li>
+                                <li>Vestibulum ante ipsum primis en faucibus</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card-box">
+                    <img src="assets/img/car-dealer-2.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="text-center fw-bold">Monarch 2019</h5>
+                        <p class="text-center fw-bold card-text">$ 19,300</p>
+                    </div>
+                </div>
+                <div class="">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="button-title accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            Detalles
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <ul class="lead">
+                                <li>Vivamus suscipit tortor</li>
+                                <li>Sed porttitor lectus nibh</li>
+                                <li>Curabitur arcu erat</li>
+                                <li>Curabitur aliquet quam id dui</li>
+                                <li>Vestibulum ante ipsum primis en faucibus</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card-box">
+                    <img src="assets/img/car-dealer-3.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="text-center fw-bold">Nexus 2020</h5>
+                        <p class="text-center fw-bold card-text">$ 26,500</p>
+                    </div>
+                </div>
+                <div class="">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="button-title accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Detalles
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <ul class="lead">
+                                <li>Vivamus suscipit tortor</li>
+                                <li>Sed porttitor lectus nibh</li>
+                                <li>Curabitur arcu erat</li>
+                                <li>Curabitur aliquet quam id dui</li>
+                                <li>Vestibulum ante ipsum primis en faucibus</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="btn-stock-vehicles">
+            <button class="btn btn-primary btn-vehicles" type="submit">ver stock</button>
+        </div>
+    </div>
+</section>
 <!-- Testimonios-->
 <section class="testimonials text-center bg-light">
   <div class="container">
-      <h2 class="mb-5">Lo que nuestros clientes dicen...</h2>
+      <h2 class="mb-5 fw-bold">Lo que nuestros clientes dicen...</h2>
       <div class="row">
           <div class="col-lg-4">
               <div class="testimonial-item mx-auto mb-5 mb-lg-0">
                   <img class="img-fluid rounded-circle mb-3" src="assets/img/testimonials-1.jpg" alt="..." />
                   <h5>Margaret E.</h5>
-                  <p class="font-weight-light mb-0">"This is fantastic! Thanks so much guys!"</p>
+                  <p class="lead font-weight-light mb-0">"This is fantastic! Thanks so much guys!"</p>
               </div>
           </div>
           <div class="col-lg-4">
               <div class="testimonial-item mx-auto mb-5 mb-lg-0">
                   <img class="img-fluid rounded-circle mb-3" src="assets/img/testimonials-2.jpg" alt="..." />
                   <h5>Fred S.</h5>
-                  <p class="font-weight-light mb-0">"Bootstrap is amazing. I've been using it to create lots of super nice landing pages."</p>
+                  <p class="lead font-weight-light mb-0">"Bootstrap is amazing. I've been using it to create lots of super nice landing pages."</p>
               </div>
           </div>
           <div class="col-lg-4">
               <div class="testimonial-item mx-auto mb-5 mb-lg-0">
                   <img class="img-fluid rounded-circle mb-3" src="assets/img/testimonials-3.jpg" alt="..." />
                   <h5>Sarah W.</h5>
-                  <p class="font-weight-light mb-0">"Thanks so much for making these free resources available to us!"</p>
+                  <p class="lead font-weight-light mb-0">"Thanks so much for making these free resources available to us!"</p>
               </div>
           </div>
       </div>
@@ -173,15 +274,15 @@
   <div class="container position-relative">
       <div class="row justify-content-center">
           <div class="col-xl-6">
-              <h2 class="mb-4">Ready to get started? Sign up now!</h2>
+              <h2 class="mb-4 fw-bold">¿Listo para comenzar? ¡Regístrate ahora!</h2>
               <form class="form-subscribe" id="contactFormFooter" data-sb-form-api-token="API_TOKEN">
                   <div class="row">
                       <div class="col">
-                          <input class="form-control" id="emailAddressBelow" type="email" placeholder="Email Address" data-sb-validations="required,email" />
-                          <div class="invalid-feedback text-white" data-sb-feedback="emailAddressBelow:required">Email Address is required.</div>
-                          <div class="invalid-feedback text-white" data-sb-feedback="emailAddressBelow:email">Email Address Email is not valid.</div>
+                          <input class="form-control" id="emailAddressBelow" type="email" placeholder="Correo electrónico" data-sb-validations="required,email" />
+                          <div class="invalid-feedback text-white" data-sb-feedback="emailAddressBelow:required">El Correo electrónico es requerido.</div>
+                          <div class="invalid-feedback text-white" data-sb-feedback="emailAddressBelow:email">Correo electrónico no válido.</div>
                       </div>
-                      <div class="col-auto"><button class="btn btn-primary btn-lg disabled" id="submitButton" type="submit">Submit</button></div>
+                      <div class="col-auto"><button class="btn btn-primary btn-lg" id="submitButton" type="submit">Enviar</button></div>
                   </div>
                   <div class="d-none" id="submitSuccessMessage">
                       <div class="text-center mb-3">

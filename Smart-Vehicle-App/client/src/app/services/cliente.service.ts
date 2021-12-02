@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ClienteService {
 
-  url: string = GeneralData.USERS_URL;
+  url: string = GeneralData.API_DPTO;
 
  
 
@@ -15,19 +15,9 @@ export class ClienteService {
     private http: HttpClient
   ) { }
 
-  FiltrarPorCarro() {
-    return this.http.get(`${this.url}/filtrar-carros`)
+  ObtenerDepartamentos() {
+    return this.http.get(this.url);
   }
 
-  FiltrarPorMoto() {
-    return this.http.get(`${this.url}/filtrar-motocicletas`)
-  }
 
-  FiltrarTodos() {
-    return this.http.get(`${this.url}/vehiculos`)
-  }
-
-  FiltrarPorScooter() {
-    return this.http.get(`${this.url}/filtrar-scooters`)
-  }
 }

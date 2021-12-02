@@ -1,5 +1,5 @@
-import { authenticate } from '@loopback/authentication';
-import { service } from '@loopback/core';
+import {authenticate} from '@loopback/authentication';
+import {service} from '@loopback/core';
 import {
   Count,
   CountSchema,
@@ -20,20 +20,23 @@ import {
   response,
   HttpErrors,
 } from '@loopback/rest';
-import { Llaves } from '../config/llaves';
-import {Cliente, Credenciales} from '../models';
+import {threadId} from 'worker_threads';
+import {Llaves} from '../config/llaves';
+import {CambioClave, Cliente, Credenciales, CredencialesRecuperarClave, NotificacionCorreo} from '../models';
 import {ClienteRepository} from '../repositories';
-import { AutenticacionService } from '../services';
+import {AutenticacionService, NotificacionService} from '../services';
 //Hay que importar el fetch para hacer uso de el al mandar notificaciones por correo
 const fetch = require('node-fetch');
 
 export class ClienteController {
   constructor(
     @repository(ClienteRepository)
-    public clienteRepository : ClienteRepository,
+    public clienteRepository: ClienteRepository,
     @service(AutenticacionService)
-    public servicioAutenticacion : AutenticacionService,
-  ) {}
+    public servicioAutenticacion: AutenticacionService,
+    @service(NotificacionService)
+    public servicioNotificacion: NotificacionService
+  ) { }
 
   //Metodo del BackEnd para ejecutar el Login Cliente
   //No se requiere autenticacion en esta etapa
@@ -89,19 +92,72 @@ export class ClienteController {
     cliente.tipo_persona = "cliente";
     let client = await this.clienteRepository.create(cliente);
 
-    //Notificacion por correo al usuario
-    let destino = cliente.email;
-    let asunto = 'Bienvenido a la plataforma Smart Vehicle';
-    let contenido = `Hola ${cliente.nombre_completo}, su usuario para ingresar a la plataforma Smart Vehicle es
-    ${cliente.email} y su clave de acceso es: ${clave}`;
-
-    //Hacemos fetch para consumir recursos de servicios externos.
-    fetch(`${Llaves.urlNotificaciones}/enviar-correo?correo-destino=${destino}&asunto=${asunto}&contenido=${contenido}`)
-    .then((data:any) => {
-      console.log(data);
-    });
+    //Notificacion por correo al usuariolet datos = new NotificacionCorreo(
+    let datos = new NotificacionCorreo(
+      {
+        destinatario: client.email,
+        asunto: Llaves.asuntoRegistroCliente,
+        contenido: `Hola ${cliente.nombre_completo}, su usuario para ingresar a la plataforma Smart Vehicle es
+          ${cliente.email} y su clave de acceso es: ${clave}`
+      }
+    )
+    this.servicioNotificacion.NotificarPorCorreo(datos);
     return client;
   }
+
+  @post('/cambiar-clave-cliente')
+  @response(200, {
+    description: 'Cambio de clave de clientes',
+    content: {'application/json': {schema: getModelSchemaRef(CambioClave)}},
+  })
+  async cambiarClaveCliente(
+    @requestBody({
+      content: {
+        'application/json': {
+          schema: getModelSchemaRef(CambioClave, {
+            title: 'Cambio de clave del cliente'
+          }),
+        },
+      },
+    })
+    credencialesClave: CambioClave,
+  ): Promise<Boolean> {
+    let respuesta = await this.servicioAutenticacion.CambiarClave(credencialesClave);
+    return respuesta;
+  }
+
+  @post('/recuperar-clave-cliente')
+  @response(200, {
+    description: 'Cambio de clave de clientes',
+    content: {
+      'application/json': {
+        schema: {
+          type: 'string'
+        }
+      }
+    },
+  })
+  async recuperarClaveCliente(
+    @requestBody() credenciales: CredencialesRecuperarClave
+  ): Promise<Cliente | null> {
+    let clave = this.servicioAutenticacion.GenerarClaveAleatoria();
+    let usuario = await this.servicioAutenticacion.RecuperarClave(credenciales.email, clave);
+    console.log("Todo Bien");
+    if (usuario) {
+      let datos = new NotificacionCorreo(
+        {
+          destinatario: usuario.email,
+          asunto: Llaves.asuntoRecuperarContraseña,
+          contenido: `Hola ${usuario.nombre_completo}, se ha generado una nueva contraseña para su usuario
+            ${usuario.email} y es: ${clave}`
+        }
+      )
+      this.servicioNotificacion.NotificarPorCorreo(datos);
+    }
+    return usuario;
+  }
+
+
 
   @get('/clientes/count')
   @response(200, {

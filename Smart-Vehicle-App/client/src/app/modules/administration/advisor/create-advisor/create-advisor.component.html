@@ -23,10 +23,8 @@
             <div class="row">
                 <div class="col-md-0">
                     <label for="validacionEmail" class="form-label">Email</label>
-                    <a tabindex="0" class="navbar-brand" role="button" data-bs-toggle="popover" data-bs-trigger="focus"
-                        title="Dismissible popover"
-                        data-bs-content="And here's some amazing content. It's very engaging. Right?"><span
-                            class="material-icons"> info </span></a>
+                    <a tabindex="0" class="navbar-brand" placement="right" popoverClass="popover-edit" ngbPopover="El correo será su usuario para ingresar a la plataforma."><span
+                        class="material-icons"> info </span></a>
                     <div class="input-group has-validation">
                         <input type="text" class="form-control" id="validacionEmail"
                             aria-describedby="inputGroupPrepend" formControlName="email" required>
@@ -47,7 +45,7 @@
             </div>
             <div class="row">
                 <div class="d-flex justify-content-center">
-                    <ngx-recaptcha2 #captchaElem [siteKey]="siteKey" formControlName="recaptcha">
+                    <ngx-recaptcha2 #captchaElem [siteKey]="siteKey" formControlName="recaptcha" class="g-recaptcha">
                     </ngx-recaptcha2>
                 </div>
             </div>

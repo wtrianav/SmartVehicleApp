@@ -5,6 +5,7 @@
   
   .row {
     margin-top: 1.5rem;
+    justify-content: flex-start;
   }
   
   .col-3 .btn-light {

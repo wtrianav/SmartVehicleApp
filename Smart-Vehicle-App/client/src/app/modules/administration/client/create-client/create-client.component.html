@@ -35,9 +35,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <label for="validacionEmail" class="form-label">Email</label>
-                    <a tabindex="0" class="navbar-brand" role="button" data-bs-toggle="popover" data-bs-trigger="focus"
-                        title="Dismissible popover"
-                        data-bs-content="And here's some amazing content. It's very engaging. Right?"><span
+                    <a tabindex="0" class="navbar-brand" placement="right" popoverClass="popover-edit" ngbPopover="El correo será su usuario para ingresar a la plataforma."><span
                             class="material-icons"> info </span></a>
                     <div class="input-group has-validation">
                         <input type="text" class="form-control" id="validacionEmail" formControlName="email"
@@ -49,8 +47,9 @@
             <div class="row">
                 <div class="col-md-6">
                     <label for="validacionDepartamento" class="form-label">Departamento</label>
-                    <input type="text" class="form-control" formControlName="departamento" id="validacionDepartamento"
-                        required />
+                    <select class="form-select" formControlName="departamento" id="validacionDepartamento" >
+                        <option [value]="dato.departamento" *ngFor="let dato of datos">{{dato.departamento}}</option>
+                    </select>
                 </div>
                 <div class="col-md-6">
                     <label for="validacionCiudad" class="form-label">Ciudad</label>
@@ -76,7 +75,7 @@
             </div>
             <div class="row">
                 <div class="d-flex justify-content-center">
-                    <ngx-recaptcha2 #captchaElem [siteKey]="siteKey" formControlName="recaptcha">
+                    <ngx-recaptcha2 #captchaElem [siteKey]="siteKey" formControlName="recaptcha" class="g-recaptcha">
                     </ngx-recaptcha2>
                 </div>
             </div>

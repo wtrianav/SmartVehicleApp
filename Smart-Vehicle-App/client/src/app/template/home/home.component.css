@@ -3,7 +3,7 @@
 header.masthead {
   position: relative;
   background-color: #343a40;
-  background: url('/assets/img/bg-masthead.jpg') no-repeat center center;
+  background: url('/assets/img/bg-masthead1.jpg') no-repeat center center;
   background-size: cover;
   padding-top: 8rem;
   padding-bottom: 8rem;
@@ -29,6 +29,11 @@ header.masthead:before {
   header.masthead .h1 {
     font-size: 3rem;
   }
+}
+
+.justify-content-center {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
 }
 
 .features-icons {
@@ -73,10 +78,10 @@ header.masthead:before {
 .call-to-action {
   position: relative;
   background-color: #343a40;
-  background: url('/assets/img/bg-masthead.jpg') no-repeat center center;
+  background: url('/assets/img/bg-masthead1.jpg') no-repeat center center;
   background-size: cover;
-  padding-top: 7rem;
-  padding-bottom: 7rem;
+  padding-top: 1rem;
+  padding-bottom: 8rem;
 }
 .call-to-action:before {
   content: '';
@@ -88,33 +93,38 @@ header.masthead:before {
   left: 0;
   opacity: 0.5;
 }
-
 .section_1.section_2 {
   background-image: linear-gradient(
-  90deg,rgba(0,0,0,0) 50%,rgba(0,0,0,0.23) 50%)!important;
+    90deg,
+    rgba(0, 0, 0, 0) 50%,
+    rgba(0, 0, 0, 0.23) 50%
+  ) !important;
   color: aliceblue;
 }
 
-section .getInTouch{
+section .getInTouch {
+  padding: 1rem 3rem 0 1.5rem;
+}
 
-  padding: 1rem 2.5rem 0 2.5rem;
+.form-message {
+  padding: 1rem 1.5rem 0 3rem;
 }
 
 .section_2.section_1 {
   padding-top: 100px;
   padding-bottom: 100px;
-  background-color: #2a3039!important;
+  background-color: #2a3039 !important;
 }
 
 .section_2 {
   max-width: 1280px;
-  margin-left: auto!important;
-  margin-right: auto!important;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
 @media (min-width: 981px) {
   .section_1 {
-      padding: 4% 0;
+    padding: 4% 0;
   }
 }
 
@@ -141,6 +151,39 @@ section .getInTouch{
   right: 0;
 }
 
-#signup{
+#signup {
   margin-bottom: 8rem !important;
+}
+
+/* Section Vehicles */
+.section-vehicles {
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+}
+
+.button-title {
+  font-size: 1.1rem;
+}
+
+.text-stock {
+  padding-right: 5rem;
+  padding-left: 5rem; 
+  text-align: center;
+}
+
+.card-text {
+  color: #C10F1B;
+  font-size: 1.1rem;
+}
+
+.btn-stock-vehicles {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-vehicles {
+  text-transform: uppercase;
+  border-radius: 2rem;
+  font-weight: 600;
 }

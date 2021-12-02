@@ -81,7 +81,7 @@ form .btn {
 
 div .row {
   display: flex;
-  /* justify-content: center; */
+  justify-content: center;
   margin-top: 0.5rem;
   margin-bottom: 0.4rem;
 }
@@ -123,8 +123,8 @@ footer.footer {
   position: fixed;
   bottom: 0;
   width: 100%;
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 @media (max-width: 321px) {
@@ -133,6 +133,15 @@ footer.footer {
   }
 }
 
+@media (max-width: 460px) {
+  .popover-edit {
+    width: 12rem;
+  }
+  .g-recaptcha {
+    transform: scale(0.75);
+    /* transform-origin: 0 0; */
+  }
+}
 .material-icons.md-18 {
   font-size: 18px;
 }

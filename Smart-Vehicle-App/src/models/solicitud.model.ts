@@ -17,6 +17,18 @@ export class Solicitud extends Entity {
     type: 'string',
     required: true,
   })
+  marca: string;
+
+  @property({
+    type: 'string',
+    required: true,
+  })
+  modelo: string;
+
+  @property({
+    type: 'string',
+    required: true,
+  })
   estado: string;
 
   @property({

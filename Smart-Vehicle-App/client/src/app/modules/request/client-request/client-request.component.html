@@ -1,12 +1,12 @@
 <main class="mx-5 margin-form">
     <div class="container px-5 pt-4 pb-5 my-5 bg-body box-form">
-        <form class="row g-3 needs-validation">
+        <form class="row g-3 needs-validation" [formGroup]="form">
             <h2>Solicitud Cliente</h2>
             <div class="row">
                 <div class="col-md-0">
                     <label for="validacionMarca" class="form-label">Marca</label>
                     <input type="text" class="form-control" id="validacionMarca"
-                        formControlName="numero_documento" required>
+                          formControlName="marca" readonly>
                     <div class="invalid-feedback">
                         El campo Departamento es obligatorio.
                     </div>
@@ -16,7 +16,7 @@
                 <div class="col-md-0">
                     <label for="validacionModelo" class="form-label">Modelo</label>
                     <input type="text" class="form-control" id="validacionModelo"
-                        formControlName="numero_documento" required>
+                        formControlName="modelo" readonly >
                     <div class="invalid-feedback">
                         El campo Departamento es obligatorio.
                     </div>
@@ -25,7 +25,7 @@
             <div class="row">
                 <div class="col-md-0">
                     <label for="validacionValor" class="form-label">Valor</label>
-                    <input type="text" class="form-control" id="validacionValor" formControlName="numero_documento"
+                    <input type="text" class="form-control" id="validacionValor" formControlName="valor"
                         required>
                     <div class="invalid-feedback">
                         El campo es obligatorio.
@@ -36,14 +36,14 @@
                 <div class="col-md-6">
                     <label for="validacionDepartamento" class="form-label">Departamento</label>
                     <input type="text" class="form-control" id="validacionDepartamento"
-                        formControlName="numero_documento" required>
+                        formControlName="departamento" required>
                     <div class="invalid-feedback">
                         El campo Departamento es obligatorio.
                     </div>
                 </div>
                 <div class="col-md-6">
                     <label label for="validacionCiudad" class="form-label">Ciudad</label>
-                    <input type="text" class="form-control" id="validacionCiuidad" formControlName="numero_documento"
+                    <input type="text" class="form-control" id="validacionCiuidad" formControlName="ciudad"
                         required>
                     <div class="invalid-feedback">
                         El campo Ciudad es obligatorio.
@@ -53,7 +53,7 @@
             <div class="row">
                 <div class="col-md-0">
                     <label for="validacionDireccion" class="form-label">Dirección</label>
-                    <input type="text" class="form-control" id="validacionDireccion" formControlName="numero_documento"
+                    <input type="text" class="form-control" id="validacionDireccion" formControlName="direccion"
                         required>
                     <div class="invalid-feedback">
                         El campo Dirección es obligatorio.
@@ -63,7 +63,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <label for="validacionNombreFechaSalida" class="form-label">Fecha de Salida</label>
-                    <input type="date" class="form-control" id="validacionFechaSalida" formControlName="nombre_completo"
+                    <input type="date" class="form-control" id="validacionFechaSalida" formControlName="fecha_salida"
                         required>
                     <div class="invalid-feedback">
                         El campo Fecha de Salida es obligatorio.
@@ -72,7 +72,7 @@
                 <div class="col-md-6">
                     <label for="validacionNombreFechaRetorno" class="form-label">Fecha de Retorno</label>
                     <input type="date" class="form-control" id="validacionFechaRetorno"
-                        formControlName="nombre_completo" required>
+                        formControlName="fecha_retorno" required>
                     <div class="invalid-feedback">
                         El campo Fecha de Retorno es obligatorio.
                     </div>
@@ -81,7 +81,7 @@
             <div class="row">
                 <div class="col-md-0">
                     <label for="validacionFechaVenta" class="form-label">Fecha de venta</label>
-                    <input type="date" class="form-control" id="validacionFechaVenta" formControlName="numero_documento"
+                    <input type="date" class="form-control" id="validacionFechaVenta" formControlName="fecha_venta"
                         required>
                     <div class="invalid-feedback">
                         El campo Fecha de Venta es obligatorio.
