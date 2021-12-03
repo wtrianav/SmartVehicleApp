@@ -1,6 +1,12 @@
 @import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css');
 
-header.masthead {
+.carousel-header {
+  margin-top: 5rem;
+  margin-bottom: -4rem;
+}
+
+
+/* header.masthead {
   position: relative;
   background-color: #343a40;
   background: url('/assets/img/bg-masthead1.jpg') no-repeat center center;
@@ -18,7 +24,7 @@ header.masthead:before {
   top: 0;
   left: 0;
   opacity: 0.5;
-}
+} */
 
 @media (min-width: 768px) {
   header.masthead {
@@ -139,13 +145,11 @@ section .getInTouch {
   background-size: 100% 60px;
   bottom: 0;
   height: 60px;
-  z-index: 1;
 }
 
 .bottom_divider {
   display: block;
   position: absolute;
-  pointer-events: none;
   width: 100%;
   left: 0;
   right: 0;
@@ -186,4 +190,60 @@ section .getInTouch {
   text-transform: uppercase;
   border-radius: 2rem;
   font-weight: 600;
+}
+
+/* Carousel */
+
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+}
+
+.carousel {
+  margin-bottom: 4rem;
+}
+
+.carousel-caption {
+  bottom: 3rem;
+}
+
+.carousel-item {
+  height: 40rem;
+}
+
+.carousel-item {
+  position: relative;
+  background-color: #343a40;
+  background: url('/assets/img/bg-masthead1.jpg') no-repeat center;
+  background-size: cover;
+}
+
+.carousel-item:before {
+  content: '';
+  position: absolute;
+  background-color: #444444;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0.5;
+}
+
+.btn-carousel {
+  border-radius: var(--radio-botones);
+  height: 46px;
+}
+
+.btn-carousel:hover {
+  background-color: var(--lila-boton-hover);
+  border-color: var(--lila-boton-hover);
 }
