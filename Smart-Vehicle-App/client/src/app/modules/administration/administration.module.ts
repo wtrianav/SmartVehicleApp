@@ -15,6 +15,7 @@ import { ListAdvisorComponent } from './advisor/list-advisor/list-advisor.compon
 import { ListVehicleComponent } from './vehicle/list-vehicle/list-vehicle.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EditVehicleComponent } from './vehicle/edit-vehicle/edit-vehicle.component';
+import { TableVehicleComponent } from './vehicle/table-vehicle/table-vehicle.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { EditVehicleComponent } from './vehicle/edit-vehicle/edit-vehicle.compon
     ListAdvisorComponent,
     ListVehicleComponent,
     ListVehicleComponent,
-    EditVehicleComponent
+    EditVehicleComponent,
+    TableVehicleComponent
   ],
   imports: [
     CommonModule,

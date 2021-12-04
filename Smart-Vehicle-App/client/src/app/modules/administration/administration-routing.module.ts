@@ -11,6 +11,7 @@ import { ListClientComponent } from './client/list-client/list-client.component'
 import { CreateVehicleComponent } from './vehicle/create-vehicle/create-vehicle.component';
 import {EditVehicleComponent} from './vehicle/edit-vehicle/edit-vehicle.component';
 import { ListVehicleComponent } from './vehicle/list-vehicle/list-vehicle.component';
+import {TableVehicleComponent} from './vehicle/table-vehicle/table-vehicle.component';
 
 const routes: Routes = [
   {
@@ -57,6 +58,11 @@ const routes: Routes = [
     path: 'vehicle/edit-vehicle',
     component: EditVehicleComponent
   }
+  ,{
+    path: 'vehicle/table-vehicle',
+    component: TableVehicleComponent
+  }
+
 
 ];
 
