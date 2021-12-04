@@ -7,7 +7,7 @@
             <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
         <div class="carousel-inner">
-            <div class="carousel-item active">
+            <div class="carousel-item active carousel-slide1">
                 <div class="container">
                     <div class="carousel-caption text-start">
                         <h1 class="fw-bold">Example headline.</h1>
@@ -16,7 +16,7 @@
                     </div>
                 </div>
             </div>
-            <div class="carousel-item">
+            <div class="carousel-item carousel-slide2">
                 <div class="container">
                     <div class="carousel-caption">
                         <h1 class="fw-bold">Another example headline.</h1>
@@ -25,7 +25,7 @@
                     </div>
                 </div>
             </div>
-            <div class="carousel-item">
+            <div class="carousel-item carousel-slide3">
                 <div class="container">
                     <div class="carousel-caption text-end">
                         <h1 class="fw-bold">One more for good measure.</h1>
@@ -58,7 +58,7 @@
                     Sunt, cum quis.</p>
             </div>
             <div class="col-md-6">
-                <form class="form-message">
+                <form class="form-message" [formGroup]="form">
                     <div class="row">
                         <div class="col-md-0">
                             <label for="validacionNombreCompleto" class="form-label fs-5">Nombre completo</label>
@@ -88,13 +88,12 @@
                     <div class="row">
                         <div class="mb-3">
                             <label for="exampleFormControlTextarea1" class="form-label fs-5">Comentarios</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="comentario"></textarea>
                         </div>
                     </div>
                     <div class="row">
                         <div class="d-grid gap-2">
-                            <button class="btn btn-primary" type="button">Crear Cuenta <i
-                                    class="material-icons right">send</i></button>
+                            <button class="btn btn-primary" type="button" (click)="EnviarComentario()">Enviar comentario<i class="material-icons right">send</i></button>
                         </div>
                     </div>
                 </form>

@@ -6,27 +6,8 @@
 }
 
 
-/* header.masthead {
-  position: relative;
-  background-color: #343a40;
-  background: url('/assets/img/bg-masthead1.jpg') no-repeat center center;
-  background-size: cover;
-  padding-top: 8rem;
-  padding-bottom: 8rem;
-}
 
-header.masthead:before {
-  content: '';
-  position: absolute;
-  background-color: #444444;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
-  opacity: 0.5;
-} */
-
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
   header.masthead {
     padding-top: 12rem;
     padding-bottom: 12rem;
@@ -35,7 +16,7 @@ header.masthead:before {
   header.masthead .h1 {
     font-size: 3rem;
   }
-}
+} */
 
 .justify-content-center {
   padding-top: 5rem;
@@ -220,14 +201,50 @@ section .getInTouch {
   height: 40rem;
 }
 
-.carousel-item {
+.carousel-slide1 {
   position: relative;
   background-color: #343a40;
   background: url('/assets/img/bg-masthead1.jpg') no-repeat center;
   background-size: cover;
 }
 
-.carousel-item:before {
+.carousel-slide1:before {
+  content: '';
+  position: absolute;
+  background-color: #444444;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0.5;
+}
+
+.carousel-slide2 {
+  position: relative;
+  background-color: #343a40;
+  background: url('/assets/img/Carousel2.jpg') no-repeat center;
+  background-size: cover;
+}
+
+.carousel-slide2:before {
+  content: '';
+  position: absolute;
+  background-color: #444444;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0.5;
+}
+
+.carousel-slide3 {
+  position: relative;
+  background-color: #343a40;
+  background: url('/assets/img/Carousel3.jpg') no-repeat center;
+  background-size: cover;
+}
+
+.carousel-slide3:before {
   content: '';
   position: absolute;
   background-color: #444444;
