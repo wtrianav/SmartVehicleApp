@@ -40,6 +40,7 @@ export class CreateAdvisorComponent implements OnInit {
       modelo.nombre_completo = this.GetForm.nombre_completo.value;
       modelo.email = this.GetForm.email.value;
       modelo.telefono = this.GetForm.telefono.value;
+      modelo.tipo_persona = 'asesor';
       this.securityService.RegisterAsesor(modelo).subscribe({
         next: (data: any) => {
           console.log(data);

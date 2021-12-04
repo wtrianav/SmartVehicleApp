@@ -3,7 +3,9 @@ import { CommonModule } from '@angular/common';
 
 import { RequestRoutingModule } from './request-routing.module';
 import { ClientRequestComponent } from './client-request/client-request.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 
 @NgModule({
@@ -14,7 +16,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     CommonModule,
     RequestRoutingModule,
     FormsModule,
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+    NgbModule,
+  ],
+  bootstrap: [ClientRequestComponent]
 })
 export class RequestModule { }

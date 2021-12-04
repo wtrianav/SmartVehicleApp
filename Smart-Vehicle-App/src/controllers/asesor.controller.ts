@@ -44,7 +44,7 @@ export class AsesorController {
     let person = await this.servicioAutenticacion.IdentificarPersona(
       credenciales.usuario,
       credenciales.clave,
-      'asesor',
+     
     );
     if (person) {
       let token = this.servicioAutenticacion.GenerarTokenJWT(person);
@@ -97,7 +97,7 @@ export class AsesorController {
     //Notificacion por correo al usuario
     let destino = persona.email;
     let asunto = 'Bienvenido a la plataforma Smart Vehicle';
-    let contenido = `Hola ${advisor.nombre_completo}, su usuario para ingresar a la plataforma Smart Vehicle es 
+    let contenido = `Hola ${advisor.nombre_completo}, su usuario para ingresar a la plataforma Smart Vehicle es
     ${advisor.email} y su clave de acceso es: ${clave}`;
 
     //Hacemos fetch para consumir recursos de servicios externos.

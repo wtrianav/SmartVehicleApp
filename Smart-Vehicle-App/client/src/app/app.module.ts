@@ -11,6 +11,7 @@ import { FooterComponent } from './template/footer/footer.component';
 import { HomeComponent } from './template/home/home.component';
 import { ErrorComponent } from './template/error/error.component';
 import { AuthInterceptorService } from './auth-interceptor.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { AuthInterceptorService } from './auth-interceptor.service';
     FormsModule,
     ReactiveFormsModule,
     NgxCaptchaModule,
+    NgbModule,
   ],
   providers: [
     {

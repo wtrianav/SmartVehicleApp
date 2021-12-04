@@ -1,7 +1,7 @@
 import {injectable, /* inject, */ BindingScope} from '@loopback/core';
 import {repository} from '@loopback/repository';
-import {Administrador, CambioClave, Cliente} from '../models';
-import {AdministradorRepository, AsesorRepository, ClienteRepository} from '../repositories';
+import {CambioClave, Persona} from '../models';
+import {PersonaRepository} from '../repositories';
 import {Llaves} from '../config/llaves';
 const generator = require('password-generator');
 const encrypt = require('crypto-js');
@@ -10,12 +10,8 @@ const jwt = require('jsonwebtoken');
 @injectable({scope: BindingScope.TRANSIENT})
 export class AutenticacionService {
   constructor(
-    @repository(AdministradorRepository)
-    public administradorRepository: AdministradorRepository,
-    @repository(ClienteRepository)
-    public clienteRepository: ClienteRepository,
-    @repository(AsesorRepository)
-    public asesorRepository: AsesorRepository,
+    @repository(PersonaRepository)
+    public personaRepository: PersonaRepository,
   ) { }
 
   /*
@@ -34,42 +30,14 @@ export class AutenticacionService {
 
 
   //Bloque de codigo para usar el Login
-  IdentificarPersona(usuario: string, clave: string, role: string = 'cliente') {
+  IdentificarPersona(usuario: string, clave: string,) {
     try {
-      let person;
-      if (role === 'administrador') {
-        person = this.administradorRepository.findOne({
-          where: {email: usuario, clave: clave},
-        });
-      } else if (role === 'cliente') {
-        person = this.clienteRepository.findOne({
-          where: {email: usuario, clave: clave},
-        });
-      } else if (role === 'asesor') {
-        person = this.asesorRepository.findOne({
-          where: {email: usuario, clave: clave},
-        });
-      }
-      if (person) {
-        return person;
-      } else {
-        console.log('Ha ocurrido un error al realizar la identificacion.');
-        return false;
-      }
-    } catch (error) {
-      console.log(error);
-      return false;
-    }
-  }
-
-  //Bloque de codigo para usar el Login
-  IdentificarAdministrador(usuario: string, clave: string) {
-    try {
-      let admin = this.administradorRepository.findOne({
+      let person = this.personaRepository.findOne({
         where: {email: usuario, clave: clave},
       });
-      if (admin) {
-        return admin;
+
+      if (person) {
+        return person;
       } else {
         console.log('Ha ocurrido un error al realizar la identificacion.');
         return false;
@@ -107,38 +75,38 @@ export class AutenticacionService {
     }
   }
 
-  async CambiarClave(credencialesClave: CambioClave) : Promise<Boolean> {
-    let client = await this.clienteRepository.findOne({
+  async CambiarClave(credencialesClave: CambioClave): Promise<Boolean> {
+    let person = await this.personaRepository.findOne({
       where: {
         email: credencialesClave.email,
         clave: credencialesClave.clave_actual,
       },
     });
-    if (client) {
-      client.clave = credencialesClave.clave_nueva;
-      await this.clienteRepository.updateById(client?.id, client);
+    if (person) {
+      person.clave = credencialesClave.clave_nueva;
+      await this.personaRepository.updateById(person?.id, person);
       return true;
     } else {
       return false;
     }
   }
 
-  async RecuperarClave(email_cliente: string, clave: string) : Promise<Cliente | null> {
-    let client = await this.clienteRepository.findOne({
+  async RecuperarClave(email: string, clave: string): Promise<Persona | null> {
+    let person = await this.personaRepository.findOne({
       where: {
-        email: email_cliente
+        email: email
       },
     });
-    if (client) {
-      client.clave = this.EncriptarClave(clave)
-      await this.clienteRepository.updateById(client.id, client)
-      .then(() => {
-        console.log('Se ha actualizado la contraseña satisfactoriamente');
-      })
-      .catch(() => {
-        console.log('No se ha encontrado el registro a actualizar');
-      });
-      return client;
+    if (person) {
+      person.clave = this.EncriptarClave(clave)
+      await this.personaRepository.updateById(person.id, person)
+        .then(() => {
+          console.log('Se ha actualizado la contraseña satisfactoriamente');
+        })
+        .catch(() => {
+          console.log('No se ha encontrado el registro a actualizar');
+        });
+      return person;
     } else {
       return null;
     }

@@ -3,6 +3,7 @@ import {Cliente} from './cliente.model';
 import {Asesor} from './asesor.model';
 import {Vehiculo} from './vehiculo.model';
 import {Codeudor} from './codeudor.model';
+import {Persona} from './persona.model';
 
 @model()
 export class Solicitud extends Entity {
@@ -92,6 +93,9 @@ export class Solicitud extends Entity {
 
   @belongsTo(() => Codeudor)
   codeudorId: string;
+
+  @belongsTo(() => Persona)
+  personaId: string;
 
   constructor(data?: Partial<Solicitud>) {
     super(data);

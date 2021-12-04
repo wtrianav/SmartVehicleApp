@@ -1,49 +1,93 @@
 .d-flex {
-    margin-top: 6.5rem;
-    margin-left: 45px;
+  margin-top: 6.5rem;
+  margin-left: 45px;
+}
+
+.row {
+  margin-top: 1.5rem;
+  justify-content: flex-start;
+}
+
+.col-3 .btn-light {
+  display: flex;
+  justify-content: center;
+  border-radius: 12px;
+  width: 90%;
+  height: 38px;
+}
+
+.card-box {
+  /* cursor: pointer; */
+  border-style: groove;
+  border-width: 0.1px;
+  border-radius: 6px;
+  transition: 0.7s all ease;
+  box-shadow: 5px 10px 7px -1px #bfbfbf;
+}
+
+.container {
+  margin-bottom: 120px;
+}
+
+.card-box:hover {
+  transform:scale(1.1,1.1);
+  /* transition: 2s all ease-in-out; */
+  margin-top: -5px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+.card-box:hover .showme{
+  /* transition: 0.3s all ease-in-out; */
+  display: block;
+}
+
+.botones-ac {
+  margin: 0 0.5rem 1rem 0.5rem;
+}
+
+.btn {
+  font-size: var(--tam-fuente-button);
+  border-radius: var(--radio-botones);
+  height: 38px;
+}
+
+.btn:hover {
+  background-color: var(--lila-boton-hover);
+  border-color: var(--lila-boton-hover);
+}
+
+.showme {
+  display: none;
+  transition: 0.7s all ease-in-out;
+}
+
+.form-check-inline {
+  display: flex;
+  margin-right: 1.3rem;
+  flex-direction: column;
+  margin-bottom: 0.3rem;
+}
+
+@media (max-width: 539px) {
+  .d-flex {
+    flex-wrap: wrap;
+    margin-left: 0px;
   }
-  
-  .row {
-    margin-top: 1.5rem;
-    justify-content: flex-start;
-  }
-  
-  .col-3 .btn-light {
+
+  .d-flex .col-3 {
     display: flex;
-    justify-content: center;
+    width: 50%;
+    justify-content: space-evenly;
+  }
+
+  .d-flex .col-3 .btn-light {
     border-radius: 12px;
-    width: 90%;
-    height: 38px;
+    margin: 0 5px 5px 5px;
+    justify-content: center;
   }
-  
-  .content {
-    cursor: pointer;
-    transition: 0.3s all ease-in-out;
-    box-shadow: 5px 10px 7px -1px #BFBFBF;
+
+  .container {
+    margin-bottom: 150px;
   }
-  
-  .content:hover {
-    margin-top: -5px;
-    margin-left: 10px;
-    margin-bottom: 10px;
-  }
-  
-  @media (max-width: 539px) {
-    .d-flex {
-      flex-wrap: wrap;
-      margin-left: 0px;
-    }
-  
-    .d-flex .col-3 {
-      display: flex;
-      width: 50%;
-      justify-content: space-evenly;
-    }
-  
-    .d-flex .col-3 .btn-light {
-      border-radius: 12px;
-      margin: 0 5px 5px 5px;
-      justify-content: center;
-    }
-  }
-  
+}

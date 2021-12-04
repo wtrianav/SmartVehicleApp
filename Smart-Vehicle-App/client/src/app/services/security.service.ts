@@ -18,7 +18,7 @@ export class SecurityService {
   ) { }
 
   Login(modelo: UserCredentialsModel) : Observable<any> {
-    return this.http.post(`${this.url}/login-cliente`, {
+    return this.http.post(`${this.url}/login`, {
       usuario: modelo.username,
       clave: modelo.password
     }, {
@@ -29,13 +29,13 @@ export class SecurityService {
   }
 
   RecoverPassword(modelo : UserCredentialsModel) : Observable<any> {
-    return this.http.post(`${this.url}/recuperar-clave-cliente`, {
+    return this.http.post(`${this.url}/recuperar-clave`, {
       email: modelo.username
     });
   }
 
   RegisterCliente(modelo: ClientCredentialsRegisterModel) : Observable<any> {
-    return this.http.post(`${this.url}/register-clientes`, {
+    return this.http.post(`${this.url}/personas`, {
       tipo_documento: modelo.tipo_documento,
       nro_documento: modelo.numero_documento,
       nombre_completo: modelo.nombre_completo,
@@ -43,16 +43,18 @@ export class SecurityService {
       ciudad: modelo.ciudad,
       direccion: modelo.direccion,
       telefono: modelo.telefono,
-      email: modelo.email
+      email: modelo.email,
+      tipo_persona: modelo.tipo_persona,
     })
   }
 
   RegisterAsesor(modelo: AdvisorCredentialsRegisterModel) : Observable<any> {
-    return this.http.post(`${this.url}/register-asesores`, {
+    return this.http.post(`${this.url}/personas`, {
       nro_documento: modelo.numero_documento,
       nombre_completo: modelo.nombre_completo,
       telefono: modelo.telefono,
-      email: modelo.email
+      email: modelo.email,
+      tipo_persona: modelo.tipo_persona,
     })
   }
 
@@ -98,5 +100,15 @@ export class SecurityService {
 
   ObtenerDatosUsuarioEnSesion(): any {
     return this.datosUsuarioSesion.asObservable();
+  }
+
+  ObtenerToken() {
+    let datosString = localStorage.getItem("DatosSesion");
+    if (datosString) {
+      let datos = JSON.parse(datosString);
+      return datos.token;
+    } else {
+      return ' ';
+    }
   }
 }

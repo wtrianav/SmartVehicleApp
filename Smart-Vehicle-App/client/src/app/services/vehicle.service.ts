@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { EventEmitter, Injectable, Output } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { GeneralData } from '../config/general-data';
 import { Vehiculo } from '../models/vehiculo.model';
+import { SecurityService } from './security.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,33 +13,54 @@ export class VehicleService {
   url: string = GeneralData.USERS_URL;
   @Output () CardTrigger: EventEmitter<any> = new EventEmitter();
   datosVehiculo = new BehaviorSubject<Vehiculo>(new Vehiculo());
+  token: string = '';
 
 
   constructor(
-    private http: HttpClient
-  ) { }
-
-  FiltrarPorCarro() {
-    return this.http.get(`${this.url}/filtrar-carros`)
+    private http: HttpClient,
+    private securityService: SecurityService,
+  ) { 
+    this.token = this.securityService.ObtenerToken();
   }
 
-  FiltrarPorMoto() {
-    return this.http.get(`${this.url}/filtrar-motocicletas`)
+
+
+  ListarVehiculos(): Observable<Vehiculo[]> {
+    return this.http.get<Vehiculo[]>(`${this.url}/vehiculos`)
   }
 
-  FiltrarTodos() {
-    return this.http.get(`${this.url}/vehiculos`)
+
+
+  CrearVehiculo(vehiculo: Vehiculo): Observable<Vehiculo>{
+    return this.http.post<Vehiculo>(`${this.url}/vehiculos`, vehiculo, {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${this.token}`
+      })
+    })
   }
 
-  FiltrarPorScooter() {
-    return this.http.get(`${this.url}/filtrar-scooters`)
+  ActualizarVehiculo(vehiculo: Vehiculo): Observable<Vehiculo>{
+    return this.http.put<Vehiculo>(`${this.url}/vehiculos`, vehiculo, {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${this.token}`
+      })
+    })
+  }
+
+  EliminarVehiculo(id: string): Observable<any>{
+    return this.http.delete(`${this.url}/vehiculos/${id}`, {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${this.token}`
+      })
+    })
   }
 
   BuscarVehiculo(id:string) {
     return this.http.get(`${this.url}/vehiculos/${id}`);
   }
 
-  AlmacenarDatosVehiculo(vehiculo: Vehiculo) {
+  AlmacenarDatosVehiculo(vehiculo: Vehiculo, solicitud: string) {
+    vehiculo.solicitud = solicitud;
     let stringVehiculo = JSON.stringify(vehiculo);
     localStorage.setItem('DatosVehiculo:', stringVehiculo);
     this.RefrescarDatosVehiculo(vehiculo);

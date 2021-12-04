@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {ClientRequestComponent} from './client-request/client-request.component';
+import { ClientRequestComponent } from './client-request/client-request.component';
 
 const routes: Routes = [
   {

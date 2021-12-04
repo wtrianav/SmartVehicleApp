@@ -13,3 +13,6 @@ export * from './asesor.controller';
 export * from './solicitud.controller';
 export * from './codeudor.controller';
 export * from './vehiculo.controller';
+export * from './persona.controller';
+export * from './persona-solicitud.controller';
+export * from './solicitud-persona.controller';

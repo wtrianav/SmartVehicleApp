@@ -42,7 +42,7 @@ export class AdministradorController {
   async identificarAdministrador(
     @requestBody() credenciales: Credenciales
   ) {
-    let person = await this.servicioAutenticacion.IdentificarPersona(credenciales.usuario, credenciales.clave, 'administrador');
+    let person = await this.servicioAutenticacion.IdentificarPersona(credenciales.usuario, credenciales.clave, );
     if (person) {
       let token = this.servicioAutenticacion.GenerarTokenJWT(person);
       return {
@@ -87,7 +87,7 @@ export class AdministradorController {
 
     //Notificacion por mensaje de texto
     let numero_destino = administrador.telefono;
-    let contenido_sms = `Hola ${administrador.nombre_completo}, su usuario para ingresar a la plataforma Smart Vehicle es 
+    let contenido_sms = `Hola ${administrador.nombre_completo}, su usuario para ingresar a la plataforma Smart Vehicle es
     ${administrador.email} y su clave es: ${clave}`;
     fetch(
       `${Llaves.urlNotificaciones}/sms?mensaje=${contenido_sms}&telefono=${numero_destino}`,
@@ -98,7 +98,7 @@ export class AdministradorController {
     //Notificacion por correo al usuario
     let destino = administrador.email;
     let asunto = 'Registro a la plataforma Smart Vehicle';
-    let contenido = `Hola ${administrador.nombre_completo}, su usuario para ingresar a la plataforma Smart Vehicle es 
+    let contenido = `Hola ${administrador.nombre_completo}, su usuario para ingresar a la plataforma Smart Vehicle es
     ${administrador.email} y su clave es: ${clave}`;
     fetch(
       `${Llaves.urlNotificaciones}/enviar-correo?correo-destino=${destino}&asunto=${asunto}&contenido=${contenido}`,

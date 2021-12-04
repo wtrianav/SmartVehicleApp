@@ -5,5 +5,8 @@ export class Vehiculo {
     link_video?: string
     marca?: string;
     placa?: string;
-    tipo_vehiculo?: string
+    tipo_vehiculo?: string;
+    solicitud?: string;
+    valor_venta?: number;
+    valor_alquiler?: number;
 }

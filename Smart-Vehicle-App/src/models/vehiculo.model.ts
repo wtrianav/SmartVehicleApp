@@ -1,4 +1,4 @@
-import {Entity, model, property, hasMany} from '@loopback/repository';
+import {Entity, hasMany, model, property} from '@loopback/repository';
 import {Solicitud} from './solicitud.model';
 
 @model()
@@ -21,7 +21,13 @@ export class Vehiculo extends Entity {
     required: true,
   })
   marca: string;
-  
+
+  @property({
+    type: 'string',
+    required: true,
+  })
+  modelo: string;
+
   @property({
     type: 'string',
     required: true,
@@ -33,6 +39,18 @@ export class Vehiculo extends Entity {
     required: true,
   })
   placa: string;
+
+  @property({
+    type: 'number',
+    required: true,
+  })
+  valor_venta: string;
+
+  @property({
+    type: 'number',
+    required: true,
+  })
+  valor_alquiler: string;
 
   @property({
     type: 'string',

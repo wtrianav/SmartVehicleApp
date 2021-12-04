@@ -48,7 +48,7 @@ export class ClienteController {
   async identificarCliente(
     @requestBody() credenciales: Credenciales
   ) {
-    let person = await this.servicioAutenticacion.IdentificarPersona(credenciales.usuario, credenciales.clave, 'cliente');
+    let person = await this.servicioAutenticacion.IdentificarPersona(credenciales.usuario, credenciales.clave,);
     if (person) {
       let token = this.servicioAutenticacion.GenerarTokenJWT(person);
       return {
@@ -126,36 +126,36 @@ export class ClienteController {
     return respuesta;
   }
 
-  @post('/recuperar-clave-cliente')
-  @response(200, {
-    description: 'Cambio de clave de clientes',
-    content: {
-      'application/json': {
-        schema: {
-          type: 'string'
-        }
-      }
-    },
-  })
-  async recuperarClaveCliente(
-    @requestBody() credenciales: CredencialesRecuperarClave
-  ): Promise<Cliente | null> {
-    let clave = this.servicioAutenticacion.GenerarClaveAleatoria();
-    let usuario = await this.servicioAutenticacion.RecuperarClave(credenciales.email, clave);
-    console.log("Todo Bien");
-    if (usuario) {
-      let datos = new NotificacionCorreo(
-        {
-          destinatario: usuario.email,
-          asunto: Llaves.asuntoRecuperarContraseña,
-          contenido: `Hola ${usuario.nombre_completo}, se ha generado una nueva contraseña para su usuario
-            ${usuario.email} y es: ${clave}`
-        }
-      )
-      this.servicioNotificacion.NotificarPorCorreo(datos);
-    }
-    return usuario;
-  }
+  // @post('/recuperar-clave-cliente')
+  // @response(200, {
+  //   description: 'Cambio de clave de clientes',
+  //   content: {
+  //     'application/json': {
+  //       schema: {
+  //         type: 'string'
+  //       }
+  //     }
+  //   },
+  // })
+  // async recuperarClaveCliente(
+  //   @requestBody() credenciales: CredencialesRecuperarClave
+  // ): Promise<Cliente | null> {
+  //   let clave = this.servicioAutenticacion.GenerarClaveAleatoria();
+  //   let usuario = await this.servicioAutenticacion.RecuperarClave(credenciales.email, clave);
+  //   console.log("Todo Bien");
+  //   if (usuario) {
+  //     let datos = new NotificacionCorreo(
+  //       {
+  //         destinatario: usuario.email,
+  //         asunto: Llaves.asuntoRecuperarContraseña,
+  //         contenido: `Hola ${usuario.nombre_completo}, se ha generado una nueva contraseña para su usuario
+  //           ${usuario.email} y es: ${clave}`
+  //       }
+  //     )
+  //     this.servicioNotificacion.NotificarPorCorreo(datos);
+  //   }
+  //   return usuario;
+  // }
 
 
 

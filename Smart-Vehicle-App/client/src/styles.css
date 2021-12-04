@@ -60,6 +60,11 @@ form .form-select {
   border-radius: 2rem;
 }
 
+form div .error-message {
+  color: red;
+  font-size: 12px;
+}
+
 form .btn {
   font-size: var(--tam-fuente-button);
   font-weight: 800;
@@ -84,6 +89,7 @@ div .row {
   justify-content: center;
   margin-top: 0.5rem;
   margin-bottom: 0.4rem;
+  align-items: center;
 }
 
 .row button {

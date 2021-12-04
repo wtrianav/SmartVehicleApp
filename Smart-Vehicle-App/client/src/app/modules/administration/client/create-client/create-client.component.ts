@@ -58,10 +58,10 @@ export class CreateClientComponent implements OnInit {
       modelo.ciudad = this.GetForm.ciudad.value;
       modelo.direccion = this.GetForm.direccion.value;
       modelo.telefono = this.GetForm.telefono.value;
+      modelo.tipo_persona = "cliente";
       this.securityService.RegisterCliente(modelo).subscribe({
         next: (data:any) => {
           data.clave = "";
-          console.log(data);
         },
         error: (error:any) => {
           console.log(console.error);

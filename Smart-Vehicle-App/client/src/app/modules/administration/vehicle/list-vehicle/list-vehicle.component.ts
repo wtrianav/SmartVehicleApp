@@ -10,8 +10,10 @@ import { VehicleService } from 'src/app/services/vehicle.service';
 })
 export class ListVehicleComponent implements OnInit {
 
-  @Output () vehiculo: any;
+  //Arreglo para mostrar las tarjetas de los vehiculos en el frontend (Propiedad)
+  vehiculo: any;
 
+  /* Es necesario hacer uso del servicio de vehiculo y de la clase Router */
   constructor(
     private vehicleService: VehicleService,
     private router: Router,
@@ -21,68 +23,37 @@ export class ListVehicleComponent implements OnInit {
     this.Filtrar("Todos");
   }
 
+  /* Al hacer click en los botones de filtro en el frontend, se trae la opcion de filtraje 
+  y este se utiliza para buscar los vehiculos por tipo con ayuda del servicio de vehiculos
+   y un filter para array */
   Filtrar(tipo: string) {
-
-    switch (tipo) {
-      case 'Carro':
-        this.vehicleService.FiltrarPorCarro().subscribe({
-          next: (data: any) => {
-            this.vehiculo = Object.values(data);
-            console.log(data);
-            console.log(this.vehiculo);
-          },
-          error: (error: any) => {
-            console.log(error);
-          }
-        });
-        break;
-      case 'Motocicleta':
-        this.vehicleService.FiltrarPorMoto().subscribe({
-          next: (data: any) => {
-            this.vehiculo = Object.values(data);
-            console.log(data);
-            console.log(this.vehiculo);
-          },
-          error: (error: any) => {
-            console.log(console.error);
-          }
-        });
-        break;
-      case 'Scooter':
-        this.vehicleService.FiltrarPorScooter().subscribe({
-          next: (data: any) => {
-            this.vehiculo = Object.values(data);
-            console.log(data);
-            console.log(this.vehiculo);
-          },
-          error: (error: any) => {
-            console.log(console.error);
-          }
-        });
-        break;
-      case 'Todos':
-        this.vehicleService.FiltrarTodos().subscribe({
-          next: (data: any) => {
-            this.vehiculo = Object.values(data);
-            console.log(data);
-            console.log(this.vehiculo);
-          },
-          error: (error: any) => {
-            console.log(console.error);
-          }
-        });
+    if (tipo === 'Todos') {
+      this.vehicleService.ListarVehiculos().subscribe({
+        next: (data: any) => {
+          this.vehiculo = data;
+        },
+        error: (error: any) => {
+          console.log(console.error);
+        }
+      });
+    } else {
+      this.vehicleService.ListarVehiculos().subscribe({
+        next: (data: any) => {
+          this.vehiculo = data.filter((vehicle: any) => {
+            return vehicle.tipo_vehiculo === tipo;
+          })
+        },
+        error: (error: any) => {
+          console.log(console.error);
+        }
+      });
     }
   }
 
-  LanzarSolicitud2(vehicle:any) {
-    console.log(typeof(vehicle));
-    this.vehicleService.CardTrigger.emit(
-      {vehiculo : vehicle}
-    )
-  }
-
-  LanzarSolicitud(vehicle:any) {
-    this.vehicleService.AlmacenarDatosVehiculo(vehicle);
+  /* Al hacer click en los botones de compra o alquiler se lanza el formulario de solicitud y segun sea el caso
+  se envian los valores de compra o alquiler al formulario */
+  LanzarSolicitud(vehicle: any, solicitud: string) {
+    this.vehicleService.AlmacenarDatosVehiculo(vehicle, solicitud);
     this.router.navigate(['/request/client-request']);
   }
 }

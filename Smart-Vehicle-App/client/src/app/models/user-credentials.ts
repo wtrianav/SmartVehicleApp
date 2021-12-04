@@ -18,6 +18,7 @@ export class ClientCredentialsRegisterModel {
   ciudad?: string;
   direccion?: string;
   telefono?: string;
+  tipo_persona?: string;
 }
 
 export class AdvisorCredentialsRegisterModel {
@@ -25,4 +26,5 @@ export class AdvisorCredentialsRegisterModel {
   nombre_completo?: string;
   email?: string;
   telefono?: string;
+  tipo_persona?: string;
 }
