@@ -1,0 +1,45 @@
+<main class="mx-5 margin-form">
+<div class="container">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col" sortable="brand">Marca</th>
+        <th scope="col" sortable="model">Modelo</th>
+        <th scope="col" sortable="request_type">Tipo de Solicitud</th>
+        <th scope="col" sortable="departure_date">Fecha de Salida</th>
+        <th scope="col" sortable="return_date">Fecha de Retorno</th>
+        <th scope="col" sortable="return_date">Fecha de Venta</th>
+        <th scope="col" sortable="co_signer">Codeudor</th>
+        <th scope="col" sortable="status">Estado</th>
+        <th scope="col" sortable="actions">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let solicitud of solicitudes; index as i">
+        <th scope="row">{{i+1}}</th>
+        <td>{{solicitud.marca}}</td>
+        <td>{{solicitud.modelo}}</td>
+        <td>{{solicitud.tipo_solicitud}}</td>
+        <td>{{solicitud.fecha_salida}}</td>
+        <td>{{solicitud.fecha_retorno}}</td>
+        <td>{{solicitud.fecha_venta}}</td>
+        <td>{{solicitud.fecha_venta}}</td>
+        <td>{{solicitud.estado}}</td>
+        <td><button class="btn btn-primary" type="button" ngbTooltip="Pagar" placement="right"><i class="material-icons right">local_atm</i></button></td>
+      </tr>
+    </tbody>
+    <!-- <tbody>
+    <tr *ngFor="let country of countries$ | async">
+      <th scope="row">{{ country.id }}</th>
+      <td>
+        <img [src]="'https://upload.wikimedia.org/wikipedia/commons/' + country.flag" class="mr-2" style="width: 20px">
+        <ngb-highlight [result]="country.name" [term]="service.searchTerm"></ngb-highlight>
+      </td>
+      <td><ngb-highlight [result]="country.area | number" [term]="service.searchTerm"></ngb-highlight></td>
+      <td><ngb-highlight [result]="country.population | number" [term]="service.searchTerm"></ngb-highlight></td>
+    </tr>
+    </tbody> -->
+  </table>
+</div>
+</main>

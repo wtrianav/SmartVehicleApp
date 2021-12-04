@@ -1,11 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ClientRequestComponent } from './client-request/client-request.component';
+import {ClientRequestComponent} from './client-request/client-request.component';
+import { ListRequestComponent } from './list-request/list-request.component';
 
 const routes: Routes = [
   {
     path: "client-request",
     component: ClientRequestComponent
+  },
+  {
+    path: "list-request",
+    component: ListRequestComponent
   }
 ];
 

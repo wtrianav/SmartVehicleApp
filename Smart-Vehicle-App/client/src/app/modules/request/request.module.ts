@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { RequestRoutingModule } from './request-routing.module';
 import { ClientRequestComponent } from './client-request/client-request.component';
+import { ListRequestComponent } from './list-request/list-request.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -10,7 +11,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
-    ClientRequestComponent
+    ClientRequestComponent,
+    ListRequestComponent
   ],
   imports: [
     CommonModule,
