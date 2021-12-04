@@ -1,6 +1,4 @@
 import {Entity, model, property, belongsTo} from '@loopback/repository';
-import {Cliente} from './cliente.model';
-import {Asesor} from './asesor.model';
 import {Vehiculo} from './vehiculo.model';
 import {Codeudor} from './codeudor.model';
 import {Persona} from './persona.model';
@@ -81,12 +79,6 @@ export class Solicitud extends Entity {
     type: 'string',
   })
   notas_asesor?: string;
-
-  @belongsTo(() => Cliente)
-  clienteId: string;
-
-  @belongsTo(() => Asesor)
-  asesorId: string;
 
   @belongsTo(() => Vehiculo)
   vehiculoId: string;

@@ -155,6 +155,28 @@ export class PersonaController {
     return usuario;
   }
 
+  //Metodo del BackEnd para ejecutar el modificaciones en la persona
+  @patch('/modificar')
+  @response(200, {
+    description: 'Asesor PATCH success count',
+    content: {'application/json': {schema: CountSchema}},
+  })
+  async modificar_asesor(
+    @requestBody() persona: Persona
+    ): Promise<void> {
+    let advisor = await this.personaRepository.findOne({
+      where: {nombre_completo: persona.nombre_completo},
+    });
+    await this.personaRepository
+      .updateById(advisor?.id, persona)
+      .then(() => {
+        console.log('Se ha actualizado el registro satisfactoriamente');
+      })
+      .catch(() => {
+        console.log('No se ha encontrado el registro a actualizar');
+      });
+  }
+
   @get('/personas/count')
   @response(200, {
     description: 'Persona model count',
