@@ -8,6 +8,8 @@ import { CreateClientComponent } from './client/create-client/create-client.comp
 import { DeleteClientComponent } from './client/delete-client/delete-client.component';
 import { EditClientComponent } from './client/edit-client/edit-client.component';
 import { ListClientComponent } from './client/list-client/list-client.component';
+import { CreateVehicleComponent } from './vehicle/create-vehicle/create-vehicle.component';
+import {EditVehicleComponent} from './vehicle/edit-vehicle/edit-vehicle.component';
 import { ListVehicleComponent } from './vehicle/list-vehicle/list-vehicle.component';
 
 const routes: Routes = [
@@ -46,7 +48,16 @@ const routes: Routes = [
   {
     path: 'vehicle/list-vehicle',
     component: ListVehicleComponent
+  },
+  {
+    path: 'vehicle/create-vehicle',
+    component: CreateVehicleComponent
   }
+  ,{
+    path: 'vehicle/edit-vehicle',
+    component: EditVehicleComponent
+  }
+
 ];
 
 @NgModule({
