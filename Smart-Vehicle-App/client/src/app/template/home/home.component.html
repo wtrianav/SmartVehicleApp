@@ -1,37 +1,55 @@
-<header class="masthead">
-  <div class="container position-relative">
-      <div class="row justify-content-center">
-          <div class="col-xl-6">
-              <div class="text-center text-white">
-                  <h1 class="mb-5 fw-bold">Compra o alquila el vehículo perfecto para ti!</h1>
-                  <form class="form-subscribe" id="contactForm" data-sb-form-api-token="API_TOKEN">
-                      <div class="row">
-                          <div class="col">
-                              <input class="form-control" id="emailAddress" type="email" placeholder="Correo electrónico" data-sb-validations="required,email" />
-                              <div class="invalid-feedback text-white" data-sb-feedback="emailAddress:required">Email Address is required.</div>
-                              <div class="invalid-feedback text-white" data-sb-feedback="emailAddress:email">Email Address Email is not valid.</div>
-                          </div>
-                          <div class="col-auto"><button class="btn btn-primary btn-lg" id="submitButton" type="submit">Enviar</button></div>
-                      </div>
-                      <div class="d-none" id="submitSuccessMessage">
-                          <div class="text-center mb-3">
-                              <div class="fw-bolder">Form submission successful!</div>
-                              <p>To activate this form, sign up at</p>
-                              <a class="text-white" href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
-                          </div>
-                      </div>
-                      <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
-                  </form>
-              </div>
-          </div>
-      </div>
-  </div>
+<header class="carousel-header">
+    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true"
+                aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active carousel-slide1">
+                <div class="container">
+                    <div class="carousel-caption text-start">
+                        <h1 class="fw-bold">Example headline.</h1>
+                        <p class="lead">Some representative placeholder content for the first slide of the carousel.</p>
+                        <p><a class="btn btn-lg btn-primary btn-carousel" href="#">Sign up today</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item carousel-slide2">
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h1 class="fw-bold">Another example headline.</h1>
+                        <p class="lead">Some representative placeholder content for the second slide of the carousel.</p>
+                        <p><a class="btn btn-lg btn-primary btn-carousel" href="#">Learn more</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item carousel-slide3">
+                <div class="container">
+                    <div class="carousel-caption text-end">
+                        <h1 class="fw-bold">One more for good measure.</h1>
+                        <p class="lead">Some representative placeholder content for the third slide of this carousel.</p>
+                        <p><a class="btn btn-lg btn-primary btn-carousel" href="#">Browse gallery</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
 </header>
 <section class="section_1 section_2">
     <div class="container">
         <div class="row">
             <div class="col-md-6 getInTouch">
-                <h3 class="text-center fw-bold">Get In touch & We will Contact You Shortly</h3>
+                <h3 class="text-center fw-bold">Escríbenos, nos pondremos en contacto contigo con la mayor brevedad</h3>
                 <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, corrupti natus. Natus labore aliquid
                     debitis autem quisquam nostrum corrupti illo voluptate expedita, possimus id, recusandae error aperiam?
                     Sunt, cum quis.</p>
@@ -40,7 +58,7 @@
                     Sunt, cum quis.</p>
             </div>
             <div class="col-md-6">
-                <form class="form-message">
+                <form class="form-message" [formGroup]="form">
                     <div class="row">
                         <div class="col-md-0">
                             <label for="validacionNombreCompleto" class="form-label fs-5">Nombre completo</label>
@@ -70,13 +88,12 @@
                     <div class="row">
                         <div class="mb-3">
                             <label for="exampleFormControlTextarea1" class="form-label fs-5">Comentarios</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="comentario"></textarea>
                         </div>
                     </div>
                     <div class="row">
                         <div class="d-grid gap-2">
-                            <button class="btn btn-primary" type="button">Crear Cuenta <i
-                                    class="material-icons right">send</i></button>
+                            <button class="btn btn-primary" type="button" (click)="EnviarComentario()">Enviar comentario<i class="material-icons right">send</i></button>
                         </div>
                     </div>
                 </form>
