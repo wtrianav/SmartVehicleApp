@@ -4,7 +4,9 @@ export class UserCredentialsModel {
 }
 
 export class UserLoginSesionModel {
-  datos?: UserCredentialsModel;
+  email?: string;
+  nombre?: string;
+  role?: string;
   token?: string;
   identificado: boolean = false;
 }

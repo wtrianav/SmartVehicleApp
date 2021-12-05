@@ -18,7 +18,7 @@ export class AuthInterceptorService implements HttpInterceptor{
     let request = req;
 
     if(Token) {
-      // console.log("Interceptado y con token: " + Token);
+      console.log("Interceptado y con token: " + Token);
       request = req.clone({
         setHeaders: {
           authorization: `Bearer ${Token}`
@@ -29,6 +29,7 @@ export class AuthInterceptorService implements HttpInterceptor{
     return next.handle(request).pipe(
       catchError((err: HttpErrorResponse) => {
         if(err.status === 401) {
+          console.log("Ha ocurrido un error, usted no esta autorizado para ingresar a esta pagina.")
           this.router.navigateByUrl('/security/login');
         }
         return throwError(err);

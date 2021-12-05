@@ -50,11 +50,9 @@ export class PersonaController {
     if (person) {
       let token = this.servicioAutenticacion.GenerarTokenJWT(person);
       return {
-        datos: {
-          nombre: person.nombre_completo,
-          email: person.email,
-          role: person.tipo_persona,
-        },
+        nombre: person.nombre_completo,
+        email: person.email,
+        role: person.tipo_persona,
         token: token
       }
     } else {
@@ -93,8 +91,9 @@ export class PersonaController {
       {
         destinatario: persona.email,
         asunto: Llaves.asuntoRegistroCliente,
-        contenido: `Hola ${persona.nombre_completo}, su usuario para ingresar a la plataforma Smart Vehicle es
-        ${persona.email} y su clave de acceso es: ${clave}`
+        contenido: `
+
+        `
       }
     )
     this.servicioNotificacion.NotificarPorCorreo(datos);
@@ -163,7 +162,7 @@ export class PersonaController {
   })
   async modificar_asesor(
     @requestBody() persona: Persona
-    ): Promise<void> {
+  ): Promise<void> {
     let advisor = await this.personaRepository.findOne({
       where: {nombre_completo: persona.nombre_completo},
     });

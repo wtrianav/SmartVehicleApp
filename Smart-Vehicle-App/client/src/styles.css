@@ -29,7 +29,7 @@ div .navbar-brand {
   font-weight: 600;
 }
 
-form .nav-btn {
+ul .nav-btn {
   background-color: var(--azul-boton);
   color: white;
   border-color: var(--azul-boton);
@@ -65,7 +65,8 @@ form div .error-message {
   font-size: 12px;
 }
 
-form .btn {
+form .btn,
+ul .btn {
   font-size: var(--tam-fuente-button);
   font-weight: 800;
   text-transform: uppercase;

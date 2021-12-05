@@ -10,7 +10,11 @@ import { SecurityService } from 'src/app/services/security.service';
 })
 export class NavBarComponent implements OnInit {
 
-  session : boolean = true;
+  session: boolean = true;
+  sessionClient: boolean = false;
+  sessionAdvisor: boolean = false;
+  sessionAdmin: boolean = false;
+  nombre: string | undefined = "";
 
   subs: Subscription = new Subscription();
 
@@ -18,12 +22,32 @@ export class NavBarComponent implements OnInit {
 
   ngOnInit(): void {
     //Validar si se inicio sesion correctamente
-    this.subs = this.securityService.ObtenerDatosUsuarioEnSesion().subscribe((datos:UserLoginSesionModel) => {
+    this.subs = this.securityService.ObtenerDatosUsuarioEnSesion().subscribe((datos: UserLoginSesionModel) => {
       // if(datos) {
       //   this.session = true; 
       // } else {
       //   this.session = false;
       // }
+      console.log(datos.role);
+      this.nombre = datos.nombre;
+
+      if (datos.identificado == true) {
+        switch (datos.role) {
+          case "cliente":
+            this.sessionClient = true;
+            break;
+          case "asesor":
+            this.sessionAdvisor = true;
+            break;
+          case "admin":
+            this.sessionAdmin = true;
+            break;
+        }
+      } else {
+        this.sessionClient = false;
+        this.sessionAdvisor = false;
+        this.sessionAdmin = false;
+      }
       this.session = datos.identificado;
     })
   }

@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
       this.securityService.Login(modelo).subscribe({
         next: (data:any) => {
           console.log(data);
-          //Token = data.token;
+          Token = data.token;
           //Se hace uso del servicio para almacenar la informacion de sesion y asi lograr entra a la plataforma.
           this.securityService.AlmacenarSesion(data);
           //Se navega hacia el acceso que se requiera segun el usuario.

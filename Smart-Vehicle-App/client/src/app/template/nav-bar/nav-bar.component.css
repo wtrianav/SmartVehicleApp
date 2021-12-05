@@ -2,3 +2,29 @@
     margin-right: 0rem !important;
     margin-left: 0rem !important;
 }
+
+.navbar-collapse li .btn {
+    width: 180px;
+    margin-left: 8px;
+}
+
+
+.navbar-collapse li .nav-link{
+    margin-left: 8px;
+}
+
+@media (max-width: 770px) {
+    .navbar-nav {
+        display: flex;
+        flex-direction: column;
+        padding-left: 0;
+        margin-bottom: 0;
+        list-style: none;
+        align-items: center;
+        justify-content: center;
+    }
+    .navbar-collapse li .btn {
+        width: 180px;
+        margin-bottom: 4px;
+    }
+}
