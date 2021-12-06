@@ -5,6 +5,7 @@ import { ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { HtmlParser } from '@angular/compiler';
 
 
 
@@ -60,8 +61,8 @@ export class ListRequestComponent implements OnInit, AfterViewInit {
   // @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   // @ViewChild(MatSort) sort: MatSort;
 
-
   displayedColumns = this.columns.map(c => c.columnDef);
+  clickedRows = new Set<RequestModel>();
   dataSource: any;
   solicitudes: RequestModel[] | undefined;
 
@@ -99,6 +100,7 @@ export class ListRequestComponent implements OnInit, AfterViewInit {
         this.dataSource = datos;
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
+
       },
       error: (error: any) => {
         console.log(error);
