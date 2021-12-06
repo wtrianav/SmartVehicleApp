@@ -12,6 +12,7 @@ import { HomeComponent } from './template/home/home.component';
 import { ErrorComponent } from './template/error/error.component';
 import { AuthInterceptorService } from './auth-interceptor.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ReactiveFormsModule,
     NgxCaptchaModule,
     NgbModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     {

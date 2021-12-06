@@ -6,6 +6,8 @@ import { ClientRequestComponent } from './client-request/client-request.componen
 import { ListRequestComponent } from './list-request/list-request.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MaterialModule } from 'src/app/material/material.module';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 
@@ -20,6 +22,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
+    MaterialModule,
+    MatNativeDateModule,
   ],
   bootstrap: [ClientRequestComponent]
 })

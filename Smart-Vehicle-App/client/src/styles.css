@@ -161,3 +161,6 @@ footer.footer {
 .material-icons.md-48 {
   font-size: 48px;
 }
+/* 
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */

@@ -60,7 +60,7 @@ export class SolicitudController {
     return this.solicitudRepository.count(where);
   }
 
-  @authenticate('client')
+  // @authenticate('client')
   @get('/solicitudes')
   @response(200, {
     description: 'Array of Solicitud model instances',
