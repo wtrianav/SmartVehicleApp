@@ -1,8 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { GeneralData } from '../config/general-data';
-import { ClientCredentialsRegisterModel, UserCredentialsModel } from '../models/user-credentials';
+import { AdvisorCredentialsRegisterModel, ClientCredentialsRegisterModel, UserCredentialsModel, UserLoginSesionModel } from '../models/user-credentials';
 
 @Injectable({
   providedIn: 'root'
@@ -11,19 +11,31 @@ export class SecurityService {
 
   url: string = GeneralData.USERS_URL;
 
+  datosUsuarioSesion = new BehaviorSubject<UserLoginSesionModel>(new UserLoginSesionModel());
+
   constructor(
     private http: HttpClient
   ) { }
 
   Login(modelo: UserCredentialsModel) : Observable<any> {
-    return this.http.post(`${this.url}/login-cliente`, {
+    return this.http.post(`${this.url}/login`, {
       usuario: modelo.username,
       clave: modelo.password
+    }, {
+      headers: new HttpHeaders({
+
+      })
+    });
+  }
+
+  RecoverPassword(modelo : UserCredentialsModel) : Observable<any> {
+    return this.http.post(`${this.url}/recuperar-clave`, {
+      email: modelo.username
     });
   }
 
   RegisterCliente(modelo: ClientCredentialsRegisterModel) : Observable<any> {
-    return this.http.post(`${this.url}/register-clientes`, {
+    return this.http.post(`${this.url}/personas`, {
       tipo_documento: modelo.tipo_documento,
       nro_documento: modelo.numero_documento,
       nombre_completo: modelo.nombre_completo,
@@ -31,7 +43,72 @@ export class SecurityService {
       ciudad: modelo.ciudad,
       direccion: modelo.direccion,
       telefono: modelo.telefono,
-      email: modelo.email
+      email: modelo.email,
+      tipo_persona: modelo.tipo_persona,
     })
+  }
+
+  RegisterAsesor(modelo: AdvisorCredentialsRegisterModel) : Observable<any> {
+    return this.http.post(`${this.url}/personas`, {
+      nro_documento: modelo.numero_documento,
+      nombre_completo: modelo.nombre_completo,
+      telefono: modelo.telefono,
+      email: modelo.email,
+      tipo_persona: modelo.tipo_persona,
+    })
+  }
+
+  AlmacenarSesion(datos: UserLoginSesionModel) {
+    datos.identificado = true;
+    let stringDatos = JSON.stringify(datos);
+    localStorage.setItem('DatosSesion:', stringDatos);
+    this.RefrescarDatosSesion(datos);
+  }
+
+  ObtenerInformacionSesion() {
+    let datosString = localStorage.getItem("DatosSesion");
+    if(datosString) {
+      let datos = JSON.parse(datosString);
+      return datos;
+    } else {
+      return null;
+    }
+  }
+
+  EliminarInformacionSesion() {
+    localStorage.removeItem("DatosSesion");
+    //Se borran los datos para cerrar sesion
+    this.RefrescarDatosSesion(new UserLoginSesionModel()); 
+  }
+
+  SesionIniciada() {
+    let datosString = localStorage.getItem("DatosSesion");
+    return datosString;
+  }
+
+  VerificarSesionActual() {
+    let datos = this.ObtenerDatosUsuarioEnSesion();
+    if(datos) {
+      this.RefrescarDatosSesion(datos);
+    }
+  }
+
+  RefrescarDatosSesion(datos: UserLoginSesionModel) {
+    this.datosUsuarioSesion.next(datos);
+
+  }
+
+  ObtenerDatosUsuarioEnSesion(): any {
+    return this.datosUsuarioSesion.asObservable();
+  }
+
+  ObtenerToken() {
+    let datosString = localStorage.getItem("DatosSesion");
+    if (datosString) {
+      let datos = JSON.parse(datosString);
+      return datos.token;
+    } else {
+      return ' ';
+    }
   }
 }

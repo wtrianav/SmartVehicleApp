@@ -1,56 +1,30 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;700;800;900&family=Sacramento&display=swap');
-
-header{
-    font-family: 'Nunito', sans-serif;
-    --tam-fuente--titulo: 2.1rem;
-    --tam-fuente--campos: 1rem;
-    --tam-fuente--button: 0.75rem;
-    --tipo-fuente--logo: 'Sacramento', cursive;
-    --azul-boton: #0D6EFD;
-}
-
-.nav-link {
-    font-size: 1rem;
-    font-weight: 600;
-    color: #5C5D61;
-}
-
-.navbar-brand {
-    font-family: var(--tipo-fuente--logo);
-    font-size: 2rem;
-    font-weight: 600;
-}
-
-.btn {
-    font-size: var(--tam-fuente--button);
-    font-weight: 800;
-    text-transform: uppercase;
-    border-radius: 2rem;
-    color: white;
-    background-color: var(--azul-boton);
-    border-color: var(--azul-boton);
-}
-
-
-.footer-text {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
 .mx-5 {
-    margin-right: 0px !important;
-    margin-left: 0px !important;
+    margin-right: 0rem !important;
+    margin-left: 0rem !important;
 }
 
-@media (max-width: 321px) {
-    .navbar-brand {
-        font-size: 1rem;
+.navbar-collapse li .btn {
+    width: 180px;
+    margin-left: 8px;
+}
+
+
+.navbar-collapse li .nav-link{
+    margin-left: 8px;
+}
+
+@media (max-width: 770px) {
+    .navbar-nav {
+        display: flex;
+        flex-direction: column;
+        padding-left: 0;
+        margin-bottom: 0;
+        list-style: none;
+        align-items: center;
+        justify-content: center;
+    }
+    .navbar-collapse li .btn {
+        width: 180px;
+        margin-bottom: 4px;
     }
 }
-
-
-.material-icons.md-18 { font-size: 18px; }
-.material-icons.md-24 { font-size: 24px; }
-.material-icons.md-36 { font-size: 36px; }
-.material-icons.md-48 { font-size: 48px; }

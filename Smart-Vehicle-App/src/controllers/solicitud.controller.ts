@@ -1,3 +1,4 @@
+import {authenticate} from '@loopback/authentication';
 import {
   Count,
   CountSchema,
@@ -26,7 +27,7 @@ export class SolicitudController {
     public solicitudRepository : SolicitudRepository,
   ) {}
 
-  
+
   @post('/solicitudes')
   @response(200, {
     description: 'Solicitud model instance',
@@ -59,6 +60,7 @@ export class SolicitudController {
     return this.solicitudRepository.count(where);
   }
 
+  // @authenticate('client')
   @get('/solicitudes')
   @response(200, {
     description: 'Array of Solicitud model instances',

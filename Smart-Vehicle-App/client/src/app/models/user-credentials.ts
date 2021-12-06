@@ -3,6 +3,14 @@ export class UserCredentialsModel {
   password?: string;
 }
 
+export class UserLoginSesionModel {
+  email?: string;
+  nombre?: string;
+  role?: string;
+  token?: string;
+  identificado: boolean = false;
+}
+
 export class ClientCredentialsRegisterModel {
   tipo_documento?: string;
   numero_documento?: string;
@@ -12,4 +20,13 @@ export class ClientCredentialsRegisterModel {
   ciudad?: string;
   direccion?: string;
   telefono?: string;
+  tipo_persona?: string;
+}
+
+export class AdvisorCredentialsRegisterModel {
+  numero_documento?: string;
+  nombre_completo?: string;
+  email?: string;
+  telefono?: string;
+  tipo_persona?: string;
 }

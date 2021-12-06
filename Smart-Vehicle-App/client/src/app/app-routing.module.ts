@@ -18,8 +18,12 @@ const routes: Routes = [
     loadChildren: () => import("./modules/security/security.module").then(x => x.SecurityModule)
   },
   {
-    path: 'client',
-    loadChildren: () => import("./modules/client/client.module").then(x => x.ClientModule)
+    path: 'administration',
+    loadChildren: () => import("./modules/administration/administration.module").then(x => x.AdministrationModule)
+  },
+  {
+    path: 'request',
+    loadChildren: () => import("./modules/request/request.module").then(x => x.RequestModule)
   },
   {
     path: '**',

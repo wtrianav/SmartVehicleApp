@@ -1,0 +1,58 @@
+<div class="d-flex justify-content-md-center">
+    <div class="col-3">
+        <button class="btn btn-light" (click)="Filtrar('Todos')" type="button" placement="bottom"
+            ngbTooltip="Filtrar Todos"><i style="margin-right: 5px;"
+                class="material-icons">playlist_add_check</i>Todos</button>
+    </div>
+    <div class="col-3">
+        <button class="btn btn-light" (click)="Filtrar('Carro')" type="button" placement="bottom"
+            ngbTooltip="Filtrar Carros"><i style="margin-right: 5px;" class="material-icons">
+                directions_car
+            </i>Carros</button>
+    </div>
+    <div class="col-3">
+        <button class="btn btn-light" (click)="Filtrar('Motocicleta')" type="button" placement="bottom"
+            ngbTooltip="Filtrar Motocicletas"><i style="margin-right: 5px;"
+                class="material-icons">two_wheeler</i>Motocicletas</button>
+    </div>
+    <div class="col-3">
+        <button class="btn btn-light" (click)="Filtrar('Scooter')" type="button" placement="bottom"
+            ngbTooltip="Filtrar Scooters"><i style="margin-right: 5px;"
+                class="material-icons">electric_scooter</i>Scooters</button>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+        <!-- Se realiza un for en la lista vehiculo que se encuentra en el archivo ts luego de filtrar la busqueda -->
+        <div class="col" *ngFor="let item of vehiculo; index as i">
+            <div class="card-box">
+                <img src="{{item.imagen}}" class="card-img-top" alt="..." width="354px" height="236px">
+                <div class="card-body">
+                    <h5 class="card-title" style="font-weight: 700;">{{item.marca}} {{item.modelo}}</h5>
+                    <h6 class="showme">Alquiler: ${{item.valor_alquiler}} por dia</h6>
+                    <h6 class="showme">Compra: ${{item.valor_venta}}</h6>
+                    <ul class="showme">
+                        <li class="card-text">Año del Modelo: {{item.anio_modelo}}</li>
+                        <li class="card-text">Placa: {{item.placa}}</li>
+                    </ul>
+                </div>
+                <div class="text-center botones-ac">
+                    <div class="form-check form-check-inline">
+                        <button class="btn btn-primary" type="button" (click)="LanzarSolicitud(item, 'compra')" type="button" routerLink="/request/client-request"><i style="margin-right: 5px;"
+                                class="material-icons">
+                                shopping_bag
+                            </i>Compra</button>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <button class="btn btn-light" type="button" (click)="LanzarSolicitud(item, 'alquiler')"><i style="margin-right: 5px;"
+                                class="material-icons">
+                                car_rental
+                            </i>Alquiler</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

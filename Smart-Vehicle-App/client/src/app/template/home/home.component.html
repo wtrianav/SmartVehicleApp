@@ -1,132 +1,316 @@
-<div id="index-banner" class="parallax-container">
-  <div class="section no-pad-bot">
-    <div class="container">
-      <br /><br />
-      <h1 class="header center teal-text text-lighten-2">Parallax Template</h1>
-      <div class="row center">
-        <h5 class="header col s12 light">
-          A modern responsive front-end framework based on Material Design
-        </h5>
-      </div>
-      <div class="row center">
-        <a
-          href="http://materializecss.com/getting-started.html"
-          id="download-button"
-          class="btn-large waves-effect waves-light teal lighten-1"
-          >Get Started</a
-        >
-      </div>
-      <br /><br />
-    </div>
-  </div>
-  <div class="parallax">
-    <img [src]="carimg" alt="Unsplashed background img 1" />
-  </div>
-</div>
-
-<div class="container">
-  <div class="section">
-    <!--   Icon Section   -->
-    <div class="row">
-      <div class="col s12 m4">
-        <div class="icon-block">
-          <h2 class="center brown-text">
-            <i class="material-icons">flash_on</i>
-          </h2>
-          <h5 class="center">Speeds up development</h5>
-
-          <p class="light">
-            We did most of the heavy lifting for you to provide a default
-            stylings that incorporate our custom components. Additionally, we
-            refined animations and transitions to provide a smoother experience
-            for developers.
-          </p>
+<header class="carousel-header">
+    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true"
+                aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
-      </div>
-
-      <div class="col s12 m4">
-        <div class="icon-block">
-          <h2 class="center brown-text"><i class="material-icons">group</i></h2>
-          <h5 class="center">User Experience Focused</h5>
-
-          <p class="light">
-            By utilizing elements and principles of Material Design, we were
-            able to create a framework that incorporates components and
-            animations that provide more feedback to users. Additionally, a
-            single underlying responsive system across all platforms allow for a
-            more unified user experience.
-          </p>
+        <div class="carousel-inner">
+            <div class="carousel-item active carousel-slide1">
+                <div class="container">
+                    <div class="carousel-caption text-start">
+                        <h1 class="fw-bold">Example headline.</h1>
+                        <p class="lead">Some representative placeholder content for the first slide of the carousel.</p>
+                        <p><a class="btn btn-lg btn-primary btn-carousel" href="#">Sign up today</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item carousel-slide2">
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h1 class="fw-bold">Another example headline.</h1>
+                        <p class="lead">Some representative placeholder content for the second slide of the carousel.</p>
+                        <p><a class="btn btn-lg btn-primary btn-carousel" href="#">Learn more</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item carousel-slide3">
+                <div class="container">
+                    <div class="carousel-caption text-end">
+                        <h1 class="fw-bold">One more for good measure.</h1>
+                        <p class="lead">Some representative placeholder content for the third slide of this carousel.</p>
+                        <p><a class="btn btn-lg btn-primary btn-carousel" href="#">Browse gallery</a></p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-
-      <div class="col s12 m4">
-        <div class="icon-block">
-          <h2 class="center brown-text">
-            <i class="material-icons">settings</i>
-          </h2>
-          <h5 class="center">Easy to work with</h5>
-
-          <p class="light">
-            We have provided detailed documentation as well as specific code
-            examples to help new users get started. We are also always open to
-            feedback and can answer any questions a user may have about
-            Materialize.
-          </p>
+        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</header>
+<section class="section_1 section_2">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 getInTouch">
+                <h3 class="text-center fw-bold">Escríbenos, nos pondremos en contacto contigo con la mayor brevedad</h3>
+                <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, corrupti natus. Natus labore aliquid
+                    debitis autem quisquam nostrum corrupti illo voluptate expedita, possimus id, recusandae error aperiam?
+                    Sunt, cum quis.</p>
+                <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, corrupti natus. Natus labore aliquid
+                    debitis autem quisquam nostrum corrupti illo voluptate expedita, possimus id, recusandae error aperiam?
+                    Sunt, cum quis.</p>
+            </div>
+            <div class="col-md-6">
+                <form class="form-message" [formGroup]="form">
+                    <div class="row">
+                        <div class="col-md-0">
+                            <label for="validacionNombreCompleto" class="form-label fs-5">Nombre completo</label>
+                            <input type="text" class="form-control" id="validacionNombreCompleto"
+                                formControlName="nombre_completo" required>
+                            <div class="invalid-feedback">
+                                El campo Nombre completo es obligatorio.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-0">
+                            <label for="validacionEmail" class="form-label fs-5">Email</label>
+                            <a tabindex="0" class="navbar-brand" role="button" data-bs-toggle="popover"
+                                data-bs-trigger="focus" title="Popover title"
+                                data-bs-content="And here's some amazing content. It's very engaging. Right?"><span
+                                    class="material-icons"> info </span></a>
+                            <div class="input-group has-validation">
+                                <input type="text" class="form-control" id="validacionEmail"
+                                    aria-describedby="inputGroupPrepend" formControlName="email" required>
+                                <div class="invalid-feedback">
+                                    El campo Email es obligatorio.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="mb-3">
+                            <label for="exampleFormControlTextarea1" class="form-label fs-5">Comentarios</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="comentario"></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-primary" type="button" (click)="EnviarComentario()">Enviar comentario<i class="material-icons right">send</i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
-      </div>
     </div>
+  <div class="bottom_divider"></div>
+</section>
+<!-- Icons Grid-->
+<section class="features-icons bg-light text-center">
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-4">
+              <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                  <div class="features-icons-icon d-flex"><i class="bi bi-calendar2-check m-auto text-primary"></i></div>
+                  <h3 class="fw-bold">Nuestra Misión</h3>
+                  <p class="lead mb-0">Maximizar el potencial de nuestra empresa a través del trabajo en equipo.</p>
+              </div>
+          </div>
+          <div class="col-lg-4">
+              <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                  <div class="features-icons-icon d-flex"><i class="bi bi-eye-fill m-auto text-primary"></i></div>
+                  <h3 class="fw-bold">Nuestra Visión</h3>
+                  <p class="lead mb-0">Ser una de las mejores empresas en la renta y venta de vehículos, reconocida por la innovación, simpleza y generación de valor de sus servicios, con una alta productividad y calidad humana de su equipo.</p>
+              </div>
+          </div>
+          <div class="col-lg-4">
+              <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+                  <div class="features-icons-icon d-flex"><i class="bi bi-person-bounding-box m-auto text-primary"></i></div>
+                  <h3 class="fw-bold">Nuestros valores</h3>
+                  <p class="lead mb-0">Honestidad, Lealtad, Respeto, Pasión por los desafíos, Superación Constante y Creatividad.</p>
+              </div>
+          </div>
+      </div>
   </div>
-</div>
-
-<div class="parallax-container valign-wrapper">
-  <div class="section no-pad-bot">
+</section>
+<!-- Image Showcases-->
+<section class="showcase">
+  <div class="container-fluid p-0">
+      <div class="row g-0">
+          <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('assets/img/bg-showcase-1.jpg')"></div>
+          <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+              <h2 class="fw-bold">Alquiler y venta de Marcas de confianza</h2>
+              <p class="lead mb-0">When you use a theme created by Start Bootstrap, you know that the theme will look great on any device, whether it's a phone, tablet, or desktop the page will behave responsively!</p>
+          </div>
+      </div>
+      <div class="row g-0">
+          <div class="col-lg-6 text-white showcase-img" style="background-image: url('assets/img/bg-showcase-2.jpg')"></div>
+          <div class="col-lg-6 my-auto showcase-text">
+              <h2 class="fw-bold">Alquiler y venta de motos para pista, enduro y scooter</h2>
+              <p class="lead mb-0">Newly improved, and full of great utility classes, Bootstrap 5 is leading the way in mobile responsive web development! All of the themes on Start Bootstrap are now using Bootstrap 5!</p>
+          </div>
+      </div>
+      <div class="row g-0">
+          <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('assets/img/bg-showcase-3.jpg')"></div>
+          <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+              <h2 class="fw-bold">Alquiler y venta de patinetas eléctricas</h2>
+              <p class="lead mb-0">Landing Page is just HTML and CSS with a splash of SCSS for users who demand some deeper customization options. Out of the box, just add your content and images, and your new landing page will be ready to go!</p>
+          </div>
+      </div>
+  </div>
+</section>
+<!-- Vehicles Stock -->
+<section class="section-vehicles">
     <div class="container">
-      <div class="row center">
-        <h5 class="header col s12 light">
-          A modern responsive front-end framework based on Material Design
-        </h5>
-      </div>
+        <h2 class="text-center fw-bold">Nuevo inventario</h2>
+        <div class="text-stock">
+            <p class="lead mb-12">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pellentesque viverra quam in aliquam laoreet quis justo.</p>
+        </div>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+                <div class="card-box">
+                    <img src="assets/img/car-dealer-1.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="text-center fw-bold">Divi Lead 2018</h5>
+                        <p class="text-center fw-bold card-text">$ 34,000</p>
+                    </div>
+                </div>
+                <div class="">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="button-title accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                            aria-expanded="false" aria-controls="collapseOne">
+                            Detalles
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="box accordion-collapse collapse" aria-labelledby="headingOne"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <ul class="lead">
+                                <li>Vivamus suscipit tortor</li>
+                                <li>Sed porttitor lectus nibh</li>
+                                <li>Curabitur arcu erat</li>
+                                <li>Curabitur aliquet quam id dui</li>
+                                <li>Vestibulum ante ipsum primis en faucibus</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card-box">
+                    <img src="assets/img/car-dealer-2.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="text-center fw-bold">Monarch 2019</h5>
+                        <p class="text-center fw-bold card-text">$ 19,300</p>
+                    </div>
+                </div>
+                <div class="">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="button-title accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            Detalles
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <ul class="lead">
+                                <li>Vivamus suscipit tortor</li>
+                                <li>Sed porttitor lectus nibh</li>
+                                <li>Curabitur arcu erat</li>
+                                <li>Curabitur aliquet quam id dui</li>
+                                <li>Vestibulum ante ipsum primis en faucibus</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card-box">
+                    <img src="assets/img/car-dealer-3.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="text-center fw-bold">Nexus 2020</h5>
+                        <p class="text-center fw-bold card-text">$ 26,500</p>
+                    </div>
+                </div>
+                <div class="">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="button-title accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Detalles
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <ul class="lead">
+                                <li>Vivamus suscipit tortor</li>
+                                <li>Sed porttitor lectus nibh</li>
+                                <li>Curabitur arcu erat</li>
+                                <li>Curabitur aliquet quam id dui</li>
+                                <li>Vestibulum ante ipsum primis en faucibus</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="btn-stock-vehicles">
+            <button class="btn btn-primary btn-vehicles" type="submit">ver stock</button>
+        </div>
     </div>
-  </div>
-  <div class="parallax">
-    <img [src]="motorcycleimg" alt="Unsplashed background img 2" />
-  </div>
-</div>
-
-<div class="container">
-  <div class="section">
-    <div class="row">
-      <div class="col s12 center">
-        <h3><i class="mdi-content-send brown-text"></i></h3>
-        <h4>Contact Us</h4>
-        <p class="left-align light">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-          scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu,
-          non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas
-          eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem
-          neque, posuere et pretium eget, bibendum sollicitudin lacus. Aliquam
-          eleifend sollicitudin diam, eu mattis nisl maximus sed. Nulla
-          imperdiet semper molestie. Morbi massa odio, condimentum sed ipsum ac,
-          gravida ultrices erat. Nullam eget dignissim mauris, non tristique
-          erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
-          posuere cubilia Curae;
-        </p>
+</section>
+<!-- Testimonios-->
+<section class="testimonials text-center bg-light">
+  <div class="container">
+      <h2 class="mb-5 fw-bold">Lo que nuestros clientes dicen...</h2>
+      <div class="row">
+          <div class="col-lg-4">
+              <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+                  <img class="img-fluid rounded-circle mb-3" src="assets/img/testimonials-1.jpg" alt="..." />
+                  <h5>Margaret E.</h5>
+                  <p class="lead font-weight-light mb-0">"This is fantastic! Thanks so much guys!"</p>
+              </div>
+          </div>
+          <div class="col-lg-4">
+              <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+                  <img class="img-fluid rounded-circle mb-3" src="assets/img/testimonials-2.jpg" alt="..." />
+                  <h5>Fred S.</h5>
+                  <p class="lead font-weight-light mb-0">"Bootstrap is amazing. I've been using it to create lots of super nice landing pages."</p>
+              </div>
+          </div>
+          <div class="col-lg-4">
+              <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+                  <img class="img-fluid rounded-circle mb-3" src="assets/img/testimonials-3.jpg" alt="..." />
+                  <h5>Sarah W.</h5>
+                  <p class="lead font-weight-light mb-0">"Thanks so much for making these free resources available to us!"</p>
+              </div>
+          </div>
       </div>
-    </div>
   </div>
-</div>
-
-<div class="parallax-container valign-wrapper">
-  <div class="section no-pad-bot">
-    <div class="container">
-      <div class="row center">
-        <h5 class="header col s12 light">
-          A modern responsive front-end framework based on Material Design
-        </h5>
+</section>
+<!-- Llamada a la acción-->
+<section class="call-to-action text-white text-center" id="signup">
+  <div class="container position-relative">
+      <div class="row justify-content-center">
+          <div class="col-xl-6">
+              <h2 class="mb-4 fw-bold">¿Listo para comenzar? ¡Regístrate ahora!</h2>
+              <form class="form-subscribe" id="contactFormFooter" data-sb-form-api-token="API_TOKEN">
+                  <div class="row">
+                      <div class="col">
+                          <input class="form-control" id="emailAddressBelow" type="email" placeholder="Correo electrónico" data-sb-validations="required,email" />
+                          <div class="invalid-feedback text-white" data-sb-feedback="emailAddressBelow:required">El Correo electrónico es requerido.</div>
+                          <div class="invalid-feedback text-white" data-sb-feedback="emailAddressBelow:email">Correo electrónico no válido.</div>
+                      </div>
+                      <div class="col-auto"><button class="btn btn-primary btn-lg" id="submitButton" type="submit">Enviar</button></div>
+                  </div>
+                  <div class="d-none" id="submitSuccessMessage">
+                      <div class="text-center mb-3">
+                          <div class="fw-bolder">Form submission successful!</div>
+                          <p>To activate this form, sign up at</p>
+                          <a class="text-white" href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                      </div>
+                  </div>
+                  <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
+              </form>
+          </div>
       </div>
-    </div>
   </div>
-  <div class="parallax">
-    <img [src]="scooterimg" alt="Unsplashed background img 3" />
-  </div>
-</div>
+</section>

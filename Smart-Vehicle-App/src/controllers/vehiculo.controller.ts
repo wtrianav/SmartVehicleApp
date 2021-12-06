@@ -78,66 +78,6 @@ export class VehiculoController {
     return this.vehiculoRepository.find(filter);
   }
 
-  @authenticate('client')
-  @get('/filtrar-carros')
-  @response(200, {
-    description: 'Array of Vehiculo model instances',
-    content: {
-      'application/json': {
-        schema: {
-          type: 'array',
-          items: getModelSchemaRef(Vehiculo, {includeRelations: true}),
-        },
-      },
-    },
-  })
-  async findCarro(
-  ): Promise<Vehiculo[]> {
-    return this.vehiculoRepository.find({
-      where: {tipo_vehiculo : "Carro"}
-    });
-  }
-
-  @authenticate('client')
-  @get('/filtrar-motocicletas')
-  @response(200, {
-    description: 'Array of Vehiculo model instances',
-    content: {
-      'application/json': {
-        schema: {
-          type: 'array',
-          items: getModelSchemaRef(Vehiculo, {includeRelations: true}),
-        },
-      },
-    },
-  })
-  async findMoto(
-  ): Promise<Vehiculo[]> {
-    return this.vehiculoRepository.find({
-      where: {tipo_vehiculo : "Motocicleta"}
-    });
-  }
-
-  @authenticate('client')
-  @get('/filtrar-scooters')
-  @response(200, {
-    description: 'Array of Vehiculo model instances',
-    content: {
-      'application/json': {
-        schema: {
-          type: 'array',
-          items: getModelSchemaRef(Vehiculo, {includeRelations: true}),
-        },
-      },
-    },
-  })
-  async findScooter(
-  ): Promise<Vehiculo[]> {
-    return this.vehiculoRepository.find({
-      where: {tipo_vehiculo : "Scooter"}
-    });
-  }
-
   @patch('/vehiculos')
   @response(200, {
     description: 'Vehiculo PATCH success count',

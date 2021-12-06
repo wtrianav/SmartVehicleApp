@@ -10,8 +10,10 @@ import { NavBarComponent } from './template/nav-bar/nav-bar.component';
 import { FooterComponent } from './template/footer/footer.component';
 import { HomeComponent } from './template/home/home.component';
 import { ErrorComponent } from './template/error/error.component';
-import { SolicitarVehiculoComponent } from './modules/client/solicitar-vehiculo/solicitar-vehiculo.component';
 import { AuthInterceptorService } from './auth-interceptor.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CreateVehicleComponent } from './modules/administration/vehicle/create-vehicle/create-vehicle.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,7 @@ import { AuthInterceptorService } from './auth-interceptor.service';
     FooterComponent,
     HomeComponent,
     ErrorComponent,
+    CreateVehicleComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,6 +31,8 @@ import { AuthInterceptorService } from './auth-interceptor.service';
     FormsModule,
     ReactiveFormsModule,
     NgxCaptchaModule,
+    NgbModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     {
