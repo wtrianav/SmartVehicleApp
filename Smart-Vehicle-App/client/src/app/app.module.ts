@@ -13,6 +13,7 @@ import { ErrorComponent } from './template/error/error.component';
 import { AuthInterceptorService } from './auth-interceptor.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CreateVehicleComponent } from './modules/administration/vehicle/create-vehicle/create-vehicle.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FooterComponent,
     HomeComponent,
     ErrorComponent,
+    CreateVehicleComponent,
   ],
   imports: [
     BrowserModule,
