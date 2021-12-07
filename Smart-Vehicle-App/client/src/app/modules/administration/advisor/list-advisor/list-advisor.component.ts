@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ModelAdvisor } from 'src/app/models/advisor.model';
+import { AdvisorService } from 'src/app/services/advisor.service';
 
 @Component({
   selector: 'app-list-advisor',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListAdvisorComponent implements OnInit {
 
-  constructor() { }
+  listAdvisor: ModelAdvisor[] = [];
+
+  constructor(private advisorService: AdvisorService) { }
 
   ngOnInit(): void {
+  }
+
+  GetListAdvisor(){
+    this.advisorService.ObtenerRegistros().subscribe((datos: ModelAdvisor[]) => {
+      this.listAdvisor = datos;
+    })
   }
 
 }
