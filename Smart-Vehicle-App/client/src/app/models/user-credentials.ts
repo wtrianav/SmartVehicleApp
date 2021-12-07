@@ -12,6 +12,7 @@ export class UserLoginSesionModel {
 }
 
 export class ClientCredentialsRegisterModel {
+  id?: string;
   tipo_documento?: string;
   numero_documento?: string;
   nombre_completo?: string;
@@ -24,7 +25,8 @@ export class ClientCredentialsRegisterModel {
 }
 
 export class AdvisorCredentialsRegisterModel {
-  numero_documento?: string;
+  id?: string;
+  nro_documento?: string;
   nombre_completo?: string;
   email?: string;
   telefono?: string;

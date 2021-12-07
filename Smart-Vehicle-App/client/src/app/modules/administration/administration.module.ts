@@ -16,6 +16,8 @@ import { ListVehicleComponent } from './vehicle/list-vehicle/list-vehicle.compon
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EditVehicleComponent } from './vehicle/edit-vehicle/edit-vehicle.component';
 import { TableVehicleComponent } from './vehicle/table-vehicle/table-vehicle.component';
+import {MaterialModule} from 'src/app/material/material.module';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { TableVehicleComponent } from './vehicle/table-vehicle/table-vehicle.com
     FormsModule,
     ReactiveFormsModule,
     NgxCaptchaModule,
-    NgbModule
+    NgbModule,
+    MaterialModule,
+    MatNativeDateModule,
   ]
 })
 export class AdministrationModule { }

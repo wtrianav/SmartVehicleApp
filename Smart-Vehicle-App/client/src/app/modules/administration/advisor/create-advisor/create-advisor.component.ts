@@ -36,7 +36,7 @@ export class CreateAdvisorComponent implements OnInit {
       console.log('Formulario no válido');
     } else {
       let modelo = new AdvisorCredentialsRegisterModel();
-      modelo.numero_documento = this.GetForm.numero_documento.value;
+      modelo.nro_documento = this.GetForm.numero_documento.value;
       modelo.nombre_completo = this.GetForm.nombre_completo.value;
       modelo.email = this.GetForm.email.value;
       modelo.telefono = this.GetForm.telefono.value;
