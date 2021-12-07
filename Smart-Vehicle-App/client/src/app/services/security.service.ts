@@ -50,7 +50,7 @@ export class SecurityService {
 
   RegisterAsesor(modelo: AdvisorCredentialsRegisterModel) : Observable<any> {
     return this.http.post(`${this.url}/personas`, {
-      nro_documento: modelo.numero_documento,
+      nro_documento: modelo.nro_documento,
       nombre_completo: modelo.nombre_completo,
       telefono: modelo.telefono,
       email: modelo.email,
@@ -78,7 +78,7 @@ export class SecurityService {
   EliminarInformacionSesion() {
     localStorage.removeItem("DatosSesion");
     //Se borran los datos para cerrar sesion
-    this.RefrescarDatosSesion(new UserLoginSesionModel()); 
+    this.RefrescarDatosSesion(new UserLoginSesionModel());
   }
 
   SesionIniciada() {

@@ -35,7 +35,7 @@ const routes: Routes = [
     component: CreateAdvisorComponent
   },
   {
-    path: 'advisor/edit-advisor',
+    path: 'advisor/edit-advisor/:id',
     component: EditAdvisorComponent
   },
   {

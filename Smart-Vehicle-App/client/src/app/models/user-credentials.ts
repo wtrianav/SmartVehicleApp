@@ -26,7 +26,7 @@ export class ClientCredentialsRegisterModel {
 
 export class AdvisorCredentialsRegisterModel {
   id?: string;
-  numero_documento?: string;
+  nro_documento?: string;
   nombre_completo?: string;
   email?: string;
   telefono?: string;
