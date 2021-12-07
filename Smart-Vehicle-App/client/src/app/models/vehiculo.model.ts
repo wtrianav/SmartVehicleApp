@@ -9,4 +9,6 @@ export class Vehiculo {
     solicitud?: string;
     valor_venta?: number;
     valor_alquiler?: number;
+    modelo?: string;
+    descripcion?: string;
 }
