@@ -134,6 +134,10 @@ footer.footer {
   padding-bottom: 1rem;
 }
 
+.material-icons {
+  margin-right: 0 !important;
+}
+
 @media (max-width: 321px) {
   div .navbar-brand {
     font-size: 1rem;

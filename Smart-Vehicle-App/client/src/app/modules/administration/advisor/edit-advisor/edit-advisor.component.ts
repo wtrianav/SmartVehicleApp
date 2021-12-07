@@ -20,7 +20,8 @@ export class EditAdvisorComponent implements OnInit {
     private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.id=this.route.snapshot.params["id"];
+    this.id = this.route.snapshot.params["id"];
+    this.CreateForm();
     this.BuscarAsesor();
   }
 
@@ -31,14 +32,16 @@ export class EditAdvisorComponent implements OnInit {
       nombre_completo: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
       telefono: ['', [Validators.required, Validators.minLength(10)]],
-      recaptcha: ["", Validators.required],
+      // recaptcha: ["", Validators.required],
     });
   }
 
   BuscarAsesor() {
     this.personService.ObtenerRegistroPorId(this.id).subscribe((datos: any) => {
+      console.log(datos);
+      
       this.form.controls["id"].setValue(this.id);
-      this.form.controls["numero_documento"].setValue(datos.numero_documento);
+      this.form.controls["numero_documento"].setValue(datos.nro_documento);
       this.form.controls["nombre_completo"].setValue(datos.nombre_completo);
       this.form.controls["email"].setValue(datos.email);
       this.form.controls["telefono"].setValue(datos.telefono);

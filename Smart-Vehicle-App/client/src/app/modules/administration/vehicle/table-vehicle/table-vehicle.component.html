@@ -1,7 +1,13 @@
 <main class="mx-5 margin-form">
     <div class="container">
 
-        <h2>Listado de Vehiculos</h2>
+        <div class="d-flex justify-content-between">
+            <h2>Listado de Vehiculos</h2>
+            <button routerLink="/administration/vehicle/create-vehicle" mat-mini-fab color="accent" aria-label="Crear Vehiculo" ngbTooltip="Crear Vehiculo" placement="left">
+              <mat-icon>add</mat-icon>
+            </button>
+          </div>
+        
         <mat-form-field appearance="standard">
             <mat-label>Filtrar vehiculo</mat-label>
             <input matInput (keyup)="applyFilter($event)" placeholder="Ejemplo. Mazda" #input>

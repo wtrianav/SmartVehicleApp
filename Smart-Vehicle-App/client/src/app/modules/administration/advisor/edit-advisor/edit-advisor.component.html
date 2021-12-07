@@ -1,8 +1,8 @@
 <main class="mx-5 margin-form">
     <div class="container px-5 pt-4 pb-5 my-5 bg-body box-form">
-        <form class="row g-3 needs-validation">
+        <form class="row g-3 needs-validation" [formGroup]="form">
             <h2>Editar asesor</h2>
-            <input type="hidden" formControlName="id">
+            <!-- <input type="hidden" formControlName="id"> -->
             <div class="row">
                 <div class="col-md-0">
                     <label for="validacionDocumento" class="form-label">Número de documento</label>
@@ -46,7 +46,7 @@
             </div>
             <div class="row">
                 <div class="d-grid gap-2">
-                    <button class="btn btn-primary" type="button">Editar Asesor<i class="material-icons right">send</i></button>
+                    <button class="btn btn-primary" type="button" (click)="EditarAsesor()">Editar Asesor<i class="material-icons right">send</i></button>
                 </div>
             </div>
         </form>
