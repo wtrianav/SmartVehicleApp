@@ -55,7 +55,7 @@ const routes: Routes = [
     component: CreateVehicleComponent
   }
   ,{
-    path: 'vehicle/edit-vehicle',
+    path: 'vehicle/edit-vehicle/:id',
     component: EditVehicleComponent
   }
   ,{

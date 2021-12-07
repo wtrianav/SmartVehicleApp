@@ -1,15 +1,15 @@
 <main class="mx-5 margin-form">
   <div class="container px-5 pt-4 pb-5 my-5 bg-body box-form">
 
-      <form class="row g-3 needs-validation">
+      <form class="row g-3 needs-validation" [formGroup]="form">
           <h2>Editar Vehiculo</h2>
           <div class="row">
               <div class="col-md-6">
                   <label for="Tipo_vehiculo" class="form-label">Tipo vehiculo</label>
-                  <select class="form-select" formControlName="Tipo_vehiculo" id="Tipo_vehiculo">
-                      <option value="Carros">Carro</option>
+                  <select class="form-select" formControlName="tipo_vehiculo" id="Tipo_vehiculo">
+                      <option value="Carro">Carro</option>
                       <option value="Motocicleta">Motocicleta</option>
-                      <option value="Scootter">Scootter</option>
+                      <option value="Scooter">Scootter</option>
 
                   </select>
                   <div class="invalid-feedback">
@@ -19,7 +19,7 @@
               <div class="col-md-6">
                   <div class="col-md-0">
                       <label for="validarMarca" class="form-label">Marca</label>
-                      <input type="text" class="form-control" formControlName="telefono" id="validarMarca" required />
+                      <input type="text" class="form-control" formControlName="marca" id="validarMarca" required />
                       <div class="invalid-feedback">
                           El campo Teléfono es obligatorio.
                       </div>
@@ -30,7 +30,7 @@
               <div class="col-md-6">
                   <div class="col-md-0">
                       <label for="validacionModelo" class="form-label">Modelo</label>
-                      <input type="text" class="form-control" formControlName="Modelo" id="validacionModelo"
+                      <input type="text" class="form-control" formControlName="modelo" id="validacionModelo"
                           required />
                       <div class="invalid-feedback">
                           El campo Teléfono es obligatorio.
@@ -39,30 +39,30 @@
               </div>
               <div class="col-md-6">
                   <label for="validacionAño" class="form-label">Año</label>
-                  <input type="text" class="form-control" formControlName="Año" id="validacionAño" required />
+                  <input type="text" class="form-control" formControlName="anio_modelo" id="validacionAño" required />
               </div>
           </div>
 
           <div class="row">
               <div class="col-md-6">
                   <label for="validacionPlaca" class="form-label">Placa</label>
-                  <input type="text" class="form-control" formControlName="Chasis" id="validacionPlaca" required />
+                  <input type="text" class="form-control" formControlName="placa" id="validacionPlaca" required />
               </div>
               <div class="col-md-6">
                   <label for="validacionVenta" class="form-label">Valor de Venta</label>
-                  <input type="text" class="form-control" formControlName="ciudad" id="validacionVenta" required />
+                  <input type="number" class="form-control" formControlName="valor_venta" id="validacionVenta" required />
               </div>
           </div>
           <div class="row">
               <div class="col-md-6">
                   <label for="validacionAlquiler" class="form-label">Valor Alquiler</label>
-                  <input type="text" class="form-control" formControlName="Valor Alquiler" id="validacionAlquiler"
+                  <input type="number" class="form-control" formControlName="valor_alquiler" id="validacionAlquiler"
                       required />
               </div>
               <div class="col-md-6">
                   <div class="col-md-0">
                       <label for="validacionImagen" class="form-label">URL de la Imagen</label>
-                      <input type="text" class="form-control" formControlName="Imagen" id="validacionImagen"
+                      <input type="text" class="form-control" formControlName="imagen" id="validacionImagen"
                           required />
                       <div class="invalid-feedback">
                           El campo Teléfono es obligatorio.
@@ -74,12 +74,12 @@
           <div class="row">
               <div class="mb-3">
                   <label for="exampleFormControlTextarea1" class="form-label">Descripcion del Vehiculo</label>
-                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                  <textarea class="form-control" formControlName="descripcion" id="exampleFormControlTextarea1" rows="3"></textarea>
               </div>
           </div>
           <div class="row">
               <div class="d-grid gap-2">
-                  <button routerLink="/client/crear-vehiculo" class="btn btn-primary" type="button">Crear vehiculo <i
+                  <button class="btn btn-primary" type="button" (click)="EditarVehiculo()">Crear vehiculo <i
                           class="material-icons right">send</i></button>
               </div>
           </div>

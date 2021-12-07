@@ -32,21 +32,19 @@
                     <h5 class="card-title" style="font-weight: 700;">{{item.marca}} {{item.modelo}}</h5>
                     <h6 class="showme">Alquiler: ${{item.valor_alquiler}} por dia</h6>
                     <h6 class="showme">Compra: ${{item.valor_venta}}</h6>
-                    <ul class="showme">
-                        <li class="card-text">Año del Modelo: {{item.anio_modelo}}</li>
-                        <li class="card-text">Placa: {{item.placa}}</li>
-                    </ul>
+                    <p class="showme descripcion"> {{item.descripcion}} </p>
                 </div>
                 <div class="text-center botones-ac">
                     <div class="form-check form-check-inline">
-                        <button class="btn btn-primary" type="button" (click)="LanzarSolicitud(item, 'compra')" type="button" routerLink="/request/client-request"><i style="margin-right: 5px;"
+                        <button class="btn btn-primary" type="button" (click)="LanzarSolicitud(item, 'compra')"
+                            type="button" routerLink="/request/client-request"><i style="margin-right: 5px;"
                                 class="material-icons">
                                 shopping_bag
                             </i>Compra</button>
                     </div>
                     <div class="form-check form-check-inline">
-                        <button class="btn btn-light" type="button" (click)="LanzarSolicitud(item, 'alquiler')"><i style="margin-right: 5px;"
-                                class="material-icons">
+                        <button class="btn btn-light" type="button" (click)="LanzarSolicitud(item, 'alquiler')"><i
+                                style="margin-right: 5px;" class="material-icons">
                                 car_rental
                             </i>Alquiler</button>
                     </div>

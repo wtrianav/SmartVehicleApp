@@ -40,7 +40,7 @@ export class VehicleService {
   }
 
   ActualizarVehiculo(vehiculo: Vehiculo): Observable<Vehiculo>{
-    return this.http.put<Vehiculo>(`${this.url}/vehiculos`, vehiculo, {
+    return this.http.put<Vehiculo>(`${this.url}/vehiculos/${vehiculo.id}`, vehiculo, {
       headers: new HttpHeaders({
         'Authorization': `Bearer ${this.token}`
       })

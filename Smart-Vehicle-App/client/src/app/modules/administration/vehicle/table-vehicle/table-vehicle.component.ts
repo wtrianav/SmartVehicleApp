@@ -45,7 +45,7 @@ export class TableVehicleComponent implements OnInit {
     
   ];
 
-  displayedColumns = this.columns.map(c => c.columnDef);
+  displayedColumns : string[] = ['marca', 'modelo', 'anio_modelo', 'placa', 'valor_venta', 'valor_alquiler'];
   clickedRows = new Set<Vehiculo>();
   dataSource: any;
   vehiculos: Vehiculo[] | undefined;
