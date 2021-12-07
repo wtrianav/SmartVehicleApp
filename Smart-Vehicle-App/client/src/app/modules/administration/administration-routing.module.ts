@@ -61,6 +61,10 @@ const routes: Routes = [
   ,{
     path: 'vehicle/table-vehicle',
     component: TableVehicleComponent
+  },
+  {
+    path: 'vehicle/table-vehicle/:id',
+    component: TableVehicleComponent
   }
 
 

@@ -59,12 +59,12 @@
           </ng-container> -->
 
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row [matMenuTriggerFor]="menu" #menuTrigger (click)="clickedRows.add(row)"
+                <tr mat-row [matMenuTriggerFor]="menu" #menuTrigger (click)="clickedRows.add(row)" (menuClosed)="clickedRows.clear()"
                     *matRowDef="let row; columns: displayedColumns;"></tr>
 
                 <mat-menu #menu="matMenu" class="myMenu">
                     <div *ngFor="let clickedRow of clickedRows">
-                        <button mat-menu-item routerLink="/administration/vehicle/delete-vehicle/{{clickedRow.id}}">
+                        <button mat-menu-item (click)="openDialog(clickedRow)">
                             <span class="material-icons">delete</span> Eliminar</button>
                         <button mat-menu-item routerLink="/administration/vehicle/edit-vehicle/{{clickedRow.id}}">
                             <span class="material-icons">mode</span> Editar</button>

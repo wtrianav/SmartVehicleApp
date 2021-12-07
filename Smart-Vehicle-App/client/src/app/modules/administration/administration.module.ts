@@ -15,7 +15,7 @@ import { ListAdvisorComponent } from './advisor/list-advisor/list-advisor.compon
 import { ListVehicleComponent } from './vehicle/list-vehicle/list-vehicle.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EditVehicleComponent } from './vehicle/edit-vehicle/edit-vehicle.component';
-import { TableVehicleComponent } from './vehicle/table-vehicle/table-vehicle.component';
+import { DeleteVehicleComponent, TableVehicleComponent } from './vehicle/table-vehicle/table-vehicle.component';
 import { MaterialModule } from 'src/app/material/material.module';
 import { MatNativeDateModule } from '@angular/material/core';
 
@@ -32,7 +32,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     ListVehicleComponent,
     ListVehicleComponent,
     EditVehicleComponent,
-    TableVehicleComponent
+    TableVehicleComponent,
+    DeleteVehicleComponent
   ],
   imports: [
     CommonModule,

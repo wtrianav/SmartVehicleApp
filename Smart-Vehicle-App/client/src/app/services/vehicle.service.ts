@@ -59,7 +59,7 @@ export class VehicleService {
     return this.http.get(`${this.url}/vehiculos/${id}`);
   }
 
-  AlmacenarDatosVehiculo(vehiculo: Vehiculo, solicitud: string) {
+  AlmacenarDatosVehiculo(vehiculo: Vehiculo, solicitud: string = 'Alquiler') {
     vehiculo.solicitud = solicitud;
     let stringVehiculo = JSON.stringify(vehiculo);
     localStorage.setItem('DatosVehiculo:', stringVehiculo);
