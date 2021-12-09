@@ -26,7 +26,6 @@ export class Solicitud extends Entity {
 
   @property({
     type: 'string',
-    required: true,
   })
   estado: string;
 
@@ -55,17 +54,17 @@ export class Solicitud extends Entity {
   direccion: string;
 
   @property({
-    type: 'date',
+    type: 'string',
   })
   fecha_salida?: string;
 
   @property({
-    type: 'date',
+    type: 'string',
   })
   fecha_retorno?: string;
 
   @property({
-    type: 'date',
+    type: 'string',
   })
   fecha_venta?: string;
 
