@@ -18,6 +18,7 @@ import { EditVehicleComponent } from './vehicle/edit-vehicle/edit-vehicle.compon
 import { DeleteVehicleComponent, TableVehicleComponent } from './vehicle/table-vehicle/table-vehicle.component';
 import { MaterialModule } from 'src/app/material/material.module';
 import { MatNativeDateModule } from '@angular/material/core';
+import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     ListVehicleComponent,
     EditVehicleComponent,
     TableVehicleComponent,
-    DeleteVehicleComponent
+    DeleteVehicleComponent,
+    AdminHomeComponent
   ],
   imports: [
     CommonModule,

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { CreateAdvisorComponent } from './advisor/create-advisor/create-advisor.component';
 import { DeleteAdvisorComponent } from './advisor/delete-advisor/delete-advisor.component';
 import { EditAdvisorComponent } from './advisor/edit-advisor/edit-advisor.component';
@@ -65,6 +66,10 @@ const routes: Routes = [
   {
     path: 'vehicle/table-vehicle/:id',
     component: TableVehicleComponent
+  },
+  {
+    path: "admin/admin-home",
+    component: AdminHomeComponent
   }
 
 
