@@ -25,7 +25,7 @@ export class PersonService {
   }
 
   ActualizarAsesor(asesor: any): Observable<any>{
-    return this.http.put<AdvisorCredentialsRegisterModel>(`${this.url}/personas`, asesor, {
+    return this.http.put<AdvisorCredentialsRegisterModel>(`${this.url}/personas/${asesor.id}`, asesor, {
       headers: new HttpHeaders({
         // 'Authorization' : `Bearer ${this.token}`
       })

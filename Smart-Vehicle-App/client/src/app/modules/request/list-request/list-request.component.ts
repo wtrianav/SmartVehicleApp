@@ -1,11 +1,14 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { RequestModel } from 'src/app/models/solicitud.model';
+import { RequestModel, RequestModelClass } from 'src/app/models/solicitud.model';
 import { RequestService } from 'src/app/services/request.service';
 import { ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { HtmlParser } from '@angular/compiler';
+import { SecurityService } from 'src/app/services/security.service';
+import { Subscription } from 'rxjs';
+import { UserLoginSesionModel } from 'src/app/models/user-credentials';
 
 
 
@@ -65,7 +68,8 @@ export class ListRequestComponent implements OnInit, AfterViewInit {
   clickedRows = new Set<RequestModel>();
   dataSource: any;
   solicitudes: RequestModel[] | undefined;
-
+  usuario = new UserLoginSesionModel();
+  suscripcion: Subscription = new Subscription();//Propiedad subscripcion para obtener los datos almacenados en el localstorage
 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
@@ -74,6 +78,8 @@ export class ListRequestComponent implements OnInit, AfterViewInit {
 
   constructor(
     private requestService: RequestService,
+    private securityService: SecurityService,
+
   ) {
   }
 
@@ -82,7 +88,15 @@ export class ListRequestComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
+    this.ObtenerSesion()
     this.ListarSolicitudes();
+  }
+
+  ObtenerSesion() {
+    this.suscripcion = this.securityService.ObtenerDatosUsuarioEnSesion().subscribe((datos: any) => {
+      this.usuario = datos;
+      console.log(this.usuario);
+    })
   }
 
   applyFilter(event: Event) {
@@ -95,7 +109,11 @@ export class ListRequestComponent implements OnInit, AfterViewInit {
   ListarSolicitudes() {
     this.requestService.ListRequest().subscribe({
       next: (data: any) => {
-        this.solicitudes = data;
+
+        this.solicitudes = data.filter((solicitud: RequestModelClass) => {
+          return solicitud.personaId === this.usuario.id;
+        })
+
         let datos: any = new MatTableDataSource(this.solicitudes);
         this.dataSource = datos;
         this.dataSource.paginator = this.paginator;

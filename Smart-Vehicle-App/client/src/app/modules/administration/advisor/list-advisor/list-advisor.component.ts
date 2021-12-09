@@ -15,11 +15,6 @@ export class ListAdvisorComponent implements OnInit {
 
   columns = [
     {
-      columnDef: 'id',
-      header: 'id',
-      cell: (asesor: AdvisorCredentialsRegisterModel) => `${asesor.id}`,
-    },
-    {
       columnDef: 'nombre_completo',
       header: 'Nombre',
       cell: (asesor: AdvisorCredentialsRegisterModel) => `${asesor.nombre_completo}`,
@@ -66,9 +61,11 @@ export class ListAdvisorComponent implements OnInit {
 
   GetListAdvisor(){
     this.personService.ObtenerRegistros().subscribe((data: AdvisorCredentialsRegisterModel[]) => {
-      this.listAdvisor = data;
+      this.listAdvisor = data.filter((asesor: any) => {
+        return asesor.tipo_persona === 'asesor';
+      })
       let datos: any = new MatTableDataSource(this.listAdvisor);
-      datos.filter = "asesor";
+      // datos.filter = "asesor";
         this.dataSource = datos;
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;

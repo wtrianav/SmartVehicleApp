@@ -64,6 +64,17 @@
                     </div>
                 </div>
             </div>
+            <div class="row" *ngIf="fecha">
+                <div class="col-md-0">
+                    <label for="validacionFechaVenta" class="form-label">Fecha de Compra</label>
+                    <mat-form-field class="form-control">
+                        <mat-label></mat-label>
+                        <input matInput [matDatepicker]="picker" placeholder="MM/DD/AAAA" formControlName="fecha_venta">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+            </div>
             <div class="row" *ngIf="!fecha">
                 <!-- <div class="col-md-6">
                     <label for="validacionNombreFechaSalida" class="form-label">Fecha de Salida</label>
@@ -86,19 +97,31 @@
 
                 <!-- </div> -->
                 <!-- <div class="form-group"> -->
-                
-                <div class="col-md-6">
-                    <label label for="validacionCiudad" class="form-label">Fecha de Salida</label>
-                    <input #dpFromDate class="form-control" placeholder="yyyy-mm-dd" name="dpFromDate"
+
+                <div class="col-md-12">
+                    <label for="validacionDireccion" class="form-label">Fecha de Alquiler</label>
+                    <mat-form-field class="form-control">
+                        <mat-label></mat-label>
+                        <mat-date-range-input class="picker" [rangePicker]="picker">
+                            <input matStartDate class="fromdate" placeholder="MM/DD/AAAA"
+                                formControlName="fecha_salida">
+                            <input matEndDate class="todate" placeholder="MM/DD/AAAA"
+                                formControlName="fecha_retorno" (dateChange)="AlSeleccionarFecha()">
+                        </mat-date-range-input>
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-date-range-picker #picker></mat-date-range-picker>
+                    </mat-form-field>
+                    <!-- <label label for="validacionCiudad" class="form-label">Fecha de Salida</label>
+                    <input formControlName="fecha_salida" type="text" #dpFromDate class="form-control" placeholder="yyyy-mm-dd" name="dpFromDate"
                         [value]="formatter.format(fromDate)"
                         (input)="fromDate = validateInput(fromDate, dpFromDate.value)"
-                        formControlName="fecha_salida" (click)="datepicker.toggle()">
+                         (click)="datepicker.toggle()"> -->
                 </div>
-                <div class="col-md-6">
+                <!-- <div class="col-md-6">
                     <label label for="validacionCiudad" class="form-label">Fecha de Retorno </label>
-                    <input #dpToDate class="form-control" placeholder="yyyy-mm-dd" name="dpToDate"
+                    <input formControlName="fecha_retorno" type="text" #dpToDate class="form-control" placeholder="yyyy-mm-dd" name="dpToDate"
                         [value]="formatter.format(toDate)" (input)="toDate = validateInput(toDate, dpToDate.value)"
-                        formControlName="fecha_retorno" (click)="datepicker.toggle()">
+                        (click)="datepicker.toggle()">
                 </div>
                 <div class="input-group">
                     <input name="datepicker" ngbDatepicker #datepicker="ngbDatepicker" [autoClose]="'outside'"
@@ -111,7 +134,7 @@
                             {{ date.day }}
                         </span>
                     </ng-template>
-                </div>
+                </div> -->
 
 
 
@@ -120,16 +143,7 @@
                 <!-- </form> -->
 
             </div>
-            <div class="row" *ngIf="fecha">
-                <div class="col-md-0">
-                    <label for="validacionFechaVenta" class="form-label">Fecha de Compra</label>
-                    <input type="date" class="form-control" id="validacionFechaVenta" formControlName="fecha_venta"
-                        required>
-                    <div class="invalid-feedback">
-                        El campo Fecha de Venta es obligatorio.
-                    </div>
-                </div>
-            </div>
+
             <!-- <div class="row">
                 <div class="col-md-0">
                     <label for="validacionEmail" class="form-label">Email</label>
@@ -163,12 +177,12 @@
             </div> -->
             <div class="row">
                 <div class="col-md-6 btn-request">
-                    <button class="btn btn-light" type="button">Cancelar<i
+                    <button class="btn btn-light" type="button" routerLink="/administration/vehicle/list-vehicle">Cancelar<i
                             class="material-icons right">cancel_schedule_send</i></button>
                 </div>
                 <div class="col-md-6 btn-request">
-                    <button class="btn btn-primary" type="button">Enviar Solicitud <i
-                            class="material-icons right">send</i></button>
+                    <button class="btn btn-primary" type="button" [disabled]="!form.valid"
+                        (click)="EnviarSolicitud()">Enviar Solicitud <i class="material-icons right">send</i></button>
                 </div>
             </div>
         </form>

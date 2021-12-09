@@ -50,6 +50,7 @@ export class PersonaController {
     if (person) {
       let token = this.servicioAutenticacion.GenerarTokenJWT(person);
       return {
+        id: person.id,
         nombre: person.nombre_completo,
         email: person.email,
         role: person.tipo_persona,
