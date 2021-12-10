@@ -8,7 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './template/nav-bar/nav-bar.component';
 import { FooterComponent } from './template/footer/footer.component';
-import { HomeComponent } from './template/home/home.component';
+import { HomeComponent, MailSentComponent } from './template/home/home.component';
 import { ErrorComponent } from './template/error/error.component';
 import { AuthInterceptorService } from './auth-interceptor.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -23,6 +23,7 @@ import { CreateVehicleComponent } from './modules/administration/vehicle/create-
     HomeComponent,
     ErrorComponent,
     CreateVehicleComponent,
+    MailSentComponent,
   ],
   imports: [
     BrowserModule,
