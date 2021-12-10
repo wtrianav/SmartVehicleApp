@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { GeneralData } from 'src/app/config/general-data';
 import { AdvisorCredentialsRegisterModel } from 'src/app/models/user-credentials';
 import { SecurityService } from 'src/app/services/security.service';
@@ -14,7 +15,10 @@ export class CreateAdvisorComponent implements OnInit {
 
   siteKey: string = GeneralData.CODE_CAPTCHA;
 
-  constructor(private formBuilder: FormBuilder, private securityService: SecurityService) {}
+  constructor(private formBuilder: FormBuilder, 
+    private securityService: SecurityService,
+    private dialog: MatDialog,
+    ) {}
 
   ngOnInit(): void {
     this.CreateForm();
@@ -30,6 +34,10 @@ export class CreateAdvisorComponent implements OnInit {
     });
   }
 
+  AbrirDialogo() {
+    this.dialog.open(AdvisorCreatedComponent);
+  }
+
   RegisterAdvisor() {
     console.log("Está entrando");
     if (this.form.invalid) {
@@ -43,7 +51,7 @@ export class CreateAdvisorComponent implements OnInit {
       modelo.tipo_persona = 'asesor';
       this.securityService.RegisterAsesor(modelo).subscribe({
         next: (data: any) => {
-          console.log(data);
+          this.AbrirDialogo();
         },
         error: (error: any) => {
           console.log(error);
@@ -56,3 +64,10 @@ export class CreateAdvisorComponent implements OnInit {
     return this.form.controls;
   }
 }
+
+@Component({
+  selector: 'app-advisor-created',
+  templateUrl: './advisor-created.component.html',
+})
+
+export class AdvisorCreatedComponent {}

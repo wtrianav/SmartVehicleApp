@@ -1,6 +1,6 @@
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {Observable} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {GeneralData} from '../config/general-data';
 import {AdvisorCredentialsRegisterModel} from '../models/user-credentials';
 
@@ -10,6 +10,7 @@ import {AdvisorCredentialsRegisterModel} from '../models/user-credentials';
 export class PersonService {
 
   url: string = GeneralData.USERS_URL;
+  datosAsesor = new BehaviorSubject<AdvisorCredentialsRegisterModel>(new AdvisorCredentialsRegisterModel());
   constructor(private http: HttpClient) { }
 
   ObtenerRegistros(): Observable<any> {
@@ -43,5 +44,30 @@ export class PersonService {
   ObtenerRegistroPorId(id: string): Observable<any>{
     return this.http.get(`${this.url}/personas/${id}`)
   }
+
+  AlmacenarDatosAsesor(asesor: AdvisorCredentialsRegisterModel) {
+    let stringAsesor = JSON.stringify(asesor);
+    localStorage.setItem("DatosAsesor", stringAsesor);
+    this.RefrescarDatosAsesor(asesor);
+  }
+
+  ObtenerInformacionAsesor() {
+    let stringAsesor = localStorage.getItem("DatosAsesor");
+    if (stringAsesor) {
+      let asesor = JSON.parse(stringAsesor);
+      return asesor;
+    } else {
+      return null;
+    }
+  }
+
+  RefrescarDatosAsesor(datos: AdvisorCredentialsRegisterModel) {
+    this.datosAsesor.next(datos);
+  }
+
+  ObtenerDatosAsesor(): any {
+    return this.datosAsesor.asObservable();
+  }
+
 }
 

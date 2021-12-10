@@ -1,27 +1,3 @@
-<!-- <a routerLink="/administration/advisor/create-advisor" class="btn">Ingresar asesor</a>
-<table class="table">
-    <thead>
-        <tr>
-            <th>Numero de documento</th>
-            <th>Nombre Completo</th>
-            <th>Email</th>
-            <th>Teléfono</th>
-            <th>Editar</th>
-            <th>Eliminar</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let p of listAdvisor">
-            <td>{{p.nro_documento}}</td>
-            <td>{{p.nombre_completo}}</td>
-            <td>{{p.email}}</td>
-            <td>{{p.telefono}}</td>
-            <td><a routerLink="/administration/advisor/edit-advisor/{{p.id}}" class="btn">Editar</a></td>
-            <td><a routerLink="/administration/advisor/delete-advisor/{{p.id}}" class="btn">Eliminar</a></td>
-        </tr>
-    </tbody>
-</table> -->
-
 <main class="mx-5 margin-form">
   <div class="container">
 
@@ -31,9 +7,6 @@
         <mat-icon>add</mat-icon>
       </button>
     </div>
-    
-
-      
       <mat-form-field appearance="standard">
         <mat-label>Filtrar asesor</mat-label>
         <input matInput (keyup)="applyFilter($event)" placeholder="Ejemplo. Leonardo" #input>
@@ -60,7 +33,7 @@
 
           <mat-menu #menu="matMenu" class="myMenu">
             <div *ngFor="let clickedRow of clickedRows">
-              <button mat-menu-item>
+              <button mat-menu-item (click)="openDialog(clickedRow)">
                 <span class="material-icons">delete</span> Eliminar</button>
               <button mat-menu-item routerLink="/administration/advisor/edit-advisor/{{clickedRow.id}}">
                 <span class="material-icons">mode</span> Editar</button>
