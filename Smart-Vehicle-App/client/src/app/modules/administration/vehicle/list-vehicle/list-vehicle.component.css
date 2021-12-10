@@ -62,6 +62,10 @@
   transition: 0.7s all ease-in-out;
 }
 
+.descripcion {
+  font-size: 0.7rem;
+}
+
 .form-check-inline {
   display: flex;
   margin-right: 1.3rem;

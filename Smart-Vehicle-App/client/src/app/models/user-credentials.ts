@@ -4,6 +4,7 @@ export class UserCredentialsModel {
 }
 
 export class UserLoginSesionModel {
+  id?: string;
   email?: string;
   nombre?: string;
   role?: string;

@@ -29,6 +29,7 @@
     "crypto-js": "^4.1.1",
     "font-awesome": "^4.7.0",
     "materialize-css": "^1.0.0-rc.2",
+    "moment": "^2.29.1",
     "ngx-captcha": "^10.0.0",
     "node-fetch": "^2.6.6",
     "rxjs": "~6.6.0",

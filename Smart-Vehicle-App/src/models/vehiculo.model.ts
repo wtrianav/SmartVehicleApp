@@ -60,7 +60,7 @@ export class Vehiculo extends Entity {
   @property({
     type: 'string',
   })
-  link_video: string;
+  descripcion: string;
 
   @hasMany(() => Solicitud)
   solicitudes: Solicitud[];

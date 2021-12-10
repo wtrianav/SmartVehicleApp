@@ -1,5 +1,5 @@
-div .btn-request{
-  display:flex;
+div .btn-request {
+  display: flex;
   flex-direction: column;
 }
 
@@ -8,9 +8,9 @@ div .btn-request{
   margin-left: 0px !important;
 }
 
-@media (max-width: 421px){
-  div .btn-request{
-    margin-bottom: 1rem ;
+@media (max-width: 421px) {
+  div .btn-request {
+    margin-bottom: 1rem;
   }
 }
 
@@ -41,7 +41,8 @@ div .btn-request{
 .custom-day.focused {
   background-color: #e6e6e6;
 }
-.custom-day.range, .custom-day:hover {
+.custom-day.range,
+.custom-day:hover {
   background-color: rgb(2, 117, 216);
   color: white;
 }
@@ -49,6 +50,39 @@ div .btn-request{
   background-color: rgba(2, 117, 216, 0.5);
 }
 
-ngb-datepicker .show{
+ngb-datepicker .show {
   transform: scale(0.8) translate(-23px, -37px) !important;
 }
+
+::ng-deep .row .mat-form-field-underline {
+  height: 0px !important;
+}
+
+::ng-deep .mat-form-field-wrapper {
+  padding: 0 !important;
+  height: 24px;
+}
+
+::ng-deep .mat-form-field-infix {
+  border: 0 !important;
+}
+
+::ng-deep .mat-focused .mat-form-field-underline {
+  display: none;
+}
+
+/* .form-control {
+  line-height: 0 !important;
+} */
+
+.fromdate,
+.todate,
+::ng-deep .mat-date-range-input-separator,
+::ng-deep .mat-datepicker-toggle-default-icon,
+::ng-deep input.mat-input-element {
+  transform: translateY(-4px);
+}
+
+#mat-form-field-label-1 {
+  display: none;
+} 
