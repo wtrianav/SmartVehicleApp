@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxCaptchaModule } from 'ngx-captcha';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './template/nav-bar/nav-bar.component';
@@ -14,6 +13,7 @@ import { AuthInterceptorService } from './auth-interceptor.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CreateVehicleComponent } from './modules/administration/vehicle/create-vehicle/create-vehicle.component';
+import { MaterialModule } from './material/material.module';
 
 @NgModule({
   declarations: [
@@ -34,6 +34,7 @@ import { CreateVehicleComponent } from './modules/administration/vehicle/create-
     NgxCaptchaModule,
     NgbModule,
     BrowserAnimationsModule,
+    MaterialModule,
   ],
   providers: [
     {

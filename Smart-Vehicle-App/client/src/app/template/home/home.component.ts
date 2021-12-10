@@ -39,12 +39,6 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  RefrescarFormulario(){
-    this.form.controls["nombre_completo"].setValue("");
-    this.form.controls["email"].setValue("");
-    this.form.controls["comentario"].setValue("");
-  }
-  
   AbrirDialogo (){
     this.dialog.open(MailSentComponent);
   }
@@ -73,4 +67,9 @@ export class HomeComponent implements OnInit {
   templateUrl: './mail-sent.component.html',
 })
 
-export class MailSentComponent{}
+export class MailSentComponent{
+  RefrescarFormulario(){
+    window.location.reload();
+  }
+}
+
