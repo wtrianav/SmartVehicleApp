@@ -8,10 +8,9 @@ import { CreateClientComponent } from './client/create-client/create-client.comp
 import { EditClientComponent } from './client/edit-client/edit-client.component';
 import { DeleteClientComponent } from './client/delete-client/delete-client.component';
 import { ListClientComponent } from './client/list-client/list-client.component';
-import { CreateAdvisorComponent } from './advisor/create-advisor/create-advisor.component';
+import { AdvisorCreatedComponent, CreateAdvisorComponent } from './advisor/create-advisor/create-advisor.component';
 import { EditAdvisorComponent } from './advisor/edit-advisor/edit-advisor.component';
-import { DeleteAdvisorComponent } from './advisor/delete-advisor/delete-advisor.component';
-import { ListAdvisorComponent } from './advisor/list-advisor/list-advisor.component';
+import { DeleteAdvisorComponent, ListAdvisorComponent } from './advisor/list-advisor/list-advisor.component';
 import { ListVehicleComponent } from './vehicle/list-vehicle/list-vehicle.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EditVehicleComponent } from './vehicle/edit-vehicle/edit-vehicle.component';
@@ -35,7 +34,8 @@ import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
     EditVehicleComponent,
     TableVehicleComponent,
     DeleteVehicleComponent,
-    AdminHomeComponent
+    AdminHomeComponent,
+    AdvisorCreatedComponent,
   ],
   imports: [
     CommonModule,
