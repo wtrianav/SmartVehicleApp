@@ -20,7 +20,7 @@
                         formControlName="nombre_completo" required>
                     <div *ngIf="GetForm['nombre_completo'].errors && (GetForm['nombre_completo'].dirty || GetForm['nombre_completo'].touched)"
                         class="error-message">
-                        <p>El campo Nombre completo es obligatorio.</p>
+                        <p>Por favor ingrese su nombre completo.</p>
                     </div>
                 </div>
             </div>
@@ -36,7 +36,7 @@
                     </div>
                     <div *ngIf="GetForm['email'].errors && (GetForm['email'].dirty || GetForm['email'].touched)"
                         class="error-message">
-                        <p>El campo Email es obligatorio.</p>
+                        <p>Por favor ingrese un email válido.</p>
                     </div>
                 </div>
             </div>
@@ -46,7 +46,7 @@
                     <input type="text" class="form-control" id="validacionTelefono" formControlName="telefono" required>
                     <div *ngIf="GetForm['telefono'].errors && (GetForm['telefono'].dirty || GetForm['telefono'].touched)"
                         class="error-message">
-                        <p>El campo Teléfono es obligatorio.</p>
+                        <p>Por favor ingrese un número telefónico.</p>
                     </div>
                 </div>
             </div>
@@ -60,6 +60,12 @@
                 <div class="d-grid gap-2">
                     <button class="btn btn-primary" (click)="RegisterAdvisor()" [disabled]="!form.valid"
                         type="button">Crear Asesor<i class="material-icons right">send</i></button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="d-grid gap-2">
+                    <button routerLink="/administration/advisor/list-advisor" class="btn btn-light" type="button">Cancelar<i
+                            class="material-icons right">cancel_schedule_send</i></button>
                 </div>
             </div>
         </form>
