@@ -20,7 +20,7 @@
                             <button class="btn btn-primary" routerLink="administration/client/create-client">Registrarse</button>
                         </li>
                         <li *ngIf="session" class="nav-item">
-                            <p class="nav-link" style="color: blue;">Bienvenido {{nombre}} </p>
+                            <a type="button" class="nav-link" (click)="RedirigirA()" style="color: blue;">Bienvenido {{nombre}} </a>
                         </li>
                         <li *ngIf="sessionClient" class="nav-item">
                             <a class="nav-link" routerLink="request/list-request">Mis Solicitudes</a>
@@ -29,7 +29,7 @@
                             <a class="nav-link" routerLink="administration/vehicle/list-vehicle">Vehiculos</a>
                         </li>
                         <li *ngIf="session" class="nav-item">
-                            <a class="nav-link" routerLink="security/close-session">Cerrar Sesión</a>
+                            <a type="button" class="nav-link" (click)="CerrarSesion()">Cerrar Sesión</a>
                         </li>
                     </ul>
                 </div>

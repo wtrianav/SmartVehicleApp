@@ -174,7 +174,7 @@ export class PersonaController {
             style="background: rgb(225, 242, 226);
             background: -webkit-linear-gradient(to right, rgb(244,208,63), rgb(22, 160, 133));
             background: linear-gradient(to right, rgb(244,208,63), rgb(22, 160, 133));
-             font-family: Nunito, sans-serif">
+             font-family: Nunito, sans-serif; padding: 3rem;">
             <table style="max-width: 600px; padding: 10px; margin:3rem auto; border-collapse: collapse;">
               <tr>
                 <td style="background-color: rgb(236, 240, 241);border-radius:2rem;box-shadow: 5px 5px 25px -3px rgb(0,0,0); margin-top: 3rem">
