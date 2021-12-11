@@ -67,7 +67,7 @@ export class PersonaController {
     content: {'application/json': {schema: getModelSchemaRef(Persona)}},
   })
   async enviarformulario(
-    @requestBody() formulariocontacto : FormularioContacto,
+    @requestBody() formulariocontacto: FormularioContacto,
   ) {
     let datos = new NotificacionCorreo(
       {
@@ -163,10 +163,44 @@ export class PersonaController {
         destinatario: persona.email,
         asunto: Llaves.asuntoRegistroCliente,
         contenido: `
+        <!DOCTYPE html>
+          <html lang="es">
+          <head>
+            <meta charset="utf-8">
+            <title>Bienvenido a Smart Vehicle</title>
+          </head>
 
+          <body
+            style="background: rgb(225, 242, 226);
+            background: -webkit-linear-gradient(to right, rgb(244,208,63), rgb(22, 160, 133));
+            background: linear-gradient(to right, rgb(244,208,63), rgb(22, 160, 133));
+             font-family: Nunito, sans-serif">
+            <table style="max-width: 600px; padding: 10px; margin:3rem auto; border-collapse: collapse;">
+              <tr>
+                <td style="background-color: rgb(236, 240, 241);border-radius:2rem;box-shadow: 5px 5px 25px -3px rgb(0,0,0); margin-top: 3rem">
+                  <div style="color: rgb(52,73, 83); margin: 4% 10% 2%; text-align: justify;font-family: sans-serif">
+                    <h2 style="color: rgb(23, 133, 184); margin: 3rem 0; text-align: center;">Bienvenido a Smart Vehicle</h2>
+                    <p style="margin: 2px; font-size: 15px">Hola ${persona.nombre_completo},<br><br> Nos complacemos de
+                      darte la bienvenida a nuestra plataforma de ventas de vehiculos, para nosotros es un placer que
+                      hayas decidido unirte.<br><br> Te informamos que tu usuario para ingresar es: <br>
+                      ${persona.email}<br><br>Y tu contraseña es: ${clave}.</p><br>
+                    <p>Atentamente,</p><img
+                      src="https://res.cloudinary.com/ditbeukyz/image/upload/w_600,f_auto/zxj52wa0crp8l5ilqdub.png"
+                      width="150px">
+                    <p> Smart Vehicle Team </p>
+                    <h5 style="margin-bottom: 3rem; text-align: center;">© Derechos Reservados 2021 <br>Smart Vehicle
+                      <h5>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </body>
+          </html>
         `
       }
     )
+    console.log(datos.contenido);
+
     this.servicioNotificacion.NotificarPorCorreo(datos);
     return person;
   }

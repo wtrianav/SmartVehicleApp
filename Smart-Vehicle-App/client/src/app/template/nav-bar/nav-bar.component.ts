@@ -22,15 +22,12 @@ export class NavBarComponent implements OnInit {
 
   ngOnInit(): void {
     //Validar si se inicio sesion correctamente
+    this.securityService.VerificarSesionActual();
     this.subs = this.securityService.ObtenerDatosUsuarioEnSesion().subscribe((datos: UserLoginSesionModel) => {
-      // if(datos) {
-      //   this.session = true; 
-      // } else {
-      //   this.session = false;
-      // }
-      console.log(datos.role);
+
       this.nombre = datos.nombre;
 
+      this.session = datos.identificado;
       if (datos.identificado == true) {
         switch (datos.role) {
           case "cliente":
@@ -48,7 +45,8 @@ export class NavBarComponent implements OnInit {
         this.sessionAdvisor = false;
         this.sessionAdmin = false;
       }
-      this.session = datos.identificado;
+    }, (error: any) => {
+      console.log(error);
     })
   }
 

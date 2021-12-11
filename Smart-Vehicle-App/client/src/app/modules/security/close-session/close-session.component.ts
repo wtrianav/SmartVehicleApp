@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SecurityService } from 'src/app/services/security.service';
+import { LocalStorageService } from 'src/app/services/shared/local-storage.service';
 
 @Component({
   selector: 'app-close-session',
@@ -9,11 +10,11 @@ import { SecurityService } from 'src/app/services/security.service';
 })
 export class CloseSessionComponent implements OnInit {
 
-  constructor(private securityService: SecurityService,
+  constructor(private localStorageService: LocalStorageService,
     private router: Router) { }
 
   ngOnInit(): void {
-    this.securityService.EliminarInformacionSesion();
+    this.localStorageService.EliminarDatosSesion();
     this.router.navigate(['/home']);
   }
 

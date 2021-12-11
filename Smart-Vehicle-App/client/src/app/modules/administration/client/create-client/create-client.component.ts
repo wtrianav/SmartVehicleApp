@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { GeneralData } from 'src/app/config/general-data';
 import { ClientCredentialsRegisterModel } from 'src/app/models/user-credentials';
 import { ClienteService } from 'src/app/services/cliente.service';
@@ -14,13 +16,14 @@ export class CreateClientComponent implements OnInit {
   form: FormGroup = new FormGroup({});
   siteKey: string = GeneralData.CODE_CAPTCHA;
   urlDepartamento: string = GeneralData.API_DPTO;
-  datos : any;
-  seleccionado : string | undefined;
+  datos: any;
+  seleccionado: string | undefined;
 
   constructor(
     private formBuilder: FormBuilder,
     private securityService: SecurityService,
-    private clienteService: ClienteService
+    private clienteService: ClienteService,
+    private dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {
@@ -30,20 +33,20 @@ export class CreateClientComponent implements OnInit {
 
   CreateForm() {
     this.form = this.formBuilder.group({
-      tipo_documento:["", ], 
-      numero_documento: ["", [Validators.required,Validators.minLength(7)]],
+      tipo_documento: ["",],
+      numero_documento: ["", [Validators.required, Validators.minLength(7)]],
       nombre_completo: ["", [Validators.required]],
       email: ["", [Validators.required, Validators.email, Validators.minLength(5)]],
-      departamento: ["", ],
-      ciudad: ["", ],
-      direccion: ["", ],
-      telefono: ["", [Validators.required,Validators.minLength(7)]],
+      departamento: ["",],
+      ciudad: ["",],
+      direccion: ["",],
+      telefono: ["", [Validators.required, Validators.minLength(7)]],
       recaptcha: ["", Validators.required],
     })
   }
 
   Register() {
-    if(this.form.invalid) {
+    if (this.form.invalid) {
       console.log("No valido");
     }
     else {
@@ -60,10 +63,11 @@ export class CreateClientComponent implements OnInit {
       modelo.telefono = this.GetForm.telefono.value;
       modelo.tipo_persona = "cliente";
       this.securityService.RegisterCliente(modelo).subscribe({
-        next: (data:any) => {
+        next: (data: any) => {
           data.clave = "";
+          this.dialog.open(ClientRegisteredComponent);
         },
-        error: (error:any) => {
+        error: (error: any) => {
           console.log(console.error);
         }
       })
@@ -72,10 +76,10 @@ export class CreateClientComponent implements OnInit {
 
   ConsultarDepartamentos() {
     this.clienteService.ObtenerDepartamentos().subscribe({
-      next: (data : any) => {
+      next: (data: any) => {
         this.datos = Object.values(data);
         console.log(this.datos);
-      }, error : (error : any) => {
+      }, error: (error: any) => {
         console.log(error);
       }
     })
@@ -84,4 +88,32 @@ export class CreateClientComponent implements OnInit {
   get GetForm() {
     return this.form.controls;
   }
+}
+
+@Component({
+  selector: 'app-client-registered',
+  templateUrl: './client-registered.component.html',
+})
+export class ClientRegisteredComponent implements OnInit {
+
+  segundos: any = 3;
+
+  constructor(
+    private dialog: MatDialog,
+    private router: Router,
+  ) { }
+
+  ngOnInit() {
+    //Se crea un intervalo para mostrar el tiempo de redireccion a la pagina de login.
+    const interval = setInterval(() => {
+      this.segundos--;
+      if (this.segundos === 0) {
+        this.router.navigate(['/security/login']);
+        clearInterval(interval);
+        this.dialog.closeAll();
+      }
+    }, 1000);
+  }
+
+
 }
