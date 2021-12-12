@@ -18,6 +18,7 @@ import { DeleteVehicleComponent, TableVehicleComponent } from './vehicle/table-v
 import { MaterialModule } from 'src/app/material/material.module';
 import { MatNativeDateModule } from '@angular/material/core';
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
+import { AdvisorHomeComponent } from './advisor/advisor-home/advisor-home.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
     DeleteVehicleComponent,
     AdminHomeComponent,
     AdvisorCreatedComponent,
-    ClientRegisteredComponent
+    ClientRegisteredComponent,
+    AdvisorHomeComponent
   ],
   imports: [
     CommonModule,
