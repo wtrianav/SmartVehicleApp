@@ -73,59 +73,36 @@ export class PersonaController {
       {
         destinatario: Llaves.correoContacto,
         asunto: `Nuevo comentario de ${formulariocontacto.nombre}`,
-        contenido: `<td class="esd-stripe" align="center">
-        <table class="es-content-body" style="background-color: transparent;" width="640" cellspacing="0" cellpadding="0" align="center">
-            <tbody>
-                <tr>
-                    <td class="esd-structure es-p10t es-p20r es-p20l" align="left">
-                        <table width="100%" cellspacing="0" cellpadding="0">
-                            <tbody>
-                                <tr>
-                                    <td class="esd-container-frame" width="600" valign="top" align="center">
-                                        <table width="100%" cellspacing="0" cellpadding="0">
-                                            <tbody>
-                                                <tr>
-                                                    <td class="esd-block-image es-p40t es-p25b" align="center" style="font-size:0"><a href="https://viewstripo.email" target="_blank"><img src="https://tlr.stripocdn.email/content/guids/CABINET_729b6a94015d410538fa6f6810b21b85/images/90451519716512050.png" style="display: block;" alt="Logo" title="Logo" width="50"></a></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="esd-structure es-p25t es-p20b es-p20r es-p20l" align="left">
-                        <table width="100%" cellspacing="0" cellpadding="0">
-                            <tbody>
-                                <tr>
-                                    <td class="esd-container-frame" width="600" valign="top" align="center">
-                                        <table style="background-color: #ffffff; border-radius: 3px; border-collapse: separate;" width="100%" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
-                                            <tbody>
-                                                <tr>
-                                                    <td class="esd-block-text es-p40t es-p10b es-p40r es-p40l" align="left" bgcolor="transparent">
-                                                        <p style="color: #999999;">Saludos,<br>Este correo electrónico se envia desde ${formulariocontacto.email}<br><br>Comentarios:<br><br>${formulariocontacto.comentario}</p>
-                                                        <p style="color: #999999;"><br></p>
-                                                        <p style="color: #999999;">Atentamente<br>${formulariocontacto.nombre}</p>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="esd-block-text es-p40b es-p40r es-p40l" align="left">
-                                                        <p><br></p>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-      </td>`
+        contenido: `
+        <!DOCTYPE html>
+          <html lang="es">
+          <head>
+            <meta charset="utf-8">
+            <title>Bienvenido a Smart Vehicle</title>
+          </head>
+
+          <body
+            style="background: rgb(225, 242, 226);
+            background: -webkit-linear-gradient(to right, rgb(244,208,63), rgb(22, 160, 133));
+            background: linear-gradient(to right, rgb(244,208,63), rgb(22, 160, 133));
+             font-family: Nunito, sans-serif; padding: 3rem;">
+            <table style="max-width: 600px; padding: 10px; margin:3rem auto; border-collapse: collapse;">
+              <tr>
+                <td style="background-color: rgb(236, 240, 241);border-radius:2rem;box-shadow: 5px 5px 25px -3px rgb(0,0,0); margin-top: 3rem">
+                  <div style="color: rgb(52,73, 83); margin: 4% 10% 2%; text-align: justify;font-family: sans-serif">
+                    <h2 style="color: rgb(23, 133, 184); margin: 3rem 0; text-align: center;">Bienvenido a Smart Vehicle</h2>
+                    <p style="margin: 2px; font-size: 15px">Saludos,<br>Este correo electrónico se envia desde ${formulariocontacto.email}<br><br>Comentarios:<br><br>${formulariocontacto.comentario}</p>
+                    <br>
+                    <p>Atentamente<br>${formulariocontacto.nombre}</p>
+                    <br>
+                    <h5 style="margin-bottom: 3rem; text-align: center;">© Derechos Reservados 2021 <br>Smart Vehicle
+                      <h5>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </body>
+          </html>`
       }
     )
     this.servicioNotificacion.NotificarPorCorreo(datos);
