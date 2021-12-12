@@ -1,0 +1,15 @@
+.vertical-container {
+    margin: 10rem auto;
+    width: 60%;
+}
+
+.vertical-btn {
+    margin-right: 5rem;
+    width: 90%;
+}
+
+.contenido {
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
+
