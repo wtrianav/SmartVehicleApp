@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
+import { AdvisorHomeComponent } from './advisor/advisor-home/advisor-home.component';
 import { CreateAdvisorComponent } from './advisor/create-advisor/create-advisor.component';
 import { EditAdvisorComponent } from './advisor/edit-advisor/edit-advisor.component';
 import { ListAdvisorComponent } from './advisor/list-advisor/list-advisor.component';
@@ -65,6 +66,10 @@ const routes: Routes = [
   {
     path: "admin/admin-home",
     component: AdminHomeComponent
+  },
+  {
+    path: "advisor/advisor-home",
+    component: AdvisorHomeComponent
   }
 
 

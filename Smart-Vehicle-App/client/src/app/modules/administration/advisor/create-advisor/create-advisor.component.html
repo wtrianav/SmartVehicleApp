@@ -5,32 +5,38 @@
             <div class="row">
                 <div class="col-md-0">
                     <label for="validacionDocumento" class="form-label">Número de documento</label>
-                    <input type="text" class="form-control" id="validacionDocumento" formControlName="numero_documento" required>
-                    <div class="invalid-feedback">
-                        El campo Número de Documento es obligatorio.
+                    <input type="text" class="form-control" id="validacionDocumento" formControlName="numero_documento"
+                        required>
+                    <div *ngIf="GetForm['numero_documento'].errors && (GetForm['numero_documento'].dirty || GetForm['numero_documento'].touched)"
+                        class="error-message">
+                        <p>Por favor ingrese un número de documento válido.</p>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-0">
                     <label for="validacionNombreCompleto" class="form-label">Nombre completo</label>
-                    <input type="text" class="form-control" id="validacionNombreCompleto" formControlName="nombre_completo" required>
-                    <div class="invalid-feedback">
-                        El campo Nombre completo es obligatorio.
+                    <input type="text" class="form-control" id="validacionNombreCompleto"
+                        formControlName="nombre_completo" required>
+                    <div *ngIf="GetForm['nombre_completo'].errors && (GetForm['nombre_completo'].dirty || GetForm['nombre_completo'].touched)"
+                        class="error-message">
+                        <p>Por favor ingrese su nombre completo.</p>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-0">
                     <label for="validacionEmail" class="form-label">Email</label>
-                    <a tabindex="0" class="navbar-brand" placement="right" popoverClass="popover-edit" ngbPopover="El correo será su usuario para ingresar a la plataforma."><span
-                        class="material-icons"> info </span></a>
+                    <a tabindex="0" class="navbar-brand" placement="right" popoverClass="popover-edit"
+                        ngbPopover="El correo será su usuario para ingresar a la plataforma."><span
+                            class="material-icons"> info </span></a>
                     <div class="input-group has-validation">
                         <input type="text" class="form-control" id="validacionEmail"
                             aria-describedby="inputGroupPrepend" formControlName="email" required>
-                        <div class="invalid-feedback">
-                            El campo Email es obligatorio.
-                        </div>
+                    </div>
+                    <div *ngIf="GetForm['email'].errors && (GetForm['email'].dirty || GetForm['email'].touched)"
+                        class="error-message">
+                        <p>Por favor ingrese un email válido.</p>
                     </div>
                 </div>
             </div>
@@ -38,8 +44,9 @@
                 <div class="col-md-0">
                     <label for="validacionTelefono" class="form-label">Teléfono</label>
                     <input type="text" class="form-control" id="validacionTelefono" formControlName="telefono" required>
-                    <div class="invalid-feedback">
-                        El campo Teléfono es obligatorio.
+                    <div *ngIf="GetForm['telefono'].errors && (GetForm['telefono'].dirty || GetForm['telefono'].touched)"
+                        class="error-message">
+                        <p>Por favor ingrese un número telefónico.</p>
                     </div>
                 </div>
             </div>
@@ -53,6 +60,12 @@
                 <div class="d-grid gap-2">
                     <button class="btn btn-primary" (click)="RegisterAdvisor()" [disabled]="!form.valid"
                         type="button">Crear Asesor<i class="material-icons right">send</i></button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="d-grid gap-2">
+                    <button routerLink="/administration/advisor/list-advisor" class="btn btn-light" type="button">Cancelar<i
+                            class="material-icons right">cancel_schedule_send</i></button>
                 </div>
             </div>
         </form>

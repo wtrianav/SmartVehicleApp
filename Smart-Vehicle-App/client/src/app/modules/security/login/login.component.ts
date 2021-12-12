@@ -64,6 +64,8 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['/administration/admin/admin-home']);
           } else if (data.role === "cliente") {
             this.router.navigate(['/home']);
+          } else if (data.role === "asesor") {
+            this.router.navigate(['/administration/advisor/advisor-home'])
           }
           // console.log(data.token);
         },

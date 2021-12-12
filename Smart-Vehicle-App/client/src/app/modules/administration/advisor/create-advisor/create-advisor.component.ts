@@ -26,7 +26,7 @@ export class CreateAdvisorComponent implements OnInit {
 
   CreateForm() {
     this.form = this.formBuilder.group({
-      numero_documento: ['', [Validators.required, Validators.minLength(4)]],
+      numero_documento: ['', [Validators.required, Validators.minLength(7)]],
       nombre_completo: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
       telefono: ['', [Validators.required, Validators.minLength(10)]],

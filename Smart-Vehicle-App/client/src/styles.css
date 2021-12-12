@@ -73,7 +73,7 @@ form div .error-message {
 }
 
 form .btn,
-ul .btn {
+ul .btn{
   font-size: var(--tam-fuente-button);
   font-weight: 800;
   text-transform: uppercase;

@@ -1,1 +1,93 @@
-<p>edit-client works!</p>
+<div class="vertical-container">
+    <h2 class="fw-bold">
+        Gestiona tu cuenta
+    </h2>
+    <p class="lead">
+        Cambia la configuración de tu cuenta.
+    </p>
+    <hr>
+    <br>
+    <div class="d-flex contenido">
+        <ul ngbNav #nav="ngbNav" class="nav-pills" orientation="vertical">
+            <li ngbNavItem="perfil">
+                <a class="vertical-btn" ngbNavLink>Perfil</a>
+                <ng-template ngbNavContent>
+                    <form class="row">
+                        <div class="mb-3 col-md-0">
+                          <label for="exampleInputEmail1" class="form-label">Usuario</label>
+                          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                          <div id="emailHelp" class="form-text"></div>
+                        </div>
+                        <div class="mb-3 col-md-0">
+                          <label for="exampleInputPassword1" class="form-label">Número de teléfono</label>
+                          <input type="number" class="form-control" id="exampleInputPassword1">
+                        </div>
+                        <div class="mb-3 col-md-0">
+                            <button type="submit" class="btn btn-primary">Actualizar</button>
+                        </div>
+                      </form>
+                </ng-template>
+            </li>
+            <li ngbNavItem="middle">
+                    <a class="vertical-btn" ngbNavLink>Email</a>
+                    <ng-template ngbNavContent>
+                        <form class="row">
+                            <div class="mb-3 col-md-0">
+                              <label for="exampleInputEmail1" class="form-label">Email</label>
+                              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                              <div id="emailHelp" class="form-text"></div>
+                            </div>
+                            <div class="mb-3 col-md-0">
+                              <label for="newEmail" class="form-label">Nuevo Email</label>
+                              <input type="email" class="form-control" id="newEmail">
+                            </div>
+                            <div class="mb-3 col-md-0">
+                                <button type="submit" class="btn btn-primary">Actualizar</button>
+                            </div>
+                          </form>
+                    </ng-template>
+                </li>
+            
+            <li ngbNavItem="bottom">
+                <a class="vertical-btn" ngbNavLink>Contraseña</a>
+                <ng-template ngbNavContent>
+                    <form class="row">
+                        <div class="mb-3 col-md-0">
+                            <label for="contraseñaActual" class="form-label">Contraseña Actual</label>
+                            <input type="password" class="form-control" id="contraseñaActual">
+                          </div>
+                        <div class="mb-3 col-md-0">
+                          <label for="contraseñaNueva" class="form-label">Contraseña Nueva</label>
+                          <input type="password" class="form-control" id="contraseñaNueva">
+                        </div>
+                        <div class="mb-3 col-md-0">
+                            <label for="confirmarContraseña" class="form-label">Confirmar contraseña</label>
+                            <input type="password" class="form-control" id="confirmarContraseña">
+                          </div>
+                        <div class="mb-3 col-md-0">
+                            <button type="submit" class="btn btn-primary">Actualizar</button>
+                        </div>
+                      </form>
+                </ng-template>
+            </li>
+            <li ngbNavItem="">
+                <a class="vertical-btn" ngbNavLink>Datos Personales</a>
+                <ng-template ngbNavContent>
+                    <p>
+                        Su cuenta contiene datos personales que nos ha proporcionado. Esta página le
+                        permite elimiar esos datos.
+                    </p>
+                    <p class="fw-bold">
+                        La eliminación de estos datos, eliminará permanentamente su cuenta y no se podrá
+                        recuperar.
+                    </p>
+                    <div class="mb-3 col-md-0">
+                        <button type="submit" class="btn btn-primary">Eliminar</button>
+                    </div>
+                </ng-template>
+            </li>
+        </ul>
+        <div [ngbNavOutlet]="nav" class="ml-4"></div>
+    </div>
+
+</div>
