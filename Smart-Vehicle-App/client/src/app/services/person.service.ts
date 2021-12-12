@@ -45,6 +45,10 @@ export class PersonService {
     return this.http.get(`${this.url}/personas/${id}`)
   }
 
+  BuscarAsesor() : Observable<any> {
+    return this.http.get<any>(`${this.url}/asesores`);
+  }
+
   AlmacenarDatosAsesor(asesor: AdvisorCredentialsRegisterModel) {
     let stringAsesor = JSON.stringify(asesor);
     localStorage.setItem("DatosAsesor", stringAsesor);

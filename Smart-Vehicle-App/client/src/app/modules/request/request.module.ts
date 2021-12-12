@@ -8,13 +8,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MaterialModule } from 'src/app/material/material.module';
 import { MatNativeDateModule } from '@angular/material/core';
+import { AdvisorListRequestComponent } from './advisor-list-request/advisor-list-request.component';
 
 
 
 @NgModule({
   declarations: [
     ClientRequestComponent,
-    ListRequestComponent
+    ListRequestComponent,
+    AdvisorListRequestComponent
   ],
   imports: [
     CommonModule,

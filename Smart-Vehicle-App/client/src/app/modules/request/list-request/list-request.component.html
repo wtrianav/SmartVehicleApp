@@ -4,10 +4,10 @@
     <div class="d-flex justify-content-between">
       <h2>Tus Solicitudes</h2>
       <button routerLink="/administration/vehicle/list-vehicle" mat-mini-fab color="accent"
-          aria-label="Escoger Vehiculo" ngbTooltip="Escoger Vehiculo" placement="left">
-          <mat-icon>add_shopping_cart</mat-icon>
+        aria-label="Escoger Vehiculo" ngbTooltip="Escoger Vehiculo" placement="left">
+        <mat-icon>add_shopping_cart</mat-icon>
       </button>
-  </div>
+    </div>
     <mat-form-field appearance="standard">
       <mat-label>Filtrar solicitud</mat-label>
       <input matInput (keyup)="applyFilter($event)" placeholder="Ejemplo. Mazda" #input>
@@ -33,9 +33,9 @@
 
         <mat-menu #menu="matMenu" class="myMenu">
           <button mat-menu-item>
-            <span class="material-icons">delete</span>  Eliminar</button>
+            <span class="material-icons">delete</span> Eliminar</button>
           <button mat-menu-item>
-            <span class="material-icons">mode</span>  Editar</button>
+            <span class="material-icons">mode</span> Editar</button>
         </mat-menu>
 
         <tr class="mat-row" *matNoDataRow>

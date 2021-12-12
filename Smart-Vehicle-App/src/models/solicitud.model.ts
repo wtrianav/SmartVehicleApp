@@ -16,6 +16,12 @@ export class Solicitud extends Entity {
     type: 'string',
     required: true,
   })
+  solicitante: string;
+
+  @property({
+    type: 'string',
+    required: true,
+  })
   marca: string;
 
   @property({
@@ -78,6 +84,11 @@ export class Solicitud extends Entity {
     type: 'string',
   })
   notas_asesor?: string;
+
+  @property({
+    type: 'string',
+  })
+  asesorId?: string;
 
   @belongsTo(() => Vehiculo)
   vehiculoId: string;

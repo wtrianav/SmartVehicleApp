@@ -345,6 +345,40 @@ export class PersonaController {
     return this.personaRepository.findById(id, filter);
   }
 
+  //Metodo para notificar por correo al asesor que le fue asignada una solicitud.
+  @get('/asesores')
+  @response(200, {
+    description: 'Asesor model instance',
+    content: {
+      'application/json': {
+        schema: getModelSchemaRef(Persona, {includeRelations: true}),
+      },
+    },
+  })
+  async asesor(
+    @param.filter(Persona) filter?: Filter<Persona>,
+  ): Promise<Persona> {
+
+    let data = await this.personaRepository.find(filter);
+    let asesores = data.filter((asesor : Persona) => {
+      return asesor.tipo_persona === 'asesor';
+    })
+
+    let random = Math.floor(Math.random()*asesores.length);
+    let asesor = asesores[random];
+
+    // let datos = new NotificacionCorreo(
+    //   {
+    //     destinatario: asesor.email,
+    //     asunto: Llaves.asuntoRecuperarContraseña,
+    //     contenido: `Hola ${asesor.nombre_completo}, se te ha asignado una solicitud en la plataforma, accede a esta para visualizarla`
+    //   }
+    // )
+    // this.servicioNotificacion.NotificarPorCorreo(datos);
+
+    return asesor;
+  }
+
   @patch('/personas/{id}')
   @response(204, {
     description: 'Persona PATCH success',

@@ -24,5 +24,9 @@ export class RequestService {
   SendRequest(solicitud: RequestModelClass): Observable<RequestModelClass> {
     return this.http.post<RequestModelClass>(`${this.url}/solicitudes`, solicitud);
   }
+
+  ModifyRequest(solicitud: RequestModelClass): Observable<any>{
+    return this.http.put<RequestModelClass>(`${this.url}/solicitudes/${solicitud.id}`, solicitud);
+  }
 }
 

@@ -29,7 +29,7 @@
 
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row [matMenuTriggerFor]="menu" #menuTrigger (click)="clickedRows.add(row)"
-            *matRowDef="let row; columns: displayedColumns;"></tr>
+          (menuClosed)="clickedRows.clear()" *matRowDef="let row; columns: displayedColumns;"></tr>
 
           <mat-menu #menu="matMenu" class="myMenu">
             <div *ngFor="let clickedRow of clickedRows">
