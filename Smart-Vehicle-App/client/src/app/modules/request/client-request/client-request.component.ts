@@ -11,6 +11,7 @@ import { RequestService } from 'src/app/services/request.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import * as moment from 'moment';
+import { PersonService } from 'src/app/services/person.service';
 
 
 @Component({
@@ -30,6 +31,7 @@ export class ClientRequestComponent implements OnInit {
   hoveredDate: NgbDate | null = null;
   fromDate: NgbDate | null;
   toDate: NgbDate | null;
+  asesorId?: string;
 
   range = new FormGroup({
     fecha_salida: new FormControl(),
@@ -47,6 +49,7 @@ export class ClientRequestComponent implements OnInit {
     private vehicleService: VehicleService,
     private securityService: SecurityService,
     private requestService: RequestService,
+    private personService: PersonService,
     private formBuilder: FormBuilder,
     private calendar: NgbCalendar,
     public formatter: NgbDateParserFormatter,
@@ -65,9 +68,15 @@ export class ClientRequestComponent implements OnInit {
 
       this.CreateForm(this.vehiculo);
     });
+    //Seo obtiene informacion del usuario desde el localstorage para hacer la solicitud
     this.suscripcion = this.securityService.ObtenerDatosUsuarioEnSesion().subscribe((datos: any) => {
       this.usuario = datos;
       console.log(this.usuario);
+    })
+    //Se busca el asesor para asociarlo a la solicitud, se obtiene de manera aleatoria consultando el backend
+    this.personService.BuscarAsesor().subscribe((data : any) => {
+      this.asesorId = data.id;
+      console.log(data);
     })
     
 
@@ -106,13 +115,16 @@ export class ClientRequestComponent implements OnInit {
     if (this.form.invalid) {
       console.log("No valido");
     } else {
+      
       let modelo = new RequestModelClass();
+      modelo.solicitante = this.usuario.nombre;
       modelo.personaId = this.usuario.id;
       modelo.vehiculoId = this.vehiculo.id;
       modelo.marca = this.vehiculo.marca;
       modelo.modelo = this.vehiculo.modelo;
       
       modelo.tipo_solicitud = this.vehiculo.solicitud;
+      //El estado de la solicitud siempre queda pendiente hasta que un asesor la revise
       modelo.estado = "Pendiente";
       if (this.vehiculo.solicitud === 'Alquiler') {
         modelo.fecha_retorno = moment(this.form.controls['fecha_retorno'].value).format("DD/MM/YYYY");
@@ -130,6 +142,10 @@ export class ClientRequestComponent implements OnInit {
       modelo.departamento = this.form.controls['departamento'].value;
       modelo.ciudad = this.form.controls['ciudad'].value;
       modelo.direccion = this.form.controls['direccion'].value;
+
+      
+
+      modelo.asesorId = this.asesorId;
       console.log(modelo);
       
       this.requestService.SendRequest(modelo).subscribe(() => {

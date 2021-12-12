@@ -4,6 +4,7 @@ import { UserCredentialsModel } from 'src/app/models/user-credentials';
 import { MD5 } from 'crypto-js';
 import { SecurityService } from 'src/app/services/security.service';
 import { Router } from '@angular/router';
+import { LocalStorageService } from 'src/app/services/shared/local-storage.service';
 
 export let Token: any;
 
@@ -22,6 +23,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private securityService: SecurityService,
+    private localStorage: LocalStorageService,
     private router: Router,
   ) {
     this.scooterimg = "assets/images/background1.jpg";
@@ -53,7 +55,10 @@ export class LoginComponent implements OnInit {
           console.log(data);
           Token = data.token;
           //Se hace uso del servicio para almacenar la informacion de sesion y asi lograr entra a la plataforma.
-          this.securityService.AlmacenarSesion(data);
+          this.localStorage.GuardarDatosLocalStorage(data);
+          data.identificado = true;
+          this.securityService.RefrescarDatosSesion(data);
+          //this.securityService.AlmacenarSesion(data);
           //Se navega hacia el acceso que se requiera segun el usuario.
           if (data.role === "administrador") {
             this.router.navigate(['/administration/admin/admin-home']);

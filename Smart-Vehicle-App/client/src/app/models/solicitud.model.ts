@@ -18,6 +18,7 @@ export interface RequestModel {
 }
 
 export class RequestModelClass {
+    solicitante?: string;
     marca?: string;
     modelo?: string;
     tipo_solicitud?: string;

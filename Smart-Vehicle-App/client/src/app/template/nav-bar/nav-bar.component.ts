@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { UserLoginSesionModel } from 'src/app/models/user-credentials';
 import { SecurityService } from 'src/app/services/security.service';
@@ -18,19 +19,19 @@ export class NavBarComponent implements OnInit {
 
   subs: Subscription = new Subscription();
 
-  constructor(private securityService: SecurityService) { }
+  constructor(
+    private securityService: SecurityService,
+    private router: Router,
+  ) { }
 
   ngOnInit(): void {
     //Validar si se inicio sesion correctamente
+    this.securityService.VerificarSesionActual();
     this.subs = this.securityService.ObtenerDatosUsuarioEnSesion().subscribe((datos: UserLoginSesionModel) => {
-      // if(datos) {
-      //   this.session = true; 
-      // } else {
-      //   this.session = false;
-      // }
-      console.log(datos.role);
+
       this.nombre = datos.nombre;
 
+      this.session = datos.identificado;
       if (datos.identificado == true) {
         switch (datos.role) {
           case "cliente":
@@ -39,7 +40,7 @@ export class NavBarComponent implements OnInit {
           case "asesor":
             this.sessionAdvisor = true;
             break;
-          case "admin":
+          case "administrador":
             this.sessionAdmin = true;
             break;
         }
@@ -48,8 +49,25 @@ export class NavBarComponent implements OnInit {
         this.sessionAdvisor = false;
         this.sessionAdmin = false;
       }
-      this.session = datos.identificado;
+    }, (error: any) => {
+      console.log(error);
     })
+  }
+
+  CerrarSesion() {
+    this.session = false;
+    this.sessionClient = false;
+    this.sessionAdvisor = false;
+    this.sessionAdmin = false;
+    this.router.navigate(["/security/close-session"]);
+  }
+
+  RedirigirA() {
+    if (this.sessionAdmin) {
+      this.router.navigate(["/administration/admin/admin-home"]);
+    } else if (this.sessionClient) {
+      this.router.navigate(["/administration/client/edit-client"]);
+    }
   }
 
 }
