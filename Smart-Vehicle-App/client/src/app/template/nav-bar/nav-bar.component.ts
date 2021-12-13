@@ -67,6 +67,8 @@ export class NavBarComponent implements OnInit {
       this.router.navigate(["/administration/admin/admin-home"]);
     } else if (this.sessionClient) {
       this.router.navigate(["/administration/client/edit-client"]);
+    } else if (this.sessionAdvisor) {
+      this.router.navigate(["/administration/advisor/advisor-home"]);
     }
   }
 

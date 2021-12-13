@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { GeneralData } from 'src/app/config/general-data';
 import { AdvisorCredentialsRegisterModel } from 'src/app/models/user-credentials';
+import { AdvisorService } from 'src/app/services/advisor.service';
 import { SecurityService } from 'src/app/services/security.service';
 
 @Component({
@@ -16,7 +17,7 @@ export class CreateAdvisorComponent implements OnInit {
   siteKey: string = GeneralData.CODE_CAPTCHA;
 
   constructor(private formBuilder: FormBuilder, 
-    private securityService: SecurityService,
+    private advisorService: AdvisorService,
     private dialog: MatDialog,
     ) {}
 
@@ -39,7 +40,6 @@ export class CreateAdvisorComponent implements OnInit {
   }
 
   RegisterAdvisor() {
-    console.log("Está entrando");
     if (this.form.invalid) {
       console.log('Formulario no válido');
     } else {
@@ -49,7 +49,7 @@ export class CreateAdvisorComponent implements OnInit {
       modelo.email = this.GetForm.email.value;
       modelo.telefono = this.GetForm.telefono.value;
       modelo.tipo_persona = 'asesor';
-      this.securityService.RegisterAsesor(modelo).subscribe({
+      this.advisorService.CrearAsesor(modelo).subscribe({
         next: (data: any) => {
           this.AbrirDialogo();
         },

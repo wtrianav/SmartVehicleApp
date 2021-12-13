@@ -21,7 +21,7 @@ export class CreateClientComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private securityService: SecurityService,
+    private clientService: ClienteService,
     private clienteService: ClienteService,
     private dialog: MatDialog,
   ) { }
@@ -54,7 +54,7 @@ export class CreateClientComponent implements OnInit {
       let modelo = new ClientCredentialsRegisterModel();
       console.log(modelo);
       modelo.tipo_documento = this.GetForm.tipo_documento.value;
-      modelo.numero_documento = this.GetForm.numero_documento.value;
+      modelo.nro_documento = this.GetForm.numero_documento.value;
       modelo.nombre_completo = this.GetForm.nombre_completo.value;
       modelo.email = this.GetForm.email.value;
       modelo.departamento = this.GetForm.departamento.value;
@@ -62,7 +62,7 @@ export class CreateClientComponent implements OnInit {
       modelo.direccion = this.GetForm.direccion.value;
       modelo.telefono = this.GetForm.telefono.value;
       modelo.tipo_persona = "cliente";
-      this.securityService.RegisterCliente(modelo).subscribe({
+      this.clientService.CrearCliente(modelo).subscribe({
         next: (data: any) => {
           data.clave = "";
           this.dialog.open(ClientRegisteredComponent);

@@ -11,7 +11,7 @@ import { RequestService } from 'src/app/services/request.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import * as moment from 'moment';
-import { PersonService } from 'src/app/services/person.service';
+import { AdvisorService } from 'src/app/services/advisor.service';
 
 
 @Component({
@@ -49,7 +49,7 @@ export class ClientRequestComponent implements OnInit {
     private vehicleService: VehicleService,
     private securityService: SecurityService,
     private requestService: RequestService,
-    private personService: PersonService,
+    private advisorService: AdvisorService,
     private formBuilder: FormBuilder,
     private calendar: NgbCalendar,
     public formatter: NgbDateParserFormatter,
@@ -74,7 +74,7 @@ export class ClientRequestComponent implements OnInit {
       console.log(this.usuario);
     })
     //Se busca el asesor para asociarlo a la solicitud, se obtiene de manera aleatoria consultando el backend
-    this.personService.BuscarAsesor().subscribe((data : any) => {
+    this.advisorService.BuscarAsesor().subscribe((data : any) => {
       this.asesorId = data.id;
       console.log(data);
     })
@@ -168,59 +168,5 @@ export class ClientRequestComponent implements OnInit {
     console.log(moment(this.form.controls['fecha_salida'].value).format("DD/MM/YYYY"));
     this.form.controls['valor'].setValue(`$${this.valor_alquiler}`);
   }
-
-  //El selector de rango se activa cuando recibe la instruccion de que lo que se va a realizar es un alquiler
-  onDateSelection(date: NgbDate, datepicker: any) {
-    if (!this.fromDate && !this.toDate) {
-      this.fromDate = date;
-      datepicker.close();
-    } else if (this.fromDate && !this.toDate && date && date.after(this.fromDate)) {
-      this.toDate = date;
-      datepicker.close();
-      //Al seleccionar el rango se procede a calcular los dias elegidos
-      this.days = this.CalcularDias();
-      //El numero de dias se multiplica por le valor del alquiler predefinido del vehiculo
-      this.valor_alquiler = this.valor * this.days;
-      //Se setea el valor en el correspondiente input del formulario
-      this.form.controls['valor'].setValue(`$${this.valor_alquiler}`);
-    } else {
-      this.toDate = null;
-      this.fromDate = date;
-
-    }
-  }
-
-  //Metodo para calcular la cantidad de dias elegida en el rango.
-  CalcularDias(): number {
-    const fecha_salida: Date = this.createDateFromNgbDate(this.fromDate);
-    const fecha_retorno: Date = this.createDateFromNgbDate(this.toDate);
-    const dias = Math.floor(Math.abs(<any>fecha_salida - <any>fecha_retorno) / (1000 * 60 * 60 * 24));
-    return dias;
-  }
-
-  //Metodo para parsear un ngbdate a un date
-  createDateFromNgbDate(ngbDate: NgbDate | any): Date {
-    const date: Date = new Date(Date.UTC(ngbDate.year, ngbDate.month - 1, ngbDate.day));
-    return date;
-  }
-
-  //Bloque de metodos que necesita el datepicker del ng-bootstrap para funcionar
-  isHovered(date: NgbDate) {
-    return this.fromDate && !this.toDate && this.hoveredDate && date.after(this.fromDate) && date.before(this.hoveredDate);
-  }
-
-  isInside(date: NgbDate) {
-    return this.toDate && date.after(this.fromDate) && date.before(this.toDate);
-  }
-
-  isRange(date: NgbDate) {
-    return date.equals(this.fromDate) || (this.toDate && date.equals(this.toDate)) || this.isInside(date) || this.isHovered(date);
-  }
-
-  validateInput(currentValue: NgbDate | null, input: string): NgbDate | null {
-    const parsed = this.formatter.parse(input);
-    return parsed && this.calendar.isValid(NgbDate.from(parsed)) ? NgbDate.from(parsed) : currentValue;
-  }
-
 
 }

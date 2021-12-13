@@ -21,10 +21,6 @@ export class SecurityService {
     return this.http.post(`${this.url}/login`, {
       usuario: modelo.username,
       clave: modelo.password
-    }, {
-      headers: new HttpHeaders({
-
-      })
     });
   }
 
@@ -32,30 +28,6 @@ export class SecurityService {
     return this.http.post(`${this.url}/recuperar-clave`, {
       email: modelo.username
     });
-  }
-
-  RegisterCliente(modelo: ClientCredentialsRegisterModel): Observable<any> {
-    return this.http.post(`${this.url}/personas`, {
-      tipo_documento: modelo.tipo_documento,
-      nro_documento: modelo.numero_documento,
-      nombre_completo: modelo.nombre_completo,
-      departamento: modelo.departamento,
-      ciudad: modelo.ciudad,
-      direccion: modelo.direccion,
-      telefono: modelo.telefono,
-      email: modelo.email,
-      tipo_persona: modelo.tipo_persona,
-    })
-  }
-
-  RegisterAsesor(modelo: AdvisorCredentialsRegisterModel): Observable<any> {
-    return this.http.post(`${this.url}/personas`, {
-      nro_documento: modelo.nro_documento,
-      nombre_completo: modelo.nombre_completo,
-      telefono: modelo.telefono,
-      email: modelo.email,
-      tipo_persona: modelo.tipo_persona,
-    })
   }
 
   VerificarSesionActual() {

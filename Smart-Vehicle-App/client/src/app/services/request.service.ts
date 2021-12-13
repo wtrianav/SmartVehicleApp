@@ -17,6 +17,7 @@ export class RequestService {
   ) { 
     this.token = this.securityService.ObtenerToken();
   }
+  
   ListRequest() {    
     return this.http.get(`${this.url}/solicitudes`);
   }

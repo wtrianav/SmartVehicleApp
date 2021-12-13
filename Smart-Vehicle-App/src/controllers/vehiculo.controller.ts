@@ -78,6 +78,7 @@ export class VehiculoController {
     return this.vehiculoRepository.find(filter);
   }
 
+  @authenticate('admin-advisor')
   @patch('/vehiculos')
   @response(200, {
     description: 'Vehiculo PATCH success count',
@@ -131,6 +132,7 @@ export class VehiculoController {
     await this.vehiculoRepository.updateById(id, vehiculo);
   }
 
+  @authenticate('admin-advisor')
   @put('/vehiculos/{id}')
   @response(204, {
     description: 'Vehiculo PUT success',
@@ -142,6 +144,7 @@ export class VehiculoController {
     await this.vehiculoRepository.replaceById(id, vehiculo);
   }
 
+  @authenticate('admin-advisor')
   @del('/vehiculos/{id}')
   @response(204, {
     description: 'Vehiculo DELETE success',
