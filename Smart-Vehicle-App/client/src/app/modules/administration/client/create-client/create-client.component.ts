@@ -64,8 +64,11 @@ export class CreateClientComponent implements OnInit {
       modelo.tipo_persona = "cliente";
       this.clientService.CrearCliente(modelo).subscribe({
         next: (data: any) => {
-          data.clave = "";
+          if(data) { 
           this.dialog.open(ClientRegisteredComponent);
+          } else {
+            this.dialog.open(ClientNoRegisteredComponent);
+          }
         },
         error: (error: any) => {
           console.log(console.error);
@@ -95,6 +98,32 @@ export class CreateClientComponent implements OnInit {
   templateUrl: './client-registered.component.html',
 })
 export class ClientRegisteredComponent implements OnInit {
+
+  segundos: any = 3;
+
+  constructor(
+    private dialog: MatDialog,
+    private router: Router,
+  ) { }
+
+  ngOnInit() {
+    //Se crea un intervalo para mostrar el tiempo de redireccion a la pagina de login.
+    const interval = setInterval(() => {
+      this.segundos--;
+      if (this.segundos === 0) {
+        this.router.navigate(['/security/login']);
+        clearInterval(interval);
+        this.dialog.closeAll();
+      }
+    }, 1000);
+  }
+}
+
+@Component({
+  selector: 'app-client-no-registered',
+  templateUrl: './client-no-registered.component.html',
+})
+export class ClientNoRegisteredComponent implements OnInit {
 
   segundos: any = 3;
 

@@ -182,7 +182,15 @@ export class PersonaController {
       },
     })
     persona: Persona,
-  ): Promise<Persona> {
+  ): Promise<Boolean> {
+
+    let cliente = await this.personaRepository.findOne({
+      where: {email: persona.email},
+    });
+
+    if(cliente) {
+      return false;
+    } else {
     //Se hace uso del servicio de autenticacion
     let clave = this.servicioAutenticacion.GenerarClaveAleatoria();
     let clave_encriptada = this.servicioAutenticacion.EncriptarClave(clave);
@@ -234,7 +242,8 @@ export class PersonaController {
     )
     //Se hace uso del servicio de notificacion para mandar correos electronicos automaticos
     this.servicioNotificacion.NotificarPorCorreo(datos);
-    return person;
+    return true;
+    }
   }
 
   /*

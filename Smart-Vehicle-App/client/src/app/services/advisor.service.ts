@@ -42,7 +42,7 @@ export class AdvisorService {
   }
 
   ObtenerAsesorPorId(id: string): Observable<any>{
-    return this.http.get(`${this.url}/personas/${id}`)
+    return this.http.get(`${this.url}/asesores/${id}`)
   }
 
   //Devuelve un asesor
