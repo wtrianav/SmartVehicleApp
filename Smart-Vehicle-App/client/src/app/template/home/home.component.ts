@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { UserFormModel } from 'src/app/models/form-user.model';
 import { NotificationService } from 'src/app/services/notification.service';
 
@@ -14,7 +15,10 @@ export class HomeComponent implements OnInit {
   scooterimg: string;
   form: FormGroup = new FormGroup({});
 
-  constructor(private formBuilder: FormBuilder, private notificationService: NotificationService,) {
+  constructor(private formBuilder: FormBuilder,
+    private notificationService: NotificationService,
+    private dialog: MatDialog, 
+    ) {
     this.carimg = 'assets/images/car.jpg';
     this.scooterimg = 'assets/images/scooter.jpg';
     this.motorcycleimg = 'assets/images/motorcycle.jpg';
@@ -35,6 +39,10 @@ export class HomeComponent implements OnInit {
     })
   }
 
+  AbrirDialogo (){
+    this.dialog.open(MailSentComponent);
+  }
+
   EnviarComentario () {
     if(this.form.invalid) {
       console.log("No valido");
@@ -44,10 +52,24 @@ export class HomeComponent implements OnInit {
       modelo.nombre = this.GetForm.nombre_completo.value;
       modelo.email = this.GetForm.email.value;
       modelo.comentario = this.GetForm.comentario.value;
-      this.notificationService.SendEmail(modelo).subscribe((data: any) => {console.log(data);});
+      this.notificationService.SendEmail(modelo).subscribe((data: any) => {
+        this.AbrirDialogo ();
+      });
     }
   }
   get GetForm() {
     return this.form.controls;
   }
 }
+
+@Component({
+  selector: 'app-mail-sent',
+  templateUrl: './mail-sent.component.html',
+})
+
+export class MailSentComponent{
+  RefrescarFormulario(){
+    window.location.reload();
+  }
+}
+

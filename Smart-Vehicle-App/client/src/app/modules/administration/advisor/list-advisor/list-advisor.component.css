@@ -59,7 +59,7 @@ mat-footer-cell {
 
 @media (max-width: 620px) {
   .mobile-label {
-    width: 130px;
+    width: 80px;
     display: inline-block;
     font-weight: bold;
   }

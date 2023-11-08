@@ -9,6 +9,13 @@
   --radio-botones: 2rem;
   --lila-boton-hover: rgb(183, 130, 231);
   font-family: var(--fuente-general);
+  --text-light: rgba(255, 255, 255, 0.6);
+  --text-lighter: rgba(255, 255, 255, 0.9);
+  --spacing-s: 8px;
+  --spacing-m: 16px;
+  --spacing-l: 24px;
+  --spacing-xl: 32px;
+  --spacing-xxl: 64px;
 }
 
 /* Codigo para el navbar */
@@ -66,7 +73,7 @@ form div .error-message {
 }
 
 form .btn,
-ul .btn {
+ul .btn{
   font-size: var(--tam-fuente-button);
   font-weight: 800;
   text-transform: uppercase;
@@ -132,6 +139,10 @@ footer.footer {
   width: 100%;
   padding-top: 1rem;
   padding-bottom: 1rem;
+}
+
+.material-icons {
+  margin-right: 0 !important;
 }
 
 @media (max-width: 321px) {

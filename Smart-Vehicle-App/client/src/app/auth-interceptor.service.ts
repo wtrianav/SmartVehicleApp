@@ -30,7 +30,7 @@ export class AuthInterceptorService implements HttpInterceptor{
       catchError((err: HttpErrorResponse) => {
         if(err.status === 401) {
           console.log("Ha ocurrido un error, usted no esta autorizado para ingresar a esta pagina.")
-          this.router.navigateByUrl('/security/login');
+          this.router.navigateByUrl('/home');
         }
         return throwError(err);
       })

@@ -4,6 +4,7 @@ export class UserCredentialsModel {
 }
 
 export class UserLoginSesionModel {
+  id?: string;
   email?: string;
   nombre?: string;
   role?: string;
@@ -14,7 +15,7 @@ export class UserLoginSesionModel {
 export class ClientCredentialsRegisterModel {
   id?: string;
   tipo_documento?: string;
-  numero_documento?: string;
+  nro_documento?: string;
   nombre_completo?: string;
   email?: string;
   departamento?: string;

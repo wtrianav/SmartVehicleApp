@@ -14,88 +14,35 @@ export class SecurityService {
   datosUsuarioSesion = new BehaviorSubject<UserLoginSesionModel>(new UserLoginSesionModel());
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
   ) { }
 
-  Login(modelo: UserCredentialsModel) : Observable<any> {
+  Login(modelo: UserCredentialsModel): Observable<any> {
     return this.http.post(`${this.url}/login`, {
       usuario: modelo.username,
       clave: modelo.password
-    }, {
-      headers: new HttpHeaders({
-
-      })
     });
   }
 
-  RecoverPassword(modelo : UserCredentialsModel) : Observable<any> {
+  RecoverPassword(modelo: UserCredentialsModel): Observable<any> {
     return this.http.post(`${this.url}/recuperar-clave`, {
       email: modelo.username
     });
   }
 
-  RegisterCliente(modelo: ClientCredentialsRegisterModel) : Observable<any> {
-    return this.http.post(`${this.url}/personas`, {
-      tipo_documento: modelo.tipo_documento,
-      nro_documento: modelo.numero_documento,
-      nombre_completo: modelo.nombre_completo,
-      departamento: modelo.departamento,
-      ciudad: modelo.ciudad,
-      direccion: modelo.direccion,
-      telefono: modelo.telefono,
-      email: modelo.email,
-      tipo_persona: modelo.tipo_persona,
-    })
-  }
-
-  RegisterAsesor(modelo: AdvisorCredentialsRegisterModel) : Observable<any> {
-    return this.http.post(`${this.url}/personas`, {
-      nro_documento: modelo.nro_documento,
-      nombre_completo: modelo.nombre_completo,
-      telefono: modelo.telefono,
-      email: modelo.email,
-      tipo_persona: modelo.tipo_persona,
-    })
-  }
-
-  AlmacenarSesion(datos: UserLoginSesionModel) {
-    datos.identificado = true;
-    let stringDatos = JSON.stringify(datos);
-    localStorage.setItem('DatosSesion:', stringDatos);
-    this.RefrescarDatosSesion(datos);
-  }
-
-  ObtenerInformacionSesion() {
-    let datosString = localStorage.getItem("DatosSesion");
-    if(datosString) {
-      let datos = JSON.parse(datosString);
-      return datos;
-    } else {
-      return null;
-    }
-  }
-
-  EliminarInformacionSesion() {
-    localStorage.removeItem("DatosSesion");
-    //Se borran los datos para cerrar sesion
-    this.RefrescarDatosSesion(new UserLoginSesionModel());
-  }
-
-  SesionIniciada() {
-    let datosString = localStorage.getItem("DatosSesion");
-    return datosString;
-  }
-
   VerificarSesionActual() {
-    let datos = this.ObtenerDatosUsuarioEnSesion();
-    if(datos) {
-      this.RefrescarDatosSesion(datos);
+    let datos = localStorage.getItem("Datos-Sesion");
+    if (datos) {
+      let data = JSON.parse(datos);
+      this.RefrescarDatosSesion(data);
+      return true;
+    } else {
+      return false;
     }
   }
 
   RefrescarDatosSesion(datos: UserLoginSesionModel) {
     this.datosUsuarioSesion.next(datos);
-
   }
 
   ObtenerDatosUsuarioEnSesion(): any {

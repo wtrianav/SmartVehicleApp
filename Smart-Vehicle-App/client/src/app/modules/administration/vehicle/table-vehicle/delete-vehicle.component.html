@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>Eliminar Vehiculo</h1>
+<mat-dialog-content>
+    <p>¿Desea eliminar el vehiculo seleccionado?</p>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+    <button mat-button mat-dialog-close>Cancelar</button>
+    <button mat-button color="warn" [mat-dialog-close]="true" (click)="EliminarVehiculo()" cdkFocusInitial>Eliminar</button>
+</mat-dialog-actions>

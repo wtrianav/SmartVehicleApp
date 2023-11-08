@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { GeneralData } from 'src/app/config/general-data';
 import { AdvisorCredentialsRegisterModel } from 'src/app/models/user-credentials';
+import { AdvisorService } from 'src/app/services/advisor.service';
 import { SecurityService } from 'src/app/services/security.service';
 
 @Component({
@@ -14,7 +16,10 @@ export class CreateAdvisorComponent implements OnInit {
 
   siteKey: string = GeneralData.CODE_CAPTCHA;
 
-  constructor(private formBuilder: FormBuilder, private securityService: SecurityService) {}
+  constructor(private formBuilder: FormBuilder, 
+    private advisorService: AdvisorService,
+    private dialog: MatDialog,
+    ) {}
 
   ngOnInit(): void {
     this.CreateForm();
@@ -22,7 +27,7 @@ export class CreateAdvisorComponent implements OnInit {
 
   CreateForm() {
     this.form = this.formBuilder.group({
-      numero_documento: ['', [Validators.required, Validators.minLength(4)]],
+      numero_documento: ['', [Validators.required, Validators.minLength(7)]],
       nombre_completo: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
       telefono: ['', [Validators.required, Validators.minLength(10)]],
@@ -30,8 +35,11 @@ export class CreateAdvisorComponent implements OnInit {
     });
   }
 
+  AbrirDialogo() {
+    this.dialog.open(AdvisorCreatedComponent);
+  }
+
   RegisterAdvisor() {
-    console.log("Está entrando");
     if (this.form.invalid) {
       console.log('Formulario no válido');
     } else {
@@ -41,9 +49,9 @@ export class CreateAdvisorComponent implements OnInit {
       modelo.email = this.GetForm.email.value;
       modelo.telefono = this.GetForm.telefono.value;
       modelo.tipo_persona = 'asesor';
-      this.securityService.RegisterAsesor(modelo).subscribe({
+      this.advisorService.CrearAsesor(modelo).subscribe({
         next: (data: any) => {
-          console.log(data);
+          this.AbrirDialogo();
         },
         error: (error: any) => {
           console.log(error);
@@ -56,3 +64,10 @@ export class CreateAdvisorComponent implements OnInit {
     return this.form.controls;
   }
 }
+
+@Component({
+  selector: 'app-advisor-created',
+  templateUrl: './advisor-created.component.html',
+})
+
+export class AdvisorCreatedComponent {}
